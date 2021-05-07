@@ -9,7 +9,7 @@ abstract class BoolPreference {
     await _instance.setBool(key, !current);
   }
 
-  Future<void> setBool({bool value}) async {
+  Future<void> setBool({required bool value}) async {
     SharedPreferences _instance = await SharedPreferences.getInstance();
     await _instance.setBool(key, value);
   }
@@ -19,7 +19,7 @@ abstract class BoolPreference {
     await _instance.remove(key);
   }
 
-  Future<bool> getBool() async {
+  Future<bool?> getBool() async {
     SharedPreferences _instance = await SharedPreferences.getInstance();
     return _instance.getBool(key);
   }

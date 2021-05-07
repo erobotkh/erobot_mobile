@@ -14,20 +14,3 @@ void main() async {
     )
   );
 }
-
-// class AppLocalization extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return EasyLocalization(
-//       startLocale: Locale("km"),
-//       supportedLocales: [
-//         Locale('en'),
-//         Locale('km'),
-//       ],
-//       path: "assets/translations",
-//       useOnlyLangCode: true,
-//       fallbackLocale: Locale('en'),
-//       child: App(),
-//     );
-//   }
-// }
