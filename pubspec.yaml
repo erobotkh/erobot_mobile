@@ -54,15 +54,15 @@ flutter:
     - family: OpenSans
       fonts:
         - asset: assets/fonts/Open_Sans/OpenSans-Bold.ttf
-        # - asset: assets/fonts/Open_Sans/OpenSans-BoldItalic.ttf
-        # - asset: assets/fonts/Open_Sans/OpenSans-SmiBold.ttf
-        # - asset: assets/fonts/Open_Sans/OpenSans-SmiBoldItalic.ttf
-        # - asset: assets/fonts/Open_Sans/OpenSans-ExtraBold.ttf
-        # - asset: assets/fonts/Open_Sans/OpenSans-ExtraBoldItalic.ttf
-        # - asset: assets/fonts/Open_Sans/OpenSans-Italic.ttf
-        # - asset: assets/fonts/Open_Sans/OpenSans-Light.ttf
-        # - asset: assets/fonts/Open_Sans/OpenSans-LightItalic.ttf
-        # - asset: assets/fonts/Open_Sans/OpenSans-Regular.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-BoldItalic.ttf
+#        - asset: assets/fonts/Open_Sans/OpenSans-SmiBold.ttf
+#        - asset: assets/fonts/Open_Sans/OpenSans-SmiBoldItalic.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-ExtraBold.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-Italic.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-Light.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-LightItalic.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-Regular.ttf
   # example:
   # fonts:
   #   - family: Schyler
