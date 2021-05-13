@@ -1,3 +1,4 @@
+import 'package:erobot/screens/home/members_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,7 +9,29 @@ class HomeScreen extends StatelessWidget {
         title: Text('Home'),
       ),
       body: Center(
-        child: Text('Home'),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context, rootNavigator: true).push(
+                    MaterialPageRoute(
+                      builder: (context) => MembersPage(),
+                    ),
+                  );
+                },
+                child: Text('Members')),
+            // TextButton(
+            //     onPressed: () {
+            //       Navigator.of(context, rootNavigator: true).push(
+            //         MaterialPageRoute(
+            //           builder: (context) => ReputationsPage(),
+            //         ),
+            //       );
+            //     },
+            //     child: Text('Reputations'),),
+          ],
+        ),
       ),
     );
   }
