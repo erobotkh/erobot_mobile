@@ -35,74 +35,78 @@ class HomeScreen extends StatelessWidget {
           crossAxisSpacing: ConfigConstant.margin1,
           itemBuilder: (BuildContext context, int index) {
             var card = _homeCard[index];
-            return InkWell(
-              onTap: card.onTap,
-              child: AspectRatio(
-                aspectRatio: card.isSmall ? 167 / 126 : 167.5 / 200,
-                child: Container(
-                  padding: EdgeInsets.only(
-                    top: ConfigConstant.margin2,
-                    left: ConfigConstant.margin2,
-                    right: ConfigConstant.margin2,
+            return _buildHomeCard(card, context);
+          },
+        ),
+      ),
+    );
+  }
+
+  InkWell _buildHomeCard(HomeCardModel card, BuildContext context) {
+    return InkWell(
+      onTap: () {
+        // card.screen ??
+        Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(builder: (context) => card.screen),);
+      },
+      child: AspectRatio(
+        aspectRatio: card.isSmall ? 167 / 126 : 167.5 / 200,
+        child: Container(
+          padding: EdgeInsets.only(
+            top: ConfigConstant.margin2,
+            left: ConfigConstant.margin2,
+            right: ConfigConstant.margin2,
+          ),
+          decoration: BoxDecoration(
+            gradient: card.background,
+            borderRadius: ConfigConstant.circlarRadius1,
+            border: Border.all(
+              width: 1,
+              color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.3),
+            ),
+          ),
+          child: Stack(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    card.title,
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
-                  decoration: BoxDecoration(
-                    gradient: card.background,
-                    borderRadius: ConfigConstant.circlarRadius1,
-                    border: Border.all(
-                      width: 1,
+                  Text(
+                    card.subTitle,
+                    style: TextStyle(
+                      fontSize: 12,
                       color: Theme.of(context)
                           .colorScheme
-                          .onPrimary
-                          .withOpacity(0.3),
+                          .onSurface
+                          .withOpacity(0.5),
                     ),
                   ),
-                  child: Stack(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            card.title,
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
-                          Text(
-                            card.subTitle,
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSurface
-                                  .withOpacity(0.5),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Positioned(
-                        bottom: card.isSmall
-                            ? -ConfigConstant.margin2
-                            : ConfigConstant.margin2,
-                        right: 0,
-                        child: DecoratedIcon(
-                          card.icon ?? Icons.keyboard,
-                          size: ConfigConstant.iconSize5,
-                          shadows: [
-                            BoxShadow(
-                              offset: Offset(-0.5, 0.5),
-                              blurRadius: 10,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .background
-                                  .withOpacity(0.2),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                ],
+              ),
+              Positioned(
+                bottom: card.isSmall
+                    ? -ConfigConstant.margin2
+                    : ConfigConstant.margin2,
+                right: 0,
+                child: DecoratedIcon(
+                  card.icon ?? Icons.keyboard,
+                  size: ConfigConstant.iconSize5,
+                  shadows: [
+                    BoxShadow(
+                      offset: Offset(-0.5, 0.5),
+                      blurRadius: 10,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .background
+                          .withOpacity(0.2),
+                    ),
+                  ],
                 ),
               ),
-            );
-          },
+            ],
+          ),
         ),
       ),
     );
