@@ -1,8 +1,7 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/models/e_chip_model.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 
 class SenderScreen extends StatefulWidget {
   @override
@@ -12,7 +11,7 @@ class SenderScreen extends StatefulWidget {
 class _SenderScreenState extends State<SenderScreen> {
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         brightness: Brightness.dark,
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -75,7 +74,5 @@ class _SenderScreenState extends State<SenderScreen> {
         ),
       ),
     );
-  
-  
   }
 }
