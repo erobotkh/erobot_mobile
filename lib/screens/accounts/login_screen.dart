@@ -1,8 +1,9 @@
-import 'package:erobot/widgets/BottunLogin.dart';
-import 'package:erobot/widgets/Email.dart';
-import 'package:erobot/widgets/Erobot.dart';
-import 'package:erobot/widgets/ForgetPasword.dart';
-import 'package:erobot/widgets/Password.dart';
+import 'package:erobot/screens/accounts/local_widgets/E_DontHaveAcc.dart';
+import 'package:erobot/widgets/E_bottun.dart';
+import 'package:erobot/screens/accounts/local_widgets/E_Email.dart';
+import 'package:erobot/screens/accounts/local_widgets/E_Erobot.dart';
+import 'package:erobot/screens/accounts/local_widgets/E_ForgetPasword.dart';
+import 'package:erobot/screens/accounts/local_widgets/E_Password.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class AccountScreen extends StatelessWidget {
       centerTitle: false,
       backgroundColor: _theme.colorScheme.surface,
       title: Text(
-        'Account',
+        'Login',
         style: _theme.textTheme.headline6,
       ),
     );
@@ -34,12 +35,20 @@ class AccountScreen extends StatelessWidget {
           child: Column(
             children: [
               Erobot(
-                  text: 'Sign in with your email & password provide by Erobot',
-                  name: 'Erobot'),
+                  text:
+                      'Member will have access privilege to see post, oportunity, and team reputation.',
+                  name: 'Erobot Member'),
               Email(text: 'test@gmail.com', name: 'Email'),
               Password(text: '*******', name: 'Password'),
-              BottunLogin(name: 'LOGIN'),
-              ForgetPassword(name: 'Forget Password?'),
+              ForgetPassword(
+                name: 'Forget Password?',
+                onTap: '',
+              ),
+              BottunLogin(
+                name: 'LOGIN',
+                onTap: '',
+              ),
+              DontHaveAcc(name: 'Didn’t have account yet? Register', onTap: ''),
             ],
           ),
         )
