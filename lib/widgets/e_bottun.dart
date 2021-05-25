@@ -2,11 +2,11 @@ import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/constant/theme_constant.dart';
 import 'package:flutter/material.dart';
 
-class BottunLogin extends StatelessWidget {
+class ButtonLogin extends StatelessWidget {
   final String name;
-  final String onTap;
+  final Function onTap;
 
-  const BottunLogin({Key? key, required this.name, required this.onTap})
+  const ButtonLogin({Key? key, required this.name, required this.onTap})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class BottunLogin extends StatelessWidget {
         aspectRatio: 343 / 48,
         child: InkWell(
           onTap: () {
-            onTap;
+            onTap();
           },
           child: Container(
             decoration: BoxDecoration(

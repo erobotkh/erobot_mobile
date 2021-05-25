@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 
 class Email extends StatelessWidget {
-  final String text;
   final String name;
 
-  const Email({Key? key, required this.text, required this.name})
-      : super(key: key);
+  const Email({Key? key, required this.name}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     return Container(
-      padding: EdgeInsets.all(16),
+      height: 56,
       child: TextField(
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          // hintText: text,
           hintStyle: _theme.textTheme.bodyText1
               ?.copyWith(color: _theme.colorScheme.onSurface),
           labelText: name,
