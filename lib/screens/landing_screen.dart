@@ -1,5 +1,3 @@
-import 'package:erobot/config/tab_bar_config.dart';
-import 'package:erobot/screens/app_bar_main_screen.dart';
 import 'package:flutter/material.dart';
 
 class LandingScreen extends StatelessWidget {
