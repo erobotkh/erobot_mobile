@@ -24,9 +24,7 @@ class CircularSlider extends StatelessWidget {
       initialValue: 0,
       min: 0,
       max: 5,
-      onChange: (value) {
-        print(value);
-      },
+      onChange: (value) {},
     );
   }
 
