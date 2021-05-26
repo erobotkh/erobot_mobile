@@ -4,6 +4,19 @@ class ThemeConstant {
   static ThemeData theme = ThemeData(
     colorScheme: lightScheme,
     textTheme: textTheme,
+    scaffoldBackgroundColor: lightScheme.background,
+    appBarTheme: AppBarTheme(
+      elevation: 0.5,
+      centerTitle: false,
+      color: lightScheme.surface,
+      brightness: Brightness.dark,
+      actionsIconTheme: IconThemeData(
+        color: lightScheme.onSurface,
+      ),
+      textTheme: textTheme.copyWith(
+        headline6: textTheme.headline6,
+      ),
+    ),
   );
 
   static const Gradient greenGradient = LinearGradient(

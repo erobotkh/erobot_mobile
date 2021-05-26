@@ -1,8 +1,8 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/models/remoter_button_model.dart';
+import 'package:erobot/widgets/e_back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class IRRemoterScreen extends StatelessWidget {
   @override
@@ -22,15 +22,7 @@ class IRRemoterScreen extends StatelessWidget {
           onPressed: () => print('Setting'),
         ),
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.surface,
-          centerTitle: false,
-          brightness: Brightness.dark,
-          leading: IconButton(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            icon: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context),
-          ),
+          leading: EBackButton(),
           title: Text(
             'IR Remoter',
           ),
