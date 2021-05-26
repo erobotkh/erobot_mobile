@@ -38,7 +38,7 @@ class Erobot extends StatelessWidget {
                         icon: Icon(
                           Icons.people,
                           color: _theme.colorScheme.onPrimary,
-                          size: 72,
+                          size: 82,
                         ),
                         onPressed: () {},
                       ),
