@@ -30,7 +30,7 @@ class CustomerAppBar extends StatelessWidget implements PreferredSizeWidget {
         width: double.infinity,
         height: appBarHeight * 2,
         child: CustomPaint(
-          painter: AppBarPainter(context),
+          painter: AppBarPainter(context: context, color: color),
         ),
       ),
     );
@@ -43,8 +43,12 @@ class CustomerAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 class AppBarPainter extends CustomPainter {
   final BuildContext context;
+  final Color? color;
 
-  AppBarPainter(this.context);
+  AppBarPainter({
+    required this.context,
+    this.color,
+  });
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint();
@@ -62,7 +66,7 @@ class AppBarPainter extends CustomPainter {
     path3.close();
 
     // CONTAINER MIDDLE
-    paint.color = Theme.of(context).colorScheme.primary;
+    paint.color = color ?? Theme.of(context).colorScheme.primary;
     var path2 = Path();
 
     path2.lineTo(0, size.height / 1.5);
