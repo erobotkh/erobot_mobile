@@ -1,6 +1,6 @@
 import 'package:erobot/constant/theme_constant.dart';
 import 'package:erobot/screens/home/arduino_car_screen.dart';
-import 'package:erobot/screens/home/ballshooter_screen.dart';
+import 'package:erobot/screens/home/ball_shooter/ballshooter_screen.dart';
 import 'package:erobot/screens/home/ir_remoter_screen.dart';
 import 'package:erobot/screens/home/members_page.dart';
 import 'package:erobot/screens/home/reputations_page.dart';
