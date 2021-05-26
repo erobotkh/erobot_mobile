@@ -2,7 +2,6 @@ import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/models/remoter_button_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class IRRemoterScreen extends StatelessWidget {
   @override
