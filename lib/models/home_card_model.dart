@@ -2,8 +2,8 @@ import 'package:erobot/constant/theme_constant.dart';
 import 'package:erobot/screens/home/arduino_car_screen.dart';
 import 'package:erobot/screens/home/ball_shooter/ballshooter_screen.dart';
 import 'package:erobot/screens/home/ir_remoter_screen.dart';
-import 'package:erobot/screens/home/members_page.dart';
-import 'package:erobot/screens/home/reputations_page.dart';
+import 'package:erobot/screens/home/members_screen.dart';
+import 'package:erobot/screens/home/reputations_screen.dart';
 import 'package:erobot/screens/home/sender_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -60,14 +60,14 @@ class HomeCardModel {
           subTitle: 'See all our memberand info',
           icon: Icons.people,
           background: ThemeConstant.purpleGradient,
-          screen: MembersPage(),
+          screen: MemberScreen(),
         ),
         HomeCardModel(
           title: 'Our reputation',
           subTitle: 'Upcoming event infoand more',
           icon: Icons.stars,
           background: ThemeConstant.greenGradient,
-          screen: ReputationsPage(),
+          screen: ReputationScreen(),
         ),
       ];
 }
