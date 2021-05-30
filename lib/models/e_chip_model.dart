@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:erobot/config/config_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class Echips extends StatelessWidget {
       'catd',
       'I Like this One sdfsdf sdfds fdsf dsf dsf dsf dsfds fds fsd fds fdsf d'
     ];
+    
     var colors = [
       Color(0xff1976D2),
       Color(0xff990000),

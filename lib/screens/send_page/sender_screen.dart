@@ -1,7 +1,8 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/models/e_chip_model.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class SenderScreen extends StatefulWidget {
   @override
