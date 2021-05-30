@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:erobot/config/config_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -12,12 +11,18 @@ class Echips extends StatelessWidget {
       'catd',
       'I Like this One sdfsdf sdfds fdsf dsf dsf dsf dsfds fds fsd fds fdsf d'
     ];
+    
+    var colors = [
+      Color(0xff1976D2),
+      Color(0xff990000),
+      Color(0xffF57C00),
+      Color(0xff388E3C),
+    ];
 
     final _buttons = List.generate(
       strings.length,
       (index) => Chip(
-        backgroundColor:
-            Colors.accents[Random().nextInt(Colors.accents.length)],
+        backgroundColor: colors[index % colors.length],
         label: Text(
           strings[index],
           overflow: TextOverflow.ellipsis,
