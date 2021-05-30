@@ -1,4 +1,4 @@
-import 'package:erobot/screens/accounts/account_screen.dart';
+import 'package:erobot/screens/accounts/login_screen.dart';
 import 'package:erobot/screens/education/education_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/home/home_screen.dart';
