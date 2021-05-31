@@ -2,10 +2,15 @@ import 'dart:math';
 import 'package:erobot/config/config_constant.dart';
 import 'package:flutter/material.dart';
 
+
 class Echips extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final strings = [
+      'niptict',
+      'npic',
+      'catd',
+      'I Like this One sdfsdf sdfds fdsf dsf dsf dsf dsfds fds fsd fds fdsf d',
       'niptict',
       'npic',
       'catd',
