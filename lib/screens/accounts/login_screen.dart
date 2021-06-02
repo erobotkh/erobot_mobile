@@ -6,7 +6,6 @@ import 'package:erobot/screens/accounts/local_widgets/e_textfield_text.dart';
 import 'package:erobot/screens/accounts/local_widgets/e_erobot.dart';
 import 'package:erobot/screens/accounts/local_widgets/e_forget_password.dart';
 import 'package:erobot/screens/accounts/local_widgets/e_textfield_password.dart';
-import 'package:erobot/widgets/e_bottun.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
