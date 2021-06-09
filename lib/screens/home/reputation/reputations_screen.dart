@@ -1,5 +1,7 @@
 import 'package:erobot/config/config_constant.dart';
-import 'package:erobot/widgets/e_back_button.dart';
+import 'package:erobot/screens/home/reputation/reputation_detail_screen.dart';
+import 'package:erobot/widgets/er_back_button.dart';
+import 'package:erobot/widgets/er_profile_image.dart';
 import 'package:flutter/material.dart';
 
 class ReputationScreen extends StatelessWidget {
@@ -12,7 +14,7 @@ class ReputationScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         elevation: 0.5,
         brightness: Brightness.dark,
-        leading: EBackButton(),
+        leading: ERBackButton(),
         title: Text('Reputations'),
         actions: [
           IconButton(
@@ -31,30 +33,26 @@ class ReputationScreen extends StatelessWidget {
           children: List.generate(
             6,
             (index) {
+              Map<String, String> reputations = {
+                'title': 'PNC Event',
+                'date': '19th Jul, 2018',
+                'image': 'https://i.pinimg.com/originals/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg',
+              };
               return Column(
                 children: [
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    leading: Container(
-                      height: ConfigConstant.objectHeight2,
-                      width: ConfigConstant.objectHeight2,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: NetworkImage(
-                            'https://i.pinimg.com/originals/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg',
-                          ),
-                        ),
-                      ),
+                    leading: ERProfileImage(
+                      image: reputations['image'] ?? '',
                     ),
                     title: Text(
-                      'PNC Event',
+                      reputations['title'] ?? '',
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
                     subtitle: Text(
-                      '19th Jul, 2018',
-                      style: Theme.of(context).textTheme.caption!.copyWith(
-                          color: Theme.of(context).colorScheme.secondary),
+                      reputations['date'] ?? '',
+                      style:
+                          Theme.of(context).textTheme.caption!.copyWith(color: Theme.of(context).colorScheme.secondary),
                     ),
                     trailing: IconButton(
                       icon: Icon(
@@ -63,9 +61,19 @@ class ReputationScreen extends StatelessWidget {
                       ),
                       onPressed: () {},
                     ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => ReputationDetailScreen(
+                            title: reputations['title'] ?? '',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   if (index != 5)
                     Divider(
+                      height: 0,
                       color: Theme.of(context).colorScheme.secondary,
                     ),
                 ],

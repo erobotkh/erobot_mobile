@@ -1,14 +1,13 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/models/remoter_button_model.dart';
-import 'package:erobot/widgets/e_back_button.dart';
+import 'package:erobot/widgets/er_back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class IRRemoterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<RemotterButtonModel> remoteButtonList =
-        RemotterButtonModel.getButtonList(context);
+    List<RemotterButtonModel> remoteButtonList = RemotterButtonModel.getButtonList(context);
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
         floatingActionButton: FloatingActionButton(
@@ -22,7 +21,7 @@ class IRRemoterScreen extends StatelessWidget {
           onPressed: () => print('Setting'),
         ),
         appBar: AppBar(
-          leading: EBackButton(),
+          leading: ERBackButton(),
           title: Text(
             'IR Remoter',
           ),
