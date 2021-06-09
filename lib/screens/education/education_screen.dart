@@ -4,12 +4,12 @@ import 'package:flutter/rendering.dart';
 
 import 'content_tabbar.dart';
 
-class sender extends StatefulWidget {
+class EducationScreen extends StatefulWidget {
   @override
-  _senderState createState() => _senderState();
+  _EducationScreenState createState() => _EducationScreenState();
 }
 
-class _senderState extends State<sender> {
+class _EducationScreenState extends State<EducationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
