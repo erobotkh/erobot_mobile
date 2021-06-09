@@ -1,10 +1,10 @@
 import 'package:erobot/app_router.dart';
 import 'package:erobot/config/tab_bar_config_item.dart';
-import 'package:erobot/screens/accounts/account_screen.dart';
-import 'package:erobot/screens/education/education_screen.dart';
+import 'package:erobot/screens/accounts/login_screen.dart';
+import 'package:erobot/screens/education/edu_screen.dart';
 import 'package:erobot/screens/home/home_screen.dart';
-
 import 'package:flutter/material.dart';
+
 
 class TabBarConfig {
   static List<TabBarConfigItem> items = [
@@ -20,7 +20,7 @@ class TabBarConfig {
       title: 'Educations',
       icon: Icons.school,
       path: AppRouter.EDUCATION,
-      screen: EducationScreen(),
+      screen: EduScreen(),
       key: GlobalKey<NavigatorState>(),
       activeIcon: Icons.school,
     ),
