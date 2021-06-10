@@ -1,6 +1,6 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/controller/message_controller.dart';
-
+import 'package:erobot/models/e_chip_model.dart';
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
 import 'package:flutter/material.dart';
@@ -10,17 +10,13 @@ class SenderScreen extends StatefulWidget {
 =======
 import 'package:get/get.dart';
 
-<<<<<<< HEAD
 class EducationScreen extends StatefulWidget {
 >>>>>>> 2da71de... close #28 sender screen : modify local storage
-=======
-class SenderScreen extends StatefulWidget {
->>>>>>> 7977f39... modified again
   @override
-  _SenderScreenState createState() => _SenderScreenState();
+  _EducationScreenState createState() => _EducationScreenState();
 }
 
-class _SenderScreenState extends State<SenderScreen> {
+class _EducationScreenState extends State<EducationScreen> {
   var colors = [
     Color(0xff1976D2),
     Color(0xff990000),
