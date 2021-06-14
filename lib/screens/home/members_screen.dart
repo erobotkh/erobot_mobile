@@ -1,5 +1,5 @@
 import 'package:erobot/config/config_constant.dart';
-import 'package:erobot/widgets/e_back_button.dart';
+import 'package:erobot/widgets/er_back_button.dart';
 import 'package:flutter/material.dart';
 
 class MemberScreen extends StatelessWidget {
@@ -12,7 +12,7 @@ class MemberScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         elevation: 0.5,
         brightness: Brightness.dark,
-        leading: EBackButton(),
+        leading: ERBackButton(),
         title: Text('Members'),
         actions: [
           IconButton(
@@ -54,8 +54,8 @@ class MemberScreen extends StatelessWidget {
                     ),
                     subtitle: Text(
                       'Team leader since 2019',
-                      style: Theme.of(context).textTheme.caption!.copyWith(
-                          color: Theme.of(context).colorScheme.secondary),
+                      style:
+                          Theme.of(context).textTheme.caption!.copyWith(color: Theme.of(context).colorScheme.secondary),
                     ),
                     trailing: IconButton(
                       icon: Icon(
