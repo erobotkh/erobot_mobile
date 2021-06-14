@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class EBackButton extends StatelessWidget {
-  const EBackButton({
+class ERBackButton extends StatelessWidget {
+  const ERBackButton({
     Key? key,
   }) : super(key: key);
 

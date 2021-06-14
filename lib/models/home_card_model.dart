@@ -3,7 +3,7 @@ import 'package:erobot/screens/home/arduino_car_screen.dart';
 import 'package:erobot/screens/home/ball_shooter/ballshooter_screen.dart';
 import 'package:erobot/screens/home/ir_remoter_screen.dart';
 import 'package:erobot/screens/home/members_screen.dart';
-import 'package:erobot/screens/home/reputations_screen.dart';
+import 'package:erobot/screens/home/reputation/reputations_screen.dart';
 import 'package:erobot/screens/home/sender_screen.dart';
 import 'package:flutter/material.dart';
 
