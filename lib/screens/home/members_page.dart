@@ -1,4 +1,4 @@
-import 'package:erobot/widgets/Listview.dart';
+import 'package:erobot/widgets/e_expansiontile.dart';
 import 'package:flutter/material.dart';
 
 class MembersPage extends StatefulWidget {
@@ -37,35 +37,65 @@ class _MembersPageState extends State<MembersPage> {
   _buildBody(ThemeData _theme, BuildContext context) {
     return ListView(
       children: [
-        Listtile(
+        ExpanSionTile(
           title: 'Johnny Watson',
-          subtitle: 'Team leader since 2019',
+          subTitle: 'Team leader since 2019',
           img: 'assets/images/1.jpg',
+          onTap: () {},
+          textNamefb: '',
+          textNameTg: '',
+          textNameIg: '',
+          textBody: '',
         ),
-        Listtile(
+        ExpanSionTile(
           title: 'Annette Cooper',
-          subtitle: 'Organizer since 2019',
+          subTitle: 'Organizer since 2019',
           img: 'assets/images/1.jpg',
+          onTap: () {},
+          textNamefb: '',
+          textNameTg: '',
+          textNameIg: '',
+          textBody: '',
         ),
-        Listtile(
+        ExpanSionTile(
           title: 'Arthur Bell',
-          subtitle: 'Organizer since 2019',
+          subTitle: 'Organizer since 2019',
           img: 'assets/images/1.jpg',
+          onTap: () {},
+          textNamefb: '',
+          textNameTg: '',
+          textNameIg: '',
+          textBody: '',
         ),
-        Listtile(
+        ExpanSionTile(
           title: 'Jane Warren',
-          subtitle: 'Organizer since 2019',
+          subTitle: 'Organizer since 2019',
           img: 'assets/images/1.jpg',
+          onTap: () {},
+          textNamefb: '',
+          textNameTg: '',
+          textNameIg: '',
+          textBody: '',
         ),
-        Listtile(
+        ExpanSionTile(
           title: 'Morris Henry',
-          subtitle: 'Organizer since 2019',
+          subTitle: 'Organizer since 2019',
           img: 'assets/images/1.jpg',
+          onTap: () {},
+          textNamefb: '',
+          textNameTg: '',
+          textNameIg: '',
+          textBody: '',
         ),
-        Listtile(
+        ExpanSionTile(
           title: 'Irma Flores',
-          subtitle: 'Organizer since 2019',
+          subTitle: 'Organizer since 2019',
           img: 'assets/images/1.jpg',
+          onTap: () {},
+          textNamefb: '',
+          textNameTg: '',
+          textNameIg: '',
+          textBody: '',
         ),
       ],
     );

@@ -7,7 +7,9 @@ class MainScreenNotifier extends ChangeNotifier {
 
   void switchIndex(int index) {
     if (index == selectedIndex) {
-      return TabBarConfig.navigationKeyAt(index).currentState?.popUntil((route) => route.isFirst);
+      return TabBarConfig.navigationKeyAt(index)
+          .currentState
+          ?.popUntil((route) => route.isFirst);
     }
 
     selectedIndex = index;
@@ -15,4 +17,5 @@ class MainScreenNotifier extends ChangeNotifier {
   }
 }
 
-final mainScreenNotifier = ChangeNotifierProvider<MainScreenNotifier>((ref) => MainScreenNotifier());
+final mainScreenNotifier =
+    ChangeNotifierProvider<MainScreenNotifier>((ref) => MainScreenNotifier());
