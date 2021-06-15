@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:decorated_icon/decorated_icon.dart';
 
+import 'members_expaned_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,10 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.account_circle),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(
+                  builder: (context) => MembersExpanedScreen()));
+            },
           ),
         ],
       ),
