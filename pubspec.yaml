@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   easy_localization: ^3.0.0
+  font_awesome_flutter: ^9.0.0
 
   # Storage
   shared_preferences: ^2.0.5
