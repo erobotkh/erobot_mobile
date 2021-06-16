@@ -1,17 +1,9 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/controller/message_controller.dart';
-import 'package:erobot/models/e_chip_model.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
-class SenderScreen extends StatefulWidget {
-=======
 import 'package:get/get.dart';
 
 class EducationScreen extends StatefulWidget {
->>>>>>> 2da71de... close #28 sender screen : modify local storage
   @override
   _EducationScreenState createState() => _EducationScreenState();
 }
@@ -50,9 +42,7 @@ class _EducationScreenState extends State<EducationScreen> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: ConfigConstant.margin1,
-                  vertical: ConfigConstant.margin2),
+              padding: EdgeInsets.symmetric(horizontal: ConfigConstant.margin1, vertical: ConfigConstant.margin2),
               child: GetBuilder<StorageMessage>(
                   init: StorageMessage(),
                   builder: (controller) {
@@ -61,8 +51,7 @@ class _EducationScreenState extends State<EducationScreen> {
                       decoration: InputDecoration(
                         border: UnderlineInputBorder(),
                         labelText: 'Message',
-                        labelStyle: TextStyle(
-                            color: Theme.of(context).colorScheme.onSurface),
+                        labelStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface),
                         suffixIcon: IconButton(
                           onPressed: () {
                             controller.onSaveData();
@@ -112,12 +101,10 @@ class _EducationScreenState extends State<EducationScreen> {
                                 fontWeight: FontWeight.w500,
                                 //fontSize: 16,
                                 color: Theme.of(context).colorScheme.onSurface),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: ConfigConstant.margin1),
+                            padding: EdgeInsets.symmetric(horizontal: ConfigConstant.margin1),
                             deleteIconColor: Colors.white,
                             onDeleted: () {
-                              print(
-                                  "Delete message ${controller.lstSave[index]['text']}");
+                              print("Delete message ${controller.lstSave[index]['text']}");
                               controller.onRemoveData(index);
                             },
                           ),
