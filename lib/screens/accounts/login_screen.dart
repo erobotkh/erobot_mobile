@@ -6,7 +6,6 @@ import 'package:erobot/screens/accounts/local_widgets/e_textfield_text.dart';
 import 'package:erobot/screens/accounts/local_widgets/e_erobot.dart';
 import 'package:erobot/screens/accounts/local_widgets/e_forget_password.dart';
 import 'package:erobot/screens/accounts/local_widgets/e_textfield_password.dart';
-import 'package:erobot/widgets/e_bottun.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -38,13 +37,10 @@ class AccountScreen extends StatelessWidget {
           child: Column(
             children: [
               Erobot(
-                  text:
-                      'Member will have access privilege to see post, oportunity, and team reputation.',
+                  text: 'Member will have access privilege to see post, oportunity, and team reputation.',
                   name: 'Erobot Member'),
               Container(
-                padding: EdgeInsets.only(
-                    left: ConfigConstant.margin2,
-                    right: ConfigConstant.margin2),
+                padding: EdgeInsets.only(left: ConfigConstant.margin2, right: ConfigConstant.margin2),
                 child: Column(
                   children: [
                     Email(name: 'Email'),

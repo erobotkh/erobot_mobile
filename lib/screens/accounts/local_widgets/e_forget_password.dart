@@ -5,8 +5,7 @@ class ForgetPassword extends StatelessWidget {
   final String name;
   final String onTap;
 
-  const ForgetPassword({Key? key, required this.name, required this.onTap})
-      : super(key: key);
+  const ForgetPassword({Key? key, required this.name, required this.onTap}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -15,11 +14,9 @@ class ForgetPassword extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: InkWell(
         onTap: () {
-          onTap;
+          // onTap;
         },
-        child: Text(name,
-            style: _theme.textTheme.caption
-                ?.copyWith(color: _theme.colorScheme.secondaryVariant)),
+        child: Text(name, style: _theme.textTheme.caption?.copyWith(color: _theme.colorScheme.secondaryVariant)),
       ),
     );
   }
