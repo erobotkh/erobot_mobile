@@ -27,6 +27,8 @@ dependencies:
 
   # Storage
   shared_preferences: ^2.0.5
+  get: ^4.1.4
+  get_storage: ^2.0.2
 
   #  State Management
   flutter_hooks: ^0.16.0
