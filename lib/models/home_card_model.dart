@@ -4,7 +4,7 @@ import 'package:erobot/screens/home/ball_shooter/ballshooter_screen.dart';
 import 'package:erobot/screens/home/ir_remoter_screen.dart';
 import 'package:erobot/screens/home/members_screen.dart';
 import 'package:erobot/screens/home/reputation/reputations_screen.dart';
-import 'package:erobot/screens/send_page/sender_screen.dart';
+import 'package:erobot/screens/sender/sender_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeCardModel {
@@ -31,7 +31,7 @@ class HomeCardModel {
           icon: Icons.keyboard,
           background: ThemeConstant.greenGradient,
           isSmall: false,
-          screen: EducationScreen(),
+          screen: SenderScreen(),
         ),
         HomeCardModel(
           title: 'Ball Shooter',
