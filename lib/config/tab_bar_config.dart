@@ -6,7 +6,6 @@ import 'package:erobot/screens/home/home_screen.dart';
 
 import 'package:flutter/material.dart';
 
-
 class TabBarConfig {
   static List<TabBarConfigItem> items = [
     TabBarConfigItem(
