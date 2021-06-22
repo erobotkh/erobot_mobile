@@ -1,6 +1,6 @@
 import 'package:erobot/screens/accounts/login_screen.dart';
-import 'package:erobot/screens/send_page/sender_screen.dart';
 import 'package:flutter/material.dart';
+import 'screens/education/education_screen.dart';
 import 'screens/home/home_screen.dart';
 
 class AppRouter {
