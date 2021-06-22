@@ -1,10 +1,9 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/models/home_card_model.dart';
+import 'package:erobot/screens/home/members_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:decorated_icon/decorated_icon.dart';
-
-import 'members_expaned_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -21,8 +20,11 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.account_circle),
             onPressed: () {
-              Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(
-                  builder: (context) => MembersExpanedScreen()));
+              Navigator.of(context, rootNavigator: true).push(
+                MaterialPageRoute(
+                  builder: (context) => MembersScreen(),
+                ),
+              );
             },
           ),
         ],
@@ -51,7 +53,9 @@ class HomeScreen extends StatelessWidget {
     return InkWell(
       onTap: () {
         // card.screen ??
-        Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(builder: (context) => card.screen),);
+        Navigator.of(context, rootNavigator: true).push(
+          MaterialPageRoute(builder: (context) => card.screen),
+        );
       },
       child: AspectRatio(
         aspectRatio: card.isSmall ? 167 / 126 : 167.5 / 200,
@@ -82,18 +86,13 @@ class HomeScreen extends StatelessWidget {
                     card.subTitle,
                     style: TextStyle(
                       fontSize: 12,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .onSurface
-                          .withOpacity(0.5),
+                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
                     ),
                   ),
                 ],
               ),
               Positioned(
-                bottom: card.isSmall
-                    ? -ConfigConstant.margin2
-                    : ConfigConstant.margin2,
+                bottom: card.isSmall ? -ConfigConstant.margin2 : ConfigConstant.margin2,
                 right: 0,
                 child: DecoratedIcon(
                   card.icon ?? Icons.keyboard,
@@ -102,10 +101,7 @@ class HomeScreen extends StatelessWidget {
                     BoxShadow(
                       offset: Offset(-0.5, 0.5),
                       blurRadius: 10,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .background
-                          .withOpacity(0.2),
+                      color: Theme.of(context).colorScheme.background.withOpacity(0.2),
                     ),
                   ],
                 ),

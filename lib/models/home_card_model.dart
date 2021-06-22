@@ -60,7 +60,7 @@ class HomeCardModel {
           subTitle: 'See all our memberand info',
           icon: Icons.people,
           background: ThemeConstant.purpleGradient,
-          screen: MemberScreen(),
+          screen: MembersScreen(),
         ),
         HomeCardModel(
           title: 'Our reputation',
