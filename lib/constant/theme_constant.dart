@@ -17,6 +17,10 @@ class ThemeConstant {
         headline6: textTheme.headline6,
       ),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      border: UnderlineInputBorder(borderSide: BorderSide(color: lightScheme.secondary)),
+      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: lightScheme.secondary)),
+    ),
   );
 
   static const Gradient greenGradient = LinearGradient(

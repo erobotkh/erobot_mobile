@@ -1,7 +1,7 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/screens/home/reputation/reputation_detail_screen.dart';
+import 'package:erobot/widgets/er_expansion_tile.dart';
 import 'package:erobot/widgets/er_back_button.dart';
-import 'package:erobot/widgets/er_profile_image.dart';
 import 'package:flutter/material.dart';
 
 class ReputationScreen extends StatelessWidget {
@@ -23,64 +23,43 @@ class ReputationScreen extends StatelessWidget {
           )
         ],
       ),
-      body: SingleChildScrollView(
+      body: ListView(
         padding: EdgeInsets.only(
-          left: ConfigConstant.margin2,
-          top: ConfigConstant.margin2,
-          bottom: ConfigConstant.margin2,
+          top: ConfigConstant.margin1,
         ),
-        child: Column(
-          children: List.generate(
-            6,
-            (index) {
-              Map<String, String> reputations = {
-                'title': 'PNC Event',
-                'date': '19th Jul, 2018',
-                'image': 'https://i.pinimg.com/originals/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg',
-              };
-              return Column(
-                children: [
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    leading: ERProfileImage(
-                      image: reputations['image'] ?? '',
-                    ),
-                    title: Text(
-                      reputations['title'] ?? '',
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                    subtitle: Text(
-                      reputations['date'] ?? '',
-                      style:
-                          Theme.of(context).textTheme.caption!.copyWith(color: Theme.of(context).colorScheme.secondary),
-                    ),
-                    trailing: IconButton(
-                      icon: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                      onPressed: () {},
-                    ),
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => ReputationDetailScreen(
-                            title: reputations['title'] ?? '',
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  if (index != 5)
-                    Divider(
-                      height: 0,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                ],
+        children: [
+          ERExpansionTile(
+            title: 'Morn Mey',
+            subtitle: 'Team leader since 2021',
+            img: 'assets/images/1.jpg',
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ReputationDetailScreen(title: "WOWO");
+                  },
+                ),
               );
             },
+            expandable: false,
+            textNamefb: 'Morn Mey',
+            textNameTg: 'Morn Mey',
+            textNameIg: 'Morn Mey',
+            textBody:
+                'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
           ),
-        ),
+          ERExpansionTile(
+            title: 'Non Sinat',
+            subtitle: 'Organizer since 2021',
+            img: 'assets/images/1.jpg',
+            onTap: () {},
+            textNamefb: 'Non Sinat',
+            textNameTg: 'Non Sinat',
+            textNameIg: 'Non Sinat',
+            textBody:
+                'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
+          ),
+        ],
       ),
     );
   }

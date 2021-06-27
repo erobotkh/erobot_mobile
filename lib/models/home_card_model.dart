@@ -4,7 +4,7 @@ import 'package:erobot/screens/home/ball_shooter/ballshooter_screen.dart';
 import 'package:erobot/screens/home/ir_remoter_screen.dart';
 import 'package:erobot/screens/home/members_screen.dart';
 import 'package:erobot/screens/home/reputation/reputations_screen.dart';
-import 'package:erobot/screens/home/sender_screen.dart';
+import 'package:erobot/screens/sender/sender_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeCardModel {
@@ -60,7 +60,7 @@ class HomeCardModel {
           subTitle: 'See all our memberand info',
           icon: Icons.people,
           background: ThemeConstant.purpleGradient,
-          screen: MemberScreen(),
+          screen: MembersScreen(),
         ),
         HomeCardModel(
           title: 'Our reputation',

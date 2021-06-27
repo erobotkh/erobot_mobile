@@ -1,80 +1,90 @@
 import 'package:erobot/config/config_constant.dart';
-import 'package:erobot/widgets/er_back_button.dart';
+import 'package:erobot/widgets/er_expansion_tile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class MemberScreen extends StatelessWidget {
+class MembersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        automaticallyImplyLeading: false,
-        elevation: 0.5,
-        brightness: Brightness.dark,
-        leading: ERBackButton(),
-        title: Text('Members'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () => print('search'),
-          )
-        ],
+      backgroundColor: _theme.colorScheme.background,
+      appBar: _buildAppBar(_theme, context),
+      body: _buildBody(_theme, context),
+    );
+  }
+
+  _buildAppBar(ThemeData _theme, BuildContext context) {
+    return AppBar(
+      centerTitle: false,
+      backgroundColor: _theme.colorScheme.surface,
+      title: Text(
+        'Members',
+        style: _theme.textTheme.headline6,
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.only(
-          left: ConfigConstant.margin2,
-          top: ConfigConstant.margin2,
-          bottom: ConfigConstant.margin2,
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.search),
         ),
-        child: Column(
-          children: List.generate(
-            10,
-            (index) {
-              return Column(
-                children: [
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    leading: Container(
-                      height: ConfigConstant.objectHeight2,
-                      width: ConfigConstant.objectHeight2,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.blue,
-                        image: DecorationImage(
-                          image: NetworkImage(
-                            'https://i.pinimg.com/originals/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg',
-                          ),
-                        ),
-                      ),
-                    ),
-                    title: Text(
-                      'Johny Waston',
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                    subtitle: Text(
-                      'Team leader since 2019',
-                      style:
-                          Theme.of(context).textTheme.caption!.copyWith(color: Theme.of(context).colorScheme.secondary),
-                    ),
-                    trailing: IconButton(
-                      icon: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                      onPressed: () {},
-                    ),
-                  ),
-                  if (index != 9)
-                    Divider(
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                ],
-              );
-            },
-          ),
-        ),
+      ],
+    );
+  }
+
+  _buildBody(
+    ThemeData _theme,
+    BuildContext context,
+  ) {
+    return ListView(
+      padding: EdgeInsets.only(
+        top: ConfigConstant.margin1,
       ),
+      children: [
+        ERExpansionTile(
+          title: 'Morn Mey',
+          subtitle: 'Team leader since 2021',
+          img: 'assets/images/1.jpg',
+          onTap: () {},
+          textNamefb: 'Morn Mey',
+          textNameTg: 'Morn Mey',
+          textNameIg: 'Morn Mey',
+          textBody:
+              'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
+        ),
+        ERExpansionTile(
+          title: 'Non Sinat',
+          subtitle: 'Organizer since 2021',
+          img: 'assets/images/1.jpg',
+          onTap: () {},
+          textNamefb: 'Non Sinat',
+          textNameTg: 'Non Sinat',
+          textNameIg: 'Non Sinat',
+          textBody:
+              'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
+        ),
+        ERExpansionTile(
+          title: 'Choem Thea',
+          subtitle: 'Organizer since 2021',
+          img: 'assets/images/1.jpg',
+          onTap: () {},
+          textNameTg: 'Choem Thea',
+          textBody:
+              'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
+          textNameIg: 'Choem Thea',
+          textNamefb: 'Choem Thea',
+        ),
+        ERExpansionTile(
+          title: 'Chen Darot',
+          subtitle: 'Organizer since 2021',
+          img: 'assets/images/1.jpg',
+          onTap: () {},
+          textNameIg: 'Chen Darot',
+          textNamefb: 'Chen Darot',
+          textNameTg: 'Chen Darot',
+          textBody:
+              'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
+        ),
+      ],
     );
   }
 }
