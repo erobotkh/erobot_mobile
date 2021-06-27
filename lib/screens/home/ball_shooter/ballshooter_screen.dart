@@ -2,6 +2,7 @@ import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/screens/home/ball_shooter/local_widget/pad_bottons.dart';
 import 'package:erobot/screens/home/ball_shooter/local_widget/customer_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'local_widget/circular_slider.dart';
@@ -9,6 +10,7 @@ import 'local_widget/circular_slider.dart';
 class BallShooterScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
     final servoSpeed = useState<int>(0);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -23,6 +25,19 @@ class BallShooterScreen extends HookWidget {
         },
       ),
       appBar: CustomerAppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+            SystemChrome.setPreferredOrientations([
+              DeviceOrientation.portraitUp,
+              DeviceOrientation.portraitDown,
+            ]);
+          },
+        ),
         title: 'Ball Shooter',
         action: [
           IconButton(
@@ -64,8 +79,7 @@ class BallShooterScreen extends HookWidget {
     );
   }
 
-  Container _buildServoSpeedSlider(
-      BuildContext context, ValueNotifier<int> servoSpeed) {
+  Container _buildServoSpeedSlider(BuildContext context, ValueNotifier<int> servoSpeed) {
     return Container(
       width: 400,
       child: Row(

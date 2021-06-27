@@ -2,6 +2,7 @@ import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/models/home_card_model.dart';
 import 'package:erobot/screens/home/members_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:decorated_icon/decorated_icon.dart';
 
@@ -9,6 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<HomeCardModel> _homeCard = HomeCardModel.getCards();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
@@ -73,27 +75,29 @@ class HomeScreen extends StatelessWidget {
               color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.3),
             ),
           ),
-          child: Stack(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    card.title,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  Text(
-                    card.subTitle,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      card.title,
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
-                  ),
-                ],
+                    Text(
+                      card.subTitle,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Positioned(
-                bottom: card.isSmall ? -ConfigConstant.margin2 : ConfigConstant.margin2,
-                right: 0,
+              Container(
+                alignment: Alignment.bottomRight,
                 child: DecoratedIcon(
                   card.icon ?? Icons.keyboard,
                   size: ConfigConstant.iconSize5,
