@@ -50,6 +50,9 @@ class MembersScreen extends StatelessWidget {
           textNameIg: 'Morn Mey',
           textBody:
               'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
+          linkIg: "",
+          linkTele: "https://t.me/mornmey",
+          linkFb: "https://www.facebook.com/profile.php?id=100033543979146",
         ),
         ERExpansionTile(
           title: 'Non Sinat',
@@ -61,6 +64,9 @@ class MembersScreen extends StatelessWidget {
           textNameIg: 'Non Sinat',
           textBody:
               'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
+          linkIg: "https://t.me/SinatNon",
+          linkTele: "https://t.me/SinatNon",
+          linkFb: "https://www.facebook.com/profile.php?id=100069673140786",
         ),
         ERExpansionTile(
           title: 'Choem Thea',
@@ -72,6 +78,9 @@ class MembersScreen extends StatelessWidget {
               'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
           textNameIg: 'Choem Thea',
           textNamefb: 'Choem Thea',
+          linkIg: "",
+          linkTele: "",
+          linkFb: "",
         ),
         ERExpansionTile(
           title: 'Chen Darot',
@@ -83,6 +92,9 @@ class MembersScreen extends StatelessWidget {
           textNameTg: 'Chen Darot',
           textBody:
               'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
+          linkIg: "",
+          linkTele: "",
+          linkFb: "",
         ),
       ],
     );
