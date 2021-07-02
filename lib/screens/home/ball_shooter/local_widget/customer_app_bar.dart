@@ -5,10 +5,16 @@ class CustomerAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? action;
   final Color? color;
   final AppBar? appBar;
+  final Widget? leading;
 
-  const CustomerAppBar(
-      {Key? key, required this.title, this.action, this.appBar, this.color})
-      : super(key: key);
+  const CustomerAppBar({
+    Key? key,
+    required this.title,
+    this.action,
+    this.appBar,
+    this.color,
+    this.leading,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     double appBarHeight = AppBar().preferredSize.height;
@@ -16,13 +22,7 @@ class CustomerAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: false,
       elevation: 0,
       backgroundColor: Theme.of(context).colorScheme.background,
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-        ),
-        onPressed: () => Navigator.pop(context),
-      ),
+      leading: leading,
       actions: action,
       title: Text(title),
       flexibleSpace: Container(
@@ -37,8 +37,7 @@ class CustomerAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize =>
-      new Size.fromHeight(appBar?.preferredSize.height ?? kToolbarHeight);
+  Size get preferredSize => new Size.fromHeight(appBar?.preferredSize.height ?? kToolbarHeight);
 }
 
 class AppBarPainter extends CustomPainter {
