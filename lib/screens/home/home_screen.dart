@@ -55,6 +55,7 @@ class HomeScreen extends StatelessWidget {
     return InkWell(
       onTap: () {
         // card.screen ??
+        print(card.title);
         Navigator.of(context, rootNavigator: true).push(
           MaterialPageRoute(builder: (context) => card.screen),
         );
