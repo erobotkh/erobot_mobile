@@ -3,6 +3,7 @@ import 'package:erobot/widgets/er_tap_effect.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ERExpansionTile extends StatefulWidget {
   final String title;
@@ -14,6 +15,9 @@ class ERExpansionTile extends StatefulWidget {
   final String? textNameTg;
   final void Function()? onTap;
   final bool expandable;
+  final String? linkIg;
+  final String? linkTele;
+  final String? linkFb;
 
   const ERExpansionTile({
     Key? key,
@@ -26,6 +30,9 @@ class ERExpansionTile extends StatefulWidget {
     this.textNameIg,
     this.textNameTg,
     this.expandable = true,
+    this.linkIg,
+    this.linkTele,
+    this.linkFb,
   }) : super(key: key);
 
   @override
@@ -35,6 +42,19 @@ class ERExpansionTile extends StatefulWidget {
 class _ERExpansionTileState extends State<ERExpansionTile> {
   bool _hide = true;
   bool isExpanded = false;
+
+  Future<void> _launchInBrowser(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+        headers: <String, String>{'my_header_key': 'my_header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,64 +124,79 @@ class _ERExpansionTileState extends State<ERExpansionTile> {
                             Container(
                               child: Row(
                                 children: [
-                                  Container(
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          FontAwesomeIcons.instagram,
-                                          color: Color(0xFFEBAB4E),
-                                          size: 16,
-                                        ),
-                                        SizedBox(
-                                          width: ConfigConstant.margin0,
-                                        ),
-                                        Text(
-                                          widget.textNameIg ?? "",
-                                          style: _theme.textTheme.caption,
-                                        ),
-                                      ],
+                                  InkWell(
+                                    onTap: () => setState(() {
+                                      _launchInBrowser("${widget.linkIg}");
+                                    }),
+                                    child: Container(
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            FontAwesomeIcons.instagram,
+                                            color: Color(0xFFEBAB4E),
+                                            size: 16,
+                                          ),
+                                          SizedBox(
+                                            width: ConfigConstant.margin0,
+                                          ),
+                                          Text(
+                                            widget.textNameIg ?? "",
+                                            style: _theme.textTheme.caption,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   SizedBox(
                                     width: ConfigConstant.margin2,
                                   ),
-                                  Container(
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          FontAwesomeIcons.telegram,
-                                          color: Color(0xFF40B3E0),
-                                          size: 16,
-                                        ),
-                                        SizedBox(
-                                          width: ConfigConstant.margin0,
-                                        ),
-                                        Text(
-                                          widget.textNamefb ?? "",
-                                          style: _theme.textTheme.caption,
-                                        ),
-                                      ],
+                                  InkWell(
+                                    onTap: () => setState(() {
+                                      _launchInBrowser("${widget.linkTele}");
+                                    }),
+                                    child: Container(
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            FontAwesomeIcons.telegram,
+                                            color: Color(0xFF40B3E0),
+                                            size: 16,
+                                          ),
+                                          SizedBox(
+                                            width: ConfigConstant.margin0,
+                                          ),
+                                          Text(
+                                            widget.textNamefb ?? "",
+                                            style: _theme.textTheme.caption,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   SizedBox(
                                     width: ConfigConstant.margin2,
                                   ),
-                                  Container(
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          FontAwesomeIcons.facebook,
-                                          color: Color(0xFF0094FF),
-                                          size: 16,
-                                        ),
-                                        SizedBox(
-                                          width: ConfigConstant.margin0,
-                                        ),
-                                        Text(
-                                          widget.textNameTg ?? "",
-                                          style: _theme.textTheme.caption,
-                                        ),
-                                      ],
+                                  InkWell(
+                                    onTap: () => setState(() {
+                                      _launchInBrowser("${widget.linkFb}");
+                                    }),
+                                    child: Container(
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            FontAwesomeIcons.facebook,
+                                            color: Color(0xFF0094FF),
+                                            size: 16,
+                                          ),
+                                          SizedBox(
+                                            width: ConfigConstant.margin0,
+                                          ),
+                                          Text(
+                                            widget.textNameTg ?? "",
+                                            style: _theme.textTheme.caption,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ],
