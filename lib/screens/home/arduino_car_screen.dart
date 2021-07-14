@@ -1,11 +1,11 @@
 import 'package:erobot/config/config_constant.dart';
-import 'package:erobot/screens/home/ball_shooter/local_widget/pad_bottons.dart';
-import 'package:erobot/screens/home/ball_shooter/local_widget/customer_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'ball_shooter/local_widget/circular_slider.dart';
+import 'ball_shooter/local_widgets/circular_slider.dart';
+import 'ball_shooter/local_widgets/custom_app_bar.dart';
+import 'ball_shooter/local_widgets/pad_bottons.dart';
 
 class ArduinoCarScreen extends HookWidget {
   @override
@@ -23,7 +23,7 @@ class ArduinoCarScreen extends HookWidget {
           print('setting');
         },
       ),
-      appBar: CustomerAppBar(
+      appBar: CustomAppBar(
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
