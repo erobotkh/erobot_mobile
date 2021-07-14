@@ -1,11 +1,11 @@
 import 'package:erobot/config/config_constant.dart';
-import 'package:erobot/screens/home/ball_shooter/local_widget/pad_bottons.dart';
-import 'package:erobot/screens/home/ball_shooter/local_widget/customer_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'local_widget/circular_slider.dart';
+import 'local_widgets/circular_slider.dart';
+import 'local_widgets/custom_app_bar.dart';
+import 'local_widgets/pad_bottons.dart';
 
 class BallShooterScreen extends HookWidget {
   @override
@@ -24,7 +24,7 @@ class BallShooterScreen extends HookWidget {
           print('setting');
         },
       ),
-      appBar: CustomerAppBar(
+      appBar: CustomAppBar(
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
