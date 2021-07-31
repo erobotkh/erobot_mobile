@@ -1,4 +1,5 @@
 import 'package:erobot/config/config_constant.dart';
+import 'package:erobot/screens/post_detail/post_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class EduCard extends StatelessWidget {
@@ -43,10 +44,7 @@ class EduCard extends StatelessWidget {
             ),
             subtitle: Text(
               '30 Fri, 2020',
-              style: Theme.of(context)
-                  .textTheme
-                  .caption!
-                  .copyWith(color: Theme.of(context).colorScheme.secondary),
+              style: Theme.of(context).textTheme.caption!.copyWith(color: Theme.of(context).colorScheme.secondary),
             ),
             trailing: IconButton(
               icon: Icon(
@@ -69,10 +67,7 @@ class EduCard extends StatelessWidget {
             ),
             child: Text(
               'How to build ball shooter with something that I don’t know, just test text',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText2!
-                  .copyWith(color: Theme.of(context).colorScheme.secondary),
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Theme.of(context).colorScheme.secondary),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
@@ -97,7 +92,12 @@ class EduCard extends StatelessWidget {
                     'LEARN',
                     style: Theme.of(context).textTheme.button,
                   ),
-                  onPressed: () => print('learn'),
+                  onPressed: () {
+                    print('learn');
+                    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(builder: (context) {
+                      return PostDetailScreen();
+                    }));
+                  },
                 ),
               ],
             ),
