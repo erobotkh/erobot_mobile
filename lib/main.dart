@@ -10,9 +10,7 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   await GetStorage.init();
 
-  runApp(
-    ProviderScope(
-      child: App(),
-    )
-  );
+  runApp(ProviderScope(
+    child: App(),
+  ));
 }

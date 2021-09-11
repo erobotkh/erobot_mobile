@@ -1,6 +1,7 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/constant/app_constant.dart';
 import 'package:erobot/notifier/sender_screen_notifier.dart';
+import 'package:erobot/screens/home/bluetooth_screen/bluetooth_screen.dart';
 import 'package:erobot/widgets/er_tap_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -23,7 +24,13 @@ class SenderScreen extends HookWidget {
           actions: [
             IconButton(
               icon: const Icon(Icons.bluetooth),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => BluetoothScreen(),
+                  ),
+                );
+              },
             )
           ],
         ),
@@ -69,7 +76,8 @@ class SenderScreen extends HookWidget {
       onSubmitted: (value) async => await notifier.addToList(controller.text),
       decoration: InputDecoration(
         labelText: "String to send",
-        labelStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
+        labelStyle: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
         suffixIcon: IconButton(
           onPressed: () async => await notifier.addToList(controller.text),
           icon: Icon(
@@ -89,7 +97,8 @@ class SenderScreen extends HookWidget {
     required int index,
   }) {
     return Container(
-      margin: const EdgeInsets.only(right: ConfigConstant.margin1, bottom: ConfigConstant.margin1),
+      margin: const EdgeInsets.only(
+          right: ConfigConstant.margin1, bottom: ConfigConstant.margin1),
       child: ERTapEffect(
         onTap: () async {
           controller.text = "$item";
@@ -98,7 +107,8 @@ class SenderScreen extends HookWidget {
         child: Chip(
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           label: Text("$item", style: Theme.of(context).textTheme.caption),
-          backgroundColor: AppConstant.recentBackgroundColor[index % AppConstant.recentBackgroundColor.length],
+          backgroundColor: AppConstant.recentBackgroundColor[
+              index % AppConstant.recentBackgroundColor.length],
           onDeleted: () => notifier.removeFromList(item),
           deleteIcon: Icon(
             Icons.cancel,
