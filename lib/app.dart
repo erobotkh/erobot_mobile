@@ -1,5 +1,6 @@
 import 'package:erobot/screens/app_bar_main_screen.dart';
-import 'package:erobot/services/user_api.dart';
+import 'package:erobot/services/authentication/auth_api.dart';
+import 'package:erobot/storage/uesr_token_storage.dart';
 import 'package:flutter/material.dart';
 import 'constant/theme_constant.dart';
 
@@ -27,25 +28,46 @@ class Test extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: TextButton(
-          onPressed: () async {
-            var result = await getApi();
-            print(result);
-          },
-          child: Text('GET'),
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              color: Colors.amber,
+              child: TextButton(
+                onPressed: () async {
+                  await getApi();
+                },
+                child: Text('GET'),
+              ),
+            ),
+            SizedBox(height: 16),
+            Container(
+              color: Colors.amber,
+              child: TextButton(
+                onPressed: () async {
+                  var storage = UserTokenStorage();
+                  var token = await storage.read();
+                  print('token: $token');
+                },
+                child: Text('GET Access Token'),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
   getApi() async {
-    UserApi userApi = UserApi();
-    var respone = await userApi.fetchAll();
-    if (userApi.success() && respone != null)
-      print('respone: $respone');
+    AuthApi authApi = AuthApi();
+    var respone = await authApi.exec(email: 'soksan2@gmail.com', password: '123456');
+    if (authApi.success())
+      print('Success');
     else
-      print('Error : ${userApi.errorMessage()}');
+      print('Error : ${authApi.errorMessage()}');
     return respone;
   }
 }
