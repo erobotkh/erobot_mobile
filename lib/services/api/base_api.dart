@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:erobot/constant/api_constant.dart';
 import 'package:erobot/execption/network_exception.dart';
 import 'package:erobot/mixin/json_mappable.dart';
 import 'package:erobot/models/base_model.dart';
@@ -10,7 +11,7 @@ import 'package:erobot/network/base_network.dart';
 import 'package:japx/japx.dart';
 
 abstract class BaseApi with JsonMappable {
-  BaseNetwork network = BaseNetwork(baseUrl: 'https://randomuser.me/api');
+  BaseNetwork network = BaseNetwork(baseUrl: ApiConstant.baseUrl);
   Response<dynamic>? response;
   NetWorkErrorModel? networkError;
   var error;
