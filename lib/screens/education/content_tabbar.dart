@@ -1,4 +1,4 @@
-import 'package:erobot/widgets/Card_education.dart';
+import 'package:erobot/widgets/card_education.dart';
 import 'package:flutter/material.dart';
 
 class EducationPage extends StatefulWidget {
@@ -19,36 +19,31 @@ class _EducationPageState extends State<EducationPage> {
               profile: "assets/images/image.png",
               username: "Annette Cooper",
               datepost: "31 Fri, 2021",
-              caption:
-                  "How to build ball shooter with something that I don't know , just text test",
+              caption: "How to build ball shooter with something that I don't know , just text test",
             ),
             CardEducation(
               profile: "assets/images/image.png",
               username: "Annette Cooper",
               datepost: "31 Fri, 2021",
-              caption:
-                  "How to build ball shooter with something that I don't know , just text test",
+              caption: "How to build ball shooter with something that I don't know , just text test",
             ),
             CardEducation(
               profile: "assets/images/image.png",
               username: "Annette Cooper",
               datepost: "31 Fri, 2021",
-              caption:
-                  "How to build ball shooter with something that I don't know , just text test",
+              caption: "How to build ball shooter with something that I don't know , just text test",
             ),
             CardEducation(
               profile: "assets/images/image.png",
               username: "Annette Cooper",
               datepost: "31 Fri, 2021",
-              caption:
-                  "How to build ball shooter with something that I don't know , just text test",
+              caption: "How to build ball shooter with something that I don't know , just text test",
             ),
             CardEducation(
               profile: "assets/images/image.png",
               username: "Annette Cooper",
               datepost: "31 Fri, 2021",
-              caption:
-                  "How to build ball shooter with something that I don't know , just text test",
+              caption: "How to build ball shooter with something that I don't know , just text test",
             ),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/models/remoter_button_model.dart';
 import 'package:erobot/widgets/er_back_button.dart';
+import 'package:erobot/widgets/er_tap_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -62,9 +63,7 @@ class IRRemoterScreen extends StatelessWidget {
                           remoteButton.label ?? '',
                           style: Theme.of(context).textTheme.overline,
                         ),
-                      InkWell(
-                        highlightColor: Colors.transparent,
-                        splashColor: Colors.transparent,
+                      ERTapEffect(
                         onTap: remoteButton.onTap,
                         child: Container(
                           width: ConfigConstant.objectHeight2,

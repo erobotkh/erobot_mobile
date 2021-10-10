@@ -1,6 +1,7 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/models/home_card_model.dart';
 import 'package:erobot/screens/home/members_screen.dart';
+import 'package:erobot/widgets/er_tap_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -51,8 +52,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  InkWell _buildHomeCard(HomeCardModel card, BuildContext context) {
-    return InkWell(
+  ERTapEffect _buildHomeCard(HomeCardModel card, BuildContext context) {
+    return ERTapEffect(
       onTap: () {
         // card.screen ??
         print(card.title);
