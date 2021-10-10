@@ -28,7 +28,7 @@ class TabBarConfig {
       title: 'Account',
       icon: Icons.account_circle,
       path: AppRouter.ACCOUNT,
-      screen: AccountScreen(),
+      screen: LoginScreen(),
       key: GlobalKey<NavigatorState>(),
       activeIcon: Icons.account_circle,
     ),
