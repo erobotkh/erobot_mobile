@@ -68,12 +68,12 @@ class Test extends StatelessWidget {
   }
 
   getApi() async {
-    AuthApi authApi = AuthApi();
-    var respone = await authApi.exec(email: 'soksan2@gmail.com', password: '123456');
-    if (authApi.success())
-      print('Success');
-    else
-      print('Error : ${authApi.errorMessage()}');
-    return respone;
+    // AuthApi authApi = AuthApi();
+    // var respone = await authApi.exec(email: 'soksan2@gmail.com', password: '123456');
+    // if (authApi.success())
+    //   print('Success');
+    // else
+    //   print('Error : ${authApi.errorMessage()}');
+    // return respone;
   }
 }

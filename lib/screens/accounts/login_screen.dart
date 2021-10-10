@@ -1,6 +1,8 @@
 import 'package:erobot/config/config_constant.dart';
-import 'package:erobot/constant/theme_constant.dart';
 import 'package:erobot/mixin/toast.dart';
+import 'package:erobot/screens/accounts/local_widges/auth_header_widget.dart';
+import 'package:erobot/screens/accounts/profile_account.dart';
+import 'package:erobot/screens/accounts/register_screen.dart';
 import 'package:erobot/services/authentication/auth_api.dart';
 import 'package:erobot/widgets/er_main_action_bottun.dart';
 import 'package:erobot/widgets/er_tap_effect.dart';
@@ -16,6 +18,7 @@ class LoginScreen extends HookWidget with Toast {
     ValueNotifier hidePassword = useState(true);
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: false,
         backgroundColor: Theme.of(context).colorScheme.surface,
         title: Text(
@@ -23,47 +26,61 @@ class LoginScreen extends HookWidget with Toast {
           style: Theme.of(context).textTheme.headline6,
         ),
       ),
-      body: Column(
-        children: [
-          buildLogInHeader(context),
-          buildFormField(
-            context: context,
-            hidPassword: hidePassword.value,
-            onHidePassword: () => hidePassword.value = !hidePassword.value,
-            onChangeEmail: (value) {
-              email.value = value;
-            },
-            onChangePassword: (value) {
-              password.value = value;
-            },
-          ),
-          buildTextButton(
-            context: context,
-            label: 'Forget Password',
-            alignment: Alignment.centerRight,
-          ),
-          ERMainActionButton(
-            margin: EdgeInsets.all(ConfigConstant.margin2),
-            label: 'Log In',
-            onTap: () async {
-              AuthApi authApi = AuthApi();
-              showLoading();
-              await authApi.exec(
-                email: email.value,
-                password: password.value,
-              );
-              hideLoading();
-              if (authApi.success())
-                showSuccess(context: context, title: 'Log in successful');
-              else
-                print(authApi.errorMessage());
-            },
-          ),
-          buildTextButton(
-            context: context,
-            label: "Don't have account yet? Register",
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            AuthHeaderWidget(context: context),
+            buildFormField(
+              context: context,
+              hidPassword: hidePassword.value,
+              onHidePassword: () => hidePassword.value = !hidePassword.value,
+              onChangeEmail: (value) {
+                email.value = value;
+              },
+              onChangePassword: (value) {
+                password.value = value;
+              },
+            ),
+            buildTextButton(
+              context: context,
+              label: 'Forget Password',
+              alignment: Alignment.centerRight,
+            ),
+            ERMainActionButton(
+              margin: EdgeInsets.all(ConfigConstant.margin2),
+              label: 'Log In',
+              onTap: () async {
+                AuthApi authApi = AuthApi();
+                showLoading();
+                await authApi.login(
+                  email: email.value,
+                  password: password.value,
+                );
+                hideLoading();
+                if (authApi.success()) {
+                  showSuccess(context: context, title: 'Log in successful');
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => ProfileScreen(),
+                    ),
+                  );
+                } else
+                  print(authApi.errorMessage());
+              },
+            ),
+            buildTextButton(
+              context: context,
+              label: "Don't have account yet? Register",
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => RegisterScreen(),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -72,6 +89,7 @@ class LoginScreen extends HookWidget with Toast {
     required BuildContext context,
     required String label,
     AlignmentGeometry? alignment,
+    void Function()? onTap,
   }) {
     return Container(
       margin: EdgeInsets.only(right: ConfigConstant.margin2),
@@ -79,7 +97,7 @@ class LoginScreen extends HookWidget with Toast {
       alignment: alignment ?? Alignment.center,
       child: ERTapEffect(
         child: Text(label),
-        onTap: () {},
+        onTap: onTap,
       ),
     );
   }
@@ -108,36 +126,6 @@ class LoginScreen extends HookWidget with Toast {
             onHidePassword: onHidePassword,
           ),
         ],
-      ),
-    );
-  }
-
-  AspectRatio buildLogInHeader(BuildContext context) {
-    ThemeData _theme = Theme.of(context);
-    return AspectRatio(
-      aspectRatio: 375 / 96,
-      child: Container(
-        padding: const EdgeInsets.only(right: 40, top: 10),
-        decoration: BoxDecoration(
-          gradient: ThemeConstant.redGradient,
-        ),
-        child: ListTile(
-          title: Text(
-            'Erobot Member',
-            style: _theme.textTheme.bodyText1,
-          ),
-          subtitle: Text(
-            'Member will have access privilege to see post, oportunity, and team reputation.',
-            style: _theme.textTheme.caption?.copyWith(
-              color: _theme.colorScheme.onPrimary.withOpacity(0.5),
-            ),
-          ),
-          trailing: Icon(
-            Icons.people,
-            color: _theme.colorScheme.onPrimary,
-            size: 72,
-          ),
-        ),
       ),
     );
   }
