@@ -1,3 +1,4 @@
+import 'package:erobot/widgets/er_tap_effect.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -49,8 +50,7 @@ class CardEducation extends StatelessWidget {
                       Container(
                         width: MediaQuery.of(context).size.width / 2,
                         alignment: Alignment.topLeft,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: ConfigConstant.margin1),
+                        padding: EdgeInsets.symmetric(horizontal: ConfigConstant.margin1),
                         child: Column(
                           children: [
                             Align(
@@ -79,7 +79,7 @@ class CardEducation extends StatelessWidget {
                     ],
                   ),
                 ),
-                InkWell(
+                ERTapEffect(
                   onTap: () {
                     print("icon share");
                   },
@@ -95,15 +95,11 @@ class CardEducation extends StatelessWidget {
               ],
             ),
           ),
-          InkWell(
+          ERTapEffect(
             onTap: () {
               print("card_education");
             },
             child: Container(
-              // padding: EdgeInsets.symmetric(
-              //   vertical: ConfigConstant.margin2,
-              // ),
-
               child: Column(
                 children: [
                   Container(
@@ -160,8 +156,7 @@ class CardEducation extends StatelessWidget {
                                   child: Center(
                                     child: Text(
                                       "Comment",
-                                      style:
-                                          Theme.of(context).textTheme.headline3,
+                                      style: Theme.of(context).textTheme.headline3,
                                     ),
                                   ),
                                 );

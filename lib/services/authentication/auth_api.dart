@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:erobot/execption/network_exception.dart';
-import 'package:erobot/models/base_model.dart';
 import 'package:erobot/models/network_error_model.dart';
 import 'package:erobot/services/authentication/base_user_authenticator.dart';
 
@@ -49,23 +48,5 @@ class AuthApi extends BaseUserAuthenticator {
         super.networkError = _error;
       }
     }
-  }
-}
-
-class Login extends BaseModel {
-  final String? email;
-  final String? password;
-
-  Login({
-    this.email,
-    this.password,
-  });
-
-  @override
-  Map<String, dynamic> toJson() {
-    return {
-      'email': this.email,
-      'password': this.password,
-    };
   }
 }

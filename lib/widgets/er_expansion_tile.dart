@@ -124,7 +124,7 @@ class _ERExpansionTileState extends State<ERExpansionTile> {
                             Container(
                               child: Row(
                                 children: [
-                                  InkWell(
+                                  ERTapEffect(
                                     onTap: () => setState(() {
                                       _launchInBrowser("${widget.linkIg}");
                                     }),
@@ -150,7 +150,7 @@ class _ERExpansionTileState extends State<ERExpansionTile> {
                                   SizedBox(
                                     width: ConfigConstant.margin2,
                                   ),
-                                  InkWell(
+                                  ERTapEffect(
                                     onTap: () => setState(() {
                                       _launchInBrowser("${widget.linkTele}");
                                     }),
@@ -176,7 +176,7 @@ class _ERExpansionTileState extends State<ERExpansionTile> {
                                   SizedBox(
                                     width: ConfigConstant.margin2,
                                   ),
-                                  InkWell(
+                                  ERTapEffect(
                                     onTap: () => setState(() {
                                       _launchInBrowser("${widget.linkFb}");
                                     }),

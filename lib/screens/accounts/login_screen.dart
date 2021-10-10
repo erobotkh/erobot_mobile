@@ -1,6 +1,8 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/constant/theme_constant.dart';
-import 'package:erobot/widgets/e_bottun.dart';
+import 'package:erobot/widgets/er_main_action_bottun.dart';
+import 'package:erobot/widgets/er_tap_effect.dart';
+import 'package:erobot/widgets/er_text_field.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -24,8 +26,9 @@ class AccountScreen extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: buildTextButton(context, 'Forget Password'),
           ),
-          ButtonLogin(
-            name: 'LOGIN',
+          ERMainActionButton(
+            margin: EdgeInsets.all(ConfigConstant.margin2),
+            label: 'Log In',
             onTap: () {},
           ),
           buildTextButton(context, "Don't have account yet? Register"),
@@ -34,13 +37,10 @@ class AccountScreen extends StatelessWidget {
     );
   }
 
-  InkWell buildTextButton(BuildContext context, String label) {
-    return InkWell(
+  Widget buildTextButton(BuildContext context, String label) {
+    return ERTapEffect(
+      child: Text(label),
       onTap: () {},
-      child: Text(
-        label,
-        style: Theme.of(context).textTheme.caption,
-      ),
     );
   }
 
@@ -50,32 +50,8 @@ class AccountScreen extends StatelessWidget {
       margin: EdgeInsets.only(bottom: ConfigConstant.margin1),
       child: Column(
         children: [
-          TextField(
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              hintStyle: Theme.of(context).textTheme.bodyText1,
-              labelText: 'Email',
-              labelStyle: Theme.of(context).textTheme.caption,
-            ),
-          ),
-          TextField(
-            obscureText: false,
-            autocorrect: true,
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              hintStyle: Theme.of(context).textTheme.bodyText1,
-              labelText: 'Password',
-              labelStyle: Theme.of(context).textTheme.caption,
-              suffixIcon: IconButton(
-                icon: Icon(
-                  true ? Icons.visibility : Icons.visibility_off_rounded,
-                  color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.5),
-                  size: 20,
-                ),
-                onPressed: () {},
-              ),
-            ),
-          )
+          ERTextField(labelText: 'Email'),
+          ERTextField(labelText: 'Password', password: true),
         ],
       ),
     );
@@ -101,13 +77,10 @@ class AccountScreen extends StatelessWidget {
               color: _theme.colorScheme.onPrimary.withOpacity(0.5),
             ),
           ),
-          trailing: IconButton(
-            icon: Icon(
-              Icons.people,
-              color: _theme.colorScheme.onPrimary,
-              size: 72,
-            ),
-            onPressed: () {},
+          trailing: Icon(
+            Icons.people,
+            color: _theme.colorScheme.onPrimary,
+            size: 72,
           ),
         ),
       ),
