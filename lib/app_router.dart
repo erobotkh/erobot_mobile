@@ -12,7 +12,7 @@ class AppRouter {
     Map<String, Route<dynamic>> dataSets = {
       '$HOME': MaterialPageRoute(builder: (context) => HomeScreen()),
       '$EDUCATION': MaterialPageRoute(builder: (context) => EducationScreen()),
-      '$ACCOUNT': MaterialPageRoute(builder: (context) => AccountScreen()),
+      '$ACCOUNT': MaterialPageRoute(builder: (context) => LoginScreen()),
     };
     return dataSets;
   }

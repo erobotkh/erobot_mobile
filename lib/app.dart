@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:erobot/screens/app_bar_main_screen.dart';
 import 'package:erobot/services/authentication/auth_api.dart';
 import 'package:erobot/storage/uesr_token_storage.dart';
@@ -7,15 +8,20 @@ import 'constant/theme_constant.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final botToastBuilder = BotToastInit();
     return MaterialApp(
       home: AppBarMainScreen(),
       // home: Test(),
       theme: ThemeConstant.theme,
       debugShowCheckedModeBanner: false,
+      navigatorObservers: [BotToastNavigatorObserver()],
       builder: (context, child) {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: child ?? const SizedBox(),
+          child: botToastBuilder(
+            context,
+            child ?? const SizedBox(),
+          ),
         );
       },
     );
