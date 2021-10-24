@@ -1,7 +1,7 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/constant/theme_constant.dart';
 import 'package:erobot/models/bluetooth_model.dart';
-import 'package:erobot/screens/home/ball_shooter/local_widgets/circular_slider.dart';
 import 'package:erobot/screens/home/bluetooth_screen/bluetooth_detail_screen.dart';
 import 'package:erobot/screens/home/bluetooth_screen/local_widgets/er_bluetoothdevice.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,8 +16,8 @@ class BluetoothScreen extends StatefulWidget {
 }
 
 class _BluetoothScreenState extends State<BluetoothScreen> {
-  List<BluetoothDeviceModel> _cardBluetoothDevice =
-      BluetoothDeviceModel.getCates();
+  List<BluetoothDeviceModel> _cardBluetoothDevice = BluetoothDeviceModel.getCates();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,15 +33,31 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
         itemBuilder: (context, index) {
           var cardBluetoothDevice = _cardBluetoothDevice[index];
           return Container(
+            padding: EdgeInsets.only(top: 20),
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: 20),
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    'assets/images/bluetooth.png',
-                    width: 120,
-                    height: 120,
+                  child: AvatarGlow(
+                    repeat: true,
+                    showTwoGlows: true,
+                    animate: true,
+                    endRadius: 70.0,
+                    curve: Curves.fastOutSlowIn,
+                    glowColor: ThemeConstant.lightScheme.primary,
+                    child: Material(
+                      clipBehavior: Clip.antiAlias,
+                      color: Colors.transparent,
+                      elevation: 0.0,
+                      shape: CircleBorder(),
+                      child: CircleAvatar(
+                        backgroundColor: ThemeConstant.lightScheme.primary,
+                        child: Icon(
+                          Icons.bluetooth,
+                          color: ThemeConstant.lightScheme.onPrimary,
+                        ),
+                        radius: 30.0,
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -74,8 +90,8 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             'MY DEVICES',
-                            style: ThemeConstant.textTheme.caption?.copyWith(
-                                color: ThemeConstant.lightScheme.onSurface),
+                            style: ThemeConstant.textTheme.caption
+                                ?.copyWith(color: ThemeConstant.lightScheme.onSurface),
                           ),
                         ),
                       ),
@@ -83,138 +99,83 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
                         color: ThemeConstant.lightScheme.secondary,
                       ),
                       Container(
-                        height: 35,
-                        child: BluetoothDevices(
-                          onTap: () {},
-                          onTapTrailing: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => BluetoothDetailScreen()));
-                          },
-                          deviceName: cardBluetoothDevice.deviceName,
-                          connected: cardBluetoothDevice.connected,
-                          notConnected: cardBluetoothDevice.notConnected,
-                          iconLeadingCon: cardBluetoothDevice.iconLeadingCon,
-                          iconTrailing: cardBluetoothDevice.iconTrailing,
-                          iconLeadingNotCon:
-                              cardBluetoothDevice.iconLeadingNotCon,
-                        ),
-                      ),
-                      Divider(
-                        color: ThemeConstant.lightScheme.secondary,
-                      ),
-                      Container(
-                        height: 35,
-                        child: BluetoothDevices(
-                          onTap: () {},
-                          onTapTrailing: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => BluetoothDetailScreen()));
-                          },
-                          deviceName: cardBluetoothDevice.deviceName,
-                          connected: cardBluetoothDevice.connected,
-                          notConnected: cardBluetoothDevice.notConnected,
-                          iconLeadingCon: cardBluetoothDevice.iconLeadingCon,
-                          iconLeadingNotCon:
-                              cardBluetoothDevice.iconLeadingNotCon,
-                          iconTrailing: cardBluetoothDevice.iconTrailing,
-                        ),
-                      ),
-                      Divider(
-                        color: ThemeConstant.lightScheme.secondary,
-                      ),
-                      Container(
-                        height: 35,
-                        child: BluetoothDevices(
-                          onTap: () {},
-                          onTapTrailing: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => BluetoothDetailScreen()));
-                          },
-                          deviceName: cardBluetoothDevice.deviceName,
-                          connected: cardBluetoothDevice.connected,
-                          notConnected: cardBluetoothDevice.notConnected,
-                          iconLeadingCon: cardBluetoothDevice.iconLeadingCon,
-                          iconLeadingNotCon:
-                              cardBluetoothDevice.iconLeadingNotCon,
-                          iconTrailing: cardBluetoothDevice.iconTrailing,
-                        ),
-                      ),
-                      Divider(
-                        color: ThemeConstant.lightScheme.secondary,
-                      ),
-                      Container(
-                        height: 35,
-                        child: BluetoothDevices(
-                          onTap: () {},
-                          onTapTrailing: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => BluetoothDetailScreen()));
-                          },
-                          deviceName: cardBluetoothDevice.deviceName,
-                          connected: cardBluetoothDevice.connected,
-                          notConnected: cardBluetoothDevice.notConnected,
-                          iconLeadingCon: cardBluetoothDevice.iconLeadingCon,
-                          iconLeadingNotCon:
-                              cardBluetoothDevice.iconLeadingNotCon,
-                          iconTrailing: cardBluetoothDevice.iconTrailing,
-                        ),
-                      ),
-                      Divider(
-                        color: ThemeConstant.lightScheme.secondary,
-                      ),
-                      Container(
-                        height: 35,
-                        child: BluetoothDevices(
-                          onTap: () {},
-                          onTapTrailing: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => BluetoothDetailScreen()));
-                          },
-                          deviceName: cardBluetoothDevice.deviceName,
-                          connected: cardBluetoothDevice.connected,
-                          notConnected: cardBluetoothDevice.notConnected,
-                          iconLeadingCon: cardBluetoothDevice.iconLeadingCon,
-                          iconLeadingNotCon:
-                              cardBluetoothDevice.iconLeadingNotCon,
-                          iconTrailing: cardBluetoothDevice.iconTrailing,
-                        ),
-                      ),
-                      Divider(
-                        color: ThemeConstant.lightScheme.secondary,
-                      ),
-                      Container(
-                        height: 35,
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'OTHER DEVICES',
-                            style: ThemeConstant.textTheme.caption?.copyWith(
-                                color: ThemeConstant.lightScheme.onSurface),
+                        child: Column(
+                          children: List.generate(
+                            BluetoothDeviceModel.getCates().length,
+                            (index) => Container(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 35,
+                                    child: BluetoothDevices(
+                                      onTap: () {},
+                                      onTapTrailing: () {
+                                        Navigator.of(context).push(MaterialPageRoute(
+                                            builder: (context) => BluetoothDetailScreen()));
+                                      },
+                                      deviceName: cardBluetoothDevice.deviceName,
+                                      connected: cardBluetoothDevice.connected,
+                                      notConnected: cardBluetoothDevice.notConnected,
+                                      iconLeadingCon: cardBluetoothDevice.iconLeadingCon,
+                                      iconTrailing: cardBluetoothDevice.iconTrailing,
+                                      iconLeadingNotCon: cardBluetoothDevice.iconLeadingNotCon,
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: ThemeConstant.lightScheme.secondary,
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                      Divider(
-                        color: ThemeConstant.lightScheme.secondary,
-                      ),
                       Container(
-                        height: 35,
-                        child: BluetoothDevices(
-                          onTap: () {
-                            setState(() {
-                              _buildshowAlertDailog(context);
-                            });
-                          },
-                          onTapTrailing: () {},
-                          deviceName: cardBluetoothDevice.deviceName,
-                          connected: '',
-                          notConnected: '',
-                          iconLeadingCon: null,
-                          iconTrailing: null,
-                          iconLeadingNotCon: null,
+                        child: Column(
+                          children: List.generate(
+                            1,
+                            (index) => Container(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 35,
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        'OTHER DEVICES',
+                                        style: ThemeConstant.textTheme.caption
+                                            ?.copyWith(color: ThemeConstant.lightScheme.onSurface),
+                                      ),
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: ThemeConstant.lightScheme.secondary,
+                                  ),
+                                  Container(
+                                    height: 35,
+                                    child: BluetoothDevices(
+                                      onTap: () {
+                                        setState(() {
+                                          _buildshowAlertDailog(context);
+                                        });
+                                      },
+                                      onTapTrailing: () {},
+                                      deviceName: cardBluetoothDevice.deviceName,
+                                      connected: '',
+                                      notConnected: '',
+                                      iconLeadingCon: null,
+                                      iconTrailing: null,
+                                      iconLeadingNotCon: null,
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: ThemeConstant.lightScheme.secondary,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      Divider(
-                        color: ThemeConstant.lightScheme.secondary,
                       ),
                       SizedBox(
                         height: 100,

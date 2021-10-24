@@ -1,14 +1,7 @@
 import 'package:erobot/constant/theme_constant.dart';
 import 'package:flutter/material.dart';
 
-class BluetoothDetailScreen extends StatefulWidget {
-  const BluetoothDetailScreen({Key? key}) : super(key: key);
-
-  @override
-  _BluetoothDetailScreenState createState() => _BluetoothDetailScreenState();
-}
-
-class _BluetoothDetailScreenState extends State<BluetoothDetailScreen> {
+class BluetoothDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

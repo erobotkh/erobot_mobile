@@ -38,8 +38,10 @@ class ImageViewer extends HookWidget {
       body: Stack(
         children: [
           PageIndicatorContainer(
-            padding: const EdgeInsets.only(bottom: ConfigConstant.objectHeight1),
-            shape: IndicatorShape.roundRectangleShape(size: const Size(8, 8), cornerSize: Size.square(4)),
+            padding:
+                const EdgeInsets.only(bottom: ConfigConstant.objectHeight1),
+            shape: IndicatorShape.roundRectangleShape(
+                size: const Size(8, 8), cornerSize: Size.square(4)),
             indicatorColor: Theme.of(context).colorScheme.secondary,
             indicatorSelectorColor: Theme.of(context).colorScheme.primary,
             length: images.length,
@@ -75,7 +77,10 @@ class ImageViewer extends HookWidget {
                 centerTitle: true,
                 title: Text(
                   "${pageIndexNotifier.value + 1}/${images.length}",
-                  style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      ?.copyWith(color: Colors.white),
                 ),
               ),
             ),
