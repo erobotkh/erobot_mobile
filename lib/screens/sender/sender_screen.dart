@@ -1,6 +1,7 @@
 import 'package:erobot/config/config_constant.dart';
 import 'package:erobot/constant/app_constant.dart';
 import 'package:erobot/notifier/sender_screen_notifier.dart';
+import 'package:erobot/screens/home/bluetooth_screen/bluetooth_screen.dart';
 import 'package:erobot/widgets/er_tap_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -23,7 +24,10 @@ class SenderScreen extends HookWidget {
           actions: [
             IconButton(
               icon: const Icon(Icons.bluetooth),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => BluetoothScreen()));
+              },
             )
           ],
         ),
@@ -98,7 +102,8 @@ class SenderScreen extends HookWidget {
         child: Chip(
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           label: Text("$item", style: Theme.of(context).textTheme.caption),
-          backgroundColor: AppConstant.recentBackgroundColor[index % AppConstant.recentBackgroundColor.length],
+          backgroundColor:
+              AppConstant.recentBackgroundColor[index % AppConstant.recentBackgroundColor.length],
           onDeleted: () => notifier.removeFromList(item),
           deleteIcon: Icon(
             Icons.cancel,
