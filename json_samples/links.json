@@ -1,0 +1,6 @@
+{
+  "self": "http://erobot-api.herokuapp.com:57774/posts?per_page=5&included=images%2Cauthor&page=1",
+  "next": "http://erobot-api.herokuapp.com:57774/posts?per_page=5&included=images%2Cauthor&page=2",
+  "prev": null,
+  "last": "http://erobot-api.herokuapp.com:57774/posts?per_page=5&included=images%2Cauthor&page=17"
+}
