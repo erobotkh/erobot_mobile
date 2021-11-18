@@ -18,6 +18,8 @@ abstract class Routes {
   static const SENDER = _Paths.SENDER;
   static const IR_REMOTER = _Paths.IR_REMOTER;
   static const BALL_SHOOTER = _Paths.BALL_SHOOTER;
+  static const SEARCH = _Paths.SEARCH;
+  static const SEARCH_RESULT = _Paths.SEARCH_RESULT;
 }
 
 abstract class _Paths {
@@ -35,4 +37,6 @@ abstract class _Paths {
   static const SENDER = '/sender';
   static const IR_REMOTER = '/ir-remoter';
   static const BALL_SHOOTER = '/ball-shooter';
+  static const SEARCH = '/search';
+  static const SEARCH_RESULT = '/search-result';
 }

@@ -150,7 +150,7 @@ class ConfigConstant {
   /// ```
   static const EdgeInsets layoutPadding = EdgeInsets.symmetric(
     horizontal: margin2,
-    vertical: margin1,
+    vertical: margin1 + margin0,
   );
 
   /// ```
@@ -165,10 +165,6 @@ class ConfigConstant {
   );
 
   static final List<BoxShadow> boxShadows0 = [
-    BoxShadow(
-      blurRadius: 10,
-      offset: Offset(1.0, 1.0),
-      color: Color(0xFF7C7C7C).withOpacity(0.17),
-    ),
+    BoxShadow(offset: Offset(0, 1)),
   ];
 }
