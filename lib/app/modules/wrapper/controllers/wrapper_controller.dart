@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/config/tab_bar_config.dart';
+import 'package:erobot_mobile/configs/tab_bar_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
