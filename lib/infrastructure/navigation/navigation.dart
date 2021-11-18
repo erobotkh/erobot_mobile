@@ -13,11 +13,11 @@ class EnvironmentsBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? env = ConfigEnvironments.getEnvironments()['env'];
-    return env != Environments.PRODUCTION
+    return env != Environments.production
         ? Banner(
             location: BannerLocation.topStart,
             message: env ?? "",
-            color: env == Environments.QAS ? Colors.blue : Colors.purple,
+            color: env == Environments.qas ? Colors.blue : Colors.purple,
             child: child,
           )
         : SizedBox(child: child);
