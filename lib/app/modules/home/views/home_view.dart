@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'controllers/home.controller.dart';
+import '../controllers/home_controller.dart';
 
-class HomeScreen extends GetView<HomeController> {
+class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomeScreen'),
+        title: Text('HomeView'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'HomeScreen is working',
+          'HomeView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

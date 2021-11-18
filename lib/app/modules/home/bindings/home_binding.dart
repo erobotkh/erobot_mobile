@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
-import '../../../../presentation/home/controllers/home.controller.dart';
+import '../controllers/home_controller.dart';
 
-class HomeControllerBinding extends Bindings {
+class HomeBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<HomeController>(
