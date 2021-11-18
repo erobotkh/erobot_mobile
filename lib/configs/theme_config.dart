@@ -14,9 +14,9 @@ class ThemeConfig {
       scaffoldBackgroundColor: scheme.background,
       colorScheme: scheme,
       appBarTheme: AppBarTheme(
-        backgroundColor: scheme.primary,
+        backgroundColor: scheme.surface,
         centerTitle: false,
-        elevation: 10.0,
+        elevation: 0.0,
         iconTheme: IconThemeData(color: scheme.onPrimary),
         titleTextStyle: ThemeConstant.textTheme.headline6?.copyWith(color: scheme.onPrimary),
         foregroundColor: scheme.onPrimary,

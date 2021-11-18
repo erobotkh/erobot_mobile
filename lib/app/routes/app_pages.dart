@@ -22,6 +22,10 @@ import 'package:erobot_mobile/app/modules/register/bindings/register_binding.dar
 import 'package:erobot_mobile/app/modules/register/views/register_view.dart';
 import 'package:erobot_mobile/app/modules/reputation/bindings/reputation_binding.dart';
 import 'package:erobot_mobile/app/modules/reputation/views/reputation_view.dart';
+import 'package:erobot_mobile/app/modules/search/bindings/search_binding.dart';
+import 'package:erobot_mobile/app/modules/search/views/search_view.dart';
+import 'package:erobot_mobile/app/modules/search_result/bindings/search_result_binding.dart';
+import 'package:erobot_mobile/app/modules/search_result/views/search_result_view.dart';
 import 'package:erobot_mobile/app/modules/sender/bindings/sender_binding.dart';
 import 'package:erobot_mobile/app/modules/sender/views/sender_view.dart';
 import 'package:erobot_mobile/app/modules/wrapper/bindings/wrapper_binding.dart';
@@ -99,6 +103,16 @@ class AppPages {
       name: _Paths.BALL_SHOOTER,
       page: () => BallShooterView(),
       binding: BallShooterBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEARCH,
+      page: () => SearchView(),
+      binding: SearchBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEARCH_RESULT,
+      page: () => SearchResultView(),
+      binding: SearchResultBinding(),
     ),
   ];
 }
