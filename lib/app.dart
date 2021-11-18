@@ -1,3 +1,4 @@
+import 'package:erobot_mobile/configs/theme_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
@@ -13,6 +14,7 @@ class App extends StatelessWidget {
       title: "Application",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      theme: ThemeConfig(false).themeData,
     );
   }
 }
