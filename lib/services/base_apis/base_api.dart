@@ -11,15 +11,15 @@ import 'package:japx/japx.dart';
 
 abstract class BaseApi<T> {
   bool get decodeWithJapx => true;
-  DefaultNetwork buildConnect() {
+  DefaultNetwork buildNetwork() {
     return DefaultNetwork();
   }
 
   Response? response;
-  late DefaultNetwork connect;
+  late DefaultNetwork network;
 
   BaseApi() {
-    connect = buildConnect();
+    network = buildNetwork();
   }
 
   bool success() {
@@ -61,7 +61,7 @@ abstract class BaseApi<T> {
   }) async {
     return _beforeExec(() async {
       String endpoint = objectNameUrlModel.fetchOneUrl(id: id, queryParameters: queryParameters);
-      response = await connect.get(endpoint);
+      response = await network.get(endpoint);
       dynamic json = jsonDecode(response?.body.toString() ?? "");
       if (json is Map<String, dynamic>) {
         if (json.containsKey('data')) json = decodeWithJapx ? Japx.decode(json) : json;
@@ -76,7 +76,7 @@ abstract class BaseApi<T> {
     queryParameters = buildFetchAlQueryParameters(queryParameters);
     return _beforeExec(() async {
       String endpoint = objectNameUrlModel.fetchAllUrl(queryParameters: queryParameters);
-      response = await connect.get(endpoint);
+      response = await network.get(endpoint);
       dynamic json = jsonDecode(response?.body.toString() ?? "");
       json = decodeWithJapx ? Japx.decode(json) : json;
       return itemsTransformer(json);
@@ -90,7 +90,7 @@ abstract class BaseApi<T> {
   }) {
     return _beforeExec(() async {
       String endpoint = objectNameUrlModel.updatelUrl(id: id, queryParameters: queryParameters);
-      response = await connect.put(endpoint, jsonEncode(body));
+      response = await network.put(endpoint, jsonEncode(body));
       dynamic json = jsonDecode(response?.body.toString() ?? "");
       if (json is Map<String, dynamic>) {
         if (json.containsKey('data')) json = decodeWithJapx ? Japx.decode(json) : json;
@@ -105,7 +105,7 @@ abstract class BaseApi<T> {
   }) {
     return _beforeExec(() async {
       String endpoint = objectNameUrlModel.createUrl(queryParameters: queryParameters);
-      response = await connect.post(endpoint, jsonEncode(body));
+      response = await network.post(endpoint, jsonEncode(body));
 
       dynamic json;
       try {
@@ -128,7 +128,7 @@ abstract class BaseApi<T> {
   }) {
     return _beforeExec(() async {
       String endpoint = objectNameUrlModel.deletelUrl(id: id, queryParameters: queryParameters);
-      response = await connect.delete(endpoint);
+      response = await network.delete(endpoint);
       dynamic json = jsonDecode(response?.body.toString() ?? "");
       if (json is Map<String, dynamic>) {
         if (json.containsKey('data')) json = decodeWithJapx ? Japx.decode(json) : json;

@@ -4,7 +4,7 @@ import 'package:erobot_mobile/services/base_apis/networks/user_token_network.dar
 
 abstract class BaseResourceOwnerApi<T> extends BaseApi<T> {
   @override
-  DefaultNetwork buildConnect() {
+  DefaultNetwork buildNetwork() {
     return UserTokenNetwork();
   }
 }

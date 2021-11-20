@@ -7,6 +7,11 @@ import 'package:erobot_mobile/services/storages/user_token_storage.dart';
 class UserTokenNetwork extends DefaultNetwork {
   final AuthApi _auth = AuthApi();
   final UserTokenStorage _userTokenStorage = UserTokenStorage();
+  late int retryCount;
+
+  UserTokenNetwork() {
+    retryCount = 0;
+  }
 
   @override
   void onInit() {
