@@ -1,3 +1,4 @@
+import 'package:erobot_mobile/app/data/models/post_model.dart';
 import 'package:erobot_mobile/app/modules/education/local_widgets/education_card.dart';
 import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import '../controllers/education_controller.dart';
 class EducationView extends GetView<EducationController> {
   @override
   Widget build(BuildContext context) {
+    Get.put(EducationController());
     List<String> title = [
       'Robot',
       'Coding',
@@ -34,21 +36,19 @@ class EducationView extends GetView<EducationController> {
     required BuildContext context,
     required int length,
   }) {
-    return TabBarView(
-      controller: DefaultTabController.of(context),
-      children: List.generate(
-        length,
-        (index) {
-          return ListView.builder(
-            padding: ConfigConstant.layoutPadding,
-            itemCount: 8,
-            itemBuilder: (context, index) {
-              return EducationCard();
-            },
+    return Obx(() {
+      List<Post> items = controller.postListModel?.value.items ?? [];
+      return ListView.builder(
+        padding: ConfigConstant.layoutPadding,
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          Post item = items[index];
+          return EducationCard(
+            info: item,
           );
         },
-      ),
-    );
+      );
+    });
   }
 
   AppBar _buildAppBar({

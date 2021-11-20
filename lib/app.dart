@@ -15,6 +15,12 @@ class App extends StatelessWidget {
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: ThemeConfig(false).themeData,
+      builder: (context, child) {
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: child,
+        );
+      },
     );
   }
 }

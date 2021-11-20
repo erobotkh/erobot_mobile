@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
+  // initial to test
+  final email = 'soksan2@gmail.com'.obs;
+  final password = '123456'.obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -16,5 +17,4 @@ class LoginController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

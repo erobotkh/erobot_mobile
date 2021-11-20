@@ -2,30 +2,37 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:erobot_mobile/app/data/models/user_token_model.dart';
 import 'package:erobot_mobile/constants/api_constant.dart';
-import 'package:erobot_mobile/services/base_apis/networks/default_network.dart';
+import 'package:erobot_mobile/services/base_apis/networks/base_network.dart';
 import 'package:erobot_mobile/services/storages/user_token_storage.dart';
-import 'package:get/get_connect/http/src/response/response.dart';
+import 'package:http/http.dart';
 
 class AuthApi {
   Response? response;
-  DefaultNetwork? network;
+  BaseNetwork? network;
   late UserTokenStorage storage;
 
   AuthApi() {
-    network = DefaultNetwork();
+    network = BaseNetwork();
     storage = UserTokenStorage();
   }
 
   bool success() {
     if (response == null) return false;
-    return response!.statusCode == 200;
+    if (response?.statusCode != null) {
+      return response!.statusCode >= 200 && response!.statusCode < 300;
+    }
+    return false;
   }
 
-  String? errorMessage() {
+  String? message() {
     if (response?.body == null) return null;
-    var json = jsonDecode(response!.body);
-    if (json is Map && json.containsKey('message')) {
-      return json['message'];
+    try {
+      dynamic json = jsonDecode(response!.body);
+      if (json is Map && json.containsKey('message')) {
+        return json['message'];
+      }
+    } catch (e) {
+      return null;
     }
   }
 
@@ -43,8 +50,35 @@ class AuthApi {
   }
 
   Future<void> saveToStorage(Map<String, dynamic> data) async {
-    print(data);
     await storage.writeMap(data);
+  }
+
+  Future<void> logOut() async {
+    return storage.remove();
+  }
+
+  Future<void> registerWithEmail({
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String password,
+  }) {
+    return _beforeExec(() async {
+      var body = {
+        "first_name": firstName,
+        "last_name": lastName,
+        "email": email,
+        "password": password,
+      };
+
+      Uri endpoint = Uri.parse(registerEndpoint);
+      response = await network?.http?.post(endpoint, body: jsonEncode(body));
+
+      if (success() && response?.body != null) {
+        var json = jsonDecode(response!.body);
+        saveToStorage(json);
+      }
+    });
   }
 
   Future<void> loginWithSocialAccount({required String idToken}) async {
@@ -54,7 +88,8 @@ class AuthApi {
         "grant_type": "credential",
       };
 
-      response = await network?.post(authPath, jsonEncode(body));
+      Uri endpoint = Uri.parse(socialEndpoint);
+      response = await network?.http?.post(endpoint, body: jsonEncode(body));
 
       if (success() && response?.body != null) {
         var json = jsonDecode(response!.body);
@@ -74,7 +109,8 @@ class AuthApi {
         "grant_type": "password",
       };
 
-      response = await network?.post(authPath, jsonEncode(body));
+      Uri endpoint = Uri.parse(loginEndpoint);
+      response = await network?.http?.post(endpoint, body: jsonEncode(body));
 
       if (success() && response?.body != null) {
         var json = jsonDecode(response!.body);
@@ -97,7 +133,9 @@ class AuthApi {
         "grant_type": "refresh_token",
         "refresh_token": refreshToken,
       };
-      response = await network?.post(authPath, jsonEncode(body));
+      Uri endpoint = Uri.parse(refreshTokenEndpoint);
+      response = await network?.http?.post(endpoint, body: jsonEncode(body));
+
       if (success() && response?.body != null) {
         var json = jsonDecode(response!.body);
         saveToStorage(json);
@@ -105,5 +143,9 @@ class AuthApi {
     });
   }
 
-  String get authPath => ApiConstant.authPath;
+  String get baseUrl => ApiConstant.baseUrl;
+  String get refreshTokenEndpoint => "$baseUrl/auth/refresh-token";
+  String get registerEndpoint => "$baseUrl/auth/register";
+  String get loginEndpoint => "$baseUrl/auth/login";
+  String get socialEndpoint => "$baseUrl/auth/social";
 }

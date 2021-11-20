@@ -1,10 +1,18 @@
+import 'package:erobot_mobile/app/data/models/post_list_model.dart';
+import 'package:erobot_mobile/services/apis/post_api.dart';
 import 'package:get/get.dart';
 
 class EducationController extends GetxController {
   final count = 0.obs;
+  Rx<PostList>? postListModel;
+
   @override
   void onInit() {
     super.onInit();
+    postListModel = PostList().obs;
+    PostApi().fetchAllPosts().then((value) {
+      postListModel?.value = value;
+    });
   }
 
   @override

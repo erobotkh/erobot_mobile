@@ -11,7 +11,6 @@ abstract class Routes {
   static const SIGNUP = _Paths.SIGNUP;
   static const REGISTER = _Paths.REGISTER;
   static const PROFILE_WRAPPER = _Paths.PROFILE_WRAPPER;
-  static const ACCOUNT_DETAIL = _Paths.ACCOUNT_DETAIL;
   static const REPUTATION = _Paths.REPUTATION;
   static const MEMBER = _Paths.MEMBER;
   static const POST_DETAIL = _Paths.POST_DETAIL;
@@ -20,6 +19,7 @@ abstract class Routes {
   static const BALL_SHOOTER = _Paths.BALL_SHOOTER;
   static const SEARCH = _Paths.SEARCH;
   static const SEARCH_RESULT = _Paths.SEARCH_RESULT;
+  static const PROFILE_DETAIL = _Paths.PROFILE_DETAIL;
 }
 
 abstract class _Paths {
@@ -30,7 +30,6 @@ abstract class _Paths {
   static const SIGNUP = '/signup';
   static const REGISTER = '/register';
   static const PROFILE_WRAPPER = '/profile-wrapper';
-  static const ACCOUNT_DETAIL = '/account-detail';
   static const REPUTATION = '/reputation';
   static const MEMBER = '/member';
   static const POST_DETAIL = '/post-detail';
@@ -39,4 +38,5 @@ abstract class _Paths {
   static const BALL_SHOOTER = '/ball-shooter';
   static const SEARCH = '/search';
   static const SEARCH_RESULT = '/search-result';
+  static const PROFILE_DETAIL = '/profile-detail';
 }

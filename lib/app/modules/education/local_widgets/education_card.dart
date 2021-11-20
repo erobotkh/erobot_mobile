@@ -1,8 +1,14 @@
+import 'package:erobot_mobile/app/data/models/post_model.dart';
 import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:flutter/material.dart';
 
 class EducationCard extends StatelessWidget {
-  const EducationCard({Key? key}) : super(key: key);
+  const EducationCard({
+    Key? key,
+    required this.info,
+  }) : super(key: key);
+
+  final Post info;
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +37,11 @@ class EducationCard extends StatelessWidget {
               ),
             ),
             title: Text(
-              'Johny Waston',
+              (info.author?.firstName ?? "") + " " + (info.author?.lastName ?? ""),
               style: Theme.of(context).textTheme.bodyText2,
             ),
             subtitle: Text(
-              '30 Fri, 2020',
+              info.createdAt ?? "",
               style: Theme.of(context).textTheme.caption!.copyWith(color: Theme.of(context).colorScheme.secondary),
             ),
             trailing: IconButton(
@@ -48,9 +54,12 @@ class EducationCard extends StatelessWidget {
           ),
           AspectRatio(
             aspectRatio: 344 / 194,
-            child: Image.network(
-              'https://www.the-diy-life.com/wp-content/uploads/2020/07/Obstacle-Avoiding-Robot-Car-Using-An-Arduino-Uno.jpg',
-            ),
+            child: info.images?.isNotEmpty == true
+                ? Image.network(
+                    info.images?.first.url ?? "",
+                    fit: BoxFit.cover,
+                  )
+                : SizedBox(),
           ),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -58,7 +67,7 @@ class EducationCard extends StatelessWidget {
               horizontal: ConfigConstant.margin2,
             ),
             child: Text(
-              'How to build ball shooter with something that I don’t know, just test text',
+              info.body ?? "",
               style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Theme.of(context).colorScheme.secondary),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
@@ -70,7 +79,7 @@ class EducationCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Text('10'),
+                Text(info.commentCount.toString()),
                 IconButton(
                   icon: Icon(
                     Icons.comment,

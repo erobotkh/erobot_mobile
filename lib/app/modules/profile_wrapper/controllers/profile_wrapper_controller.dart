@@ -1,12 +1,43 @@
+import 'package:erobot_mobile/services/storages/user_token_storage.dart';
 import 'package:get/get.dart';
 
-class ProfileWrapperController extends GetxController {
-  //TODO: Implement ProfileWrapperController
+enum ProfileWrapperState {
+  login,
+  register,
+  profile,
+  loading,
+}
 
-  final count = 0.obs;
+class ProfileWrapperController extends GetxController {
+  final UserTokenStorage storage = UserTokenStorage();
+  Rx<ProfileWrapperState> state = ProfileWrapperState.loading.obs;
+
   @override
   void onInit() {
     super.onInit();
+    checkSignedInStatus();
+  }
+
+  void checkSignedInStatus() {
+    storage.getCurrentUserToken().then((value) {
+      if (value?.accessToken != null) {
+        state.value = ProfileWrapperState.profile;
+      } else {
+        state.value = ProfileWrapperState.login;
+      }
+    });
+  }
+
+  void toggleLoginRegisterPage() {
+    switch (state.value) {
+      case ProfileWrapperState.login:
+        state.value = ProfileWrapperState.register;
+        break;
+      case ProfileWrapperState.register:
+        state.value = ProfileWrapperState.login;
+        break;
+      default:
+    }
   }
 
   @override
@@ -15,6 +46,7 @@ class ProfileWrapperController extends GetxController {
   }
 
   @override
-  void onClose() {}
-  void increment() => count.value++;
+  void onClose() {
+    super.onClose();
+  }
 }
