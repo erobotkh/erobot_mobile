@@ -31,9 +31,9 @@ abstract class BaseApi<T> {
   }
 
   String? message() {
-    if (response?.body == null) return null;
+    if (response?.bodyString == null) return null;
     try {
-      dynamic json = jsonDecode(response!.body);
+      dynamic json = jsonDecode(response!.bodyString!);
       if (json is Map && json.containsKey('message')) {
         return json['message'];
       }
@@ -62,7 +62,7 @@ abstract class BaseApi<T> {
     return _beforeExec(() async {
       String endpoint = objectNameUrlModel.fetchOneUrl(id: id, queryParameters: queryParameters);
       response = await network.get(endpoint);
-      dynamic json = jsonDecode(response?.body.toString() ?? "");
+      dynamic json = jsonDecode(response?.bodyString ?? "");
       if (json is Map<String, dynamic>) {
         if (json.containsKey('data')) json = decodeWithJapx ? Japx.decode(json) : json;
         return objectTransformer(json);
@@ -77,7 +77,7 @@ abstract class BaseApi<T> {
     return _beforeExec(() async {
       String endpoint = objectNameUrlModel.fetchAllUrl(queryParameters: queryParameters);
       response = await network.get(endpoint);
-      dynamic json = jsonDecode(response?.body.toString() ?? "");
+      dynamic json = jsonDecode(response?.bodyString ?? "");
       json = decodeWithJapx ? Japx.decode(json) : json;
       return itemsTransformer(json);
     });
@@ -91,7 +91,7 @@ abstract class BaseApi<T> {
     return _beforeExec(() async {
       String endpoint = objectNameUrlModel.updatelUrl(id: id, queryParameters: queryParameters);
       response = await network.put(endpoint, jsonEncode(body));
-      dynamic json = jsonDecode(response?.body.toString() ?? "");
+      dynamic json = jsonDecode(response?.bodyString ?? "");
       if (json is Map<String, dynamic>) {
         if (json.containsKey('data')) json = decodeWithJapx ? Japx.decode(json) : json;
         return objectTransformer(json);
@@ -109,7 +109,7 @@ abstract class BaseApi<T> {
 
       dynamic json;
       try {
-        json = jsonDecode(response?.body.toString() ?? "");
+        json = jsonDecode(response?.bodyString ?? "");
       } catch (e) {
         return null;
       }
@@ -129,7 +129,7 @@ abstract class BaseApi<T> {
     return _beforeExec(() async {
       String endpoint = objectNameUrlModel.deletelUrl(id: id, queryParameters: queryParameters);
       response = await network.delete(endpoint);
-      dynamic json = jsonDecode(response?.body.toString() ?? "");
+      dynamic json = jsonDecode(response?.bodyString ?? "");
       if (json is Map<String, dynamic>) {
         if (json.containsKey('data')) json = decodeWithJapx ? Japx.decode(json) : json;
         return objectTransformer(json);

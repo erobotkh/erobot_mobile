@@ -1,23 +1,43 @@
-import 'package:erobot_mobile/app/routes/app_pages.dart';
 import 'package:erobot_mobile/services/storages/user_token_storage.dart';
 import 'package:get/get.dart';
 
+enum ProfileWrapperState {
+  login,
+  register,
+  profile,
+  loading,
+}
+
 class ProfileWrapperController extends GetxController {
   final UserTokenStorage storage = UserTokenStorage();
-  final Rx<bool?> isSignedIn = null.obs;
+  Rx<ProfileWrapperState> state = ProfileWrapperState.loading.obs;
 
   @override
   void onInit() {
     super.onInit();
-    print("DLDLDL");
+    checkSignedInStatus();
+  }
+
+  void checkSignedInStatus() {
     storage.getCurrentUserToken().then((value) {
-      isSignedIn.value = value?.accessToken != null;
-      if (isSignedIn.value == true) {
-        Get.replace(Routes.PROFILE_DETAIL);
+      if (value?.accessToken != null) {
+        state.value = ProfileWrapperState.profile;
       } else {
-        Get.replace(Routes.LOGIN);
+        state.value = ProfileWrapperState.login;
       }
     });
+  }
+
+  void toggleLoginRegisterPage() {
+    switch (state.value) {
+      case ProfileWrapperState.login:
+        state.value = ProfileWrapperState.register;
+        break;
+      case ProfileWrapperState.register:
+        state.value = ProfileWrapperState.login;
+        break;
+      default:
+    }
   }
 
   @override

@@ -1,13 +1,11 @@
-import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 enum ErTapEffectType {
   touchableOpacity,
   scaleDown,
 }
 
-class ErTapEffect extends GetView<_ErTapEffectController> {
+class ErTapEffect extends StatefulWidget {
   ErTapEffect({
     Key? key,
     required this.child,
@@ -27,21 +25,34 @@ class ErTapEffect extends GetView<_ErTapEffectController> {
   final bool vibrate;
   final HitTestBehavior? behavior;
 
+  @override
+  State<ErTapEffect> createState() => _ErTapEffectState();
+}
+
+class _ErTapEffectState extends State<ErTapEffect> with SingleTickerProviderStateMixin {
   final double scaleActive = 0.98;
   final double opacityActive = 0.2;
 
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    controller = AnimationController(vsync: this, duration: widget.duration);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final animation = Tween<double>(begin: 1, end: scaleActive).animate(controller.controller);
-    final animation2 = Tween<double>(begin: 1, end: opacityActive).animate(controller.controller);
+    final animation = Tween<double>(begin: 1, end: scaleActive).animate(controller);
+    final animation2 = Tween<double>(begin: 1, end: opacityActive).animate(controller);
 
-    void onTapCancel() => controller.controller.reverse();
-    void onTapDown() => controller.controller.forward();
-    void onTapUp() => controller.controller.reverse().then((value) => onTap!());
+    void onTapCancel() => controller.reverse();
+    void onTapDown() => controller.forward();
+    void onTapUp() => controller.reverse().then((value) => widget.onTap!());
 
-    if (onTap != null) {
+    if (widget.onTap != null) {
       return GestureDetector(
-        behavior: behavior,
+        behavior: widget.behavior,
         onTapDown: (detail) => onTapDown(),
         onTapUp: (detail) => onTapUp(),
         onTapCancel: () => onTapCancel(),
@@ -57,11 +68,11 @@ class ErTapEffect extends GetView<_ErTapEffectController> {
     Animation<double> animation2,
   ) {
     return AnimatedBuilder(
-      child: child,
-      animation: controller.controller,
+      child: widget.child,
+      animation: controller,
       builder: (context, child) {
         Widget result = child ?? const SizedBox();
-        for (var effect in effects) {
+        for (var effect in widget.effects) {
           switch (effect) {
             case ErTapEffectType.scaleDown:
               result = ScaleTransition(scale: animation, child: result);
@@ -74,26 +85,5 @@ class ErTapEffect extends GetView<_ErTapEffectController> {
         return result;
       },
     );
-  }
-}
-
-class _ErTapEffectController extends GetxController with SingleGetTickerProviderMixin {
-  late AnimationController controller;
-
-  @override
-  void onInit() {
-    controller = AnimationController(vsync: this, duration: ConfigConstant.fadeDuration);
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    controller.dispose();
-    super.onClose();
   }
 }

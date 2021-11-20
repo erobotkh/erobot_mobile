@@ -13,6 +13,7 @@ class ThemeConfig {
       backgroundColor: scheme.background,
       scaffoldBackgroundColor: scheme.background,
       colorScheme: scheme,
+      dividerColor: scheme.onBackground.withOpacity(0.25),
       appBarTheme: AppBarTheme(
         backgroundColor: scheme.surface,
         centerTitle: false,

@@ -11,7 +11,7 @@ dependencies:
   japx: 2.0.3
   get_storage: 2.0.3
   json_annotation: 4.3.0
-  bot_toast: 4.0.1
+  adaptive_dialog: 1.2.0
   flutter: 
     sdk: flutter
 

@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  final email = ''.obs;
-  final password = ''.obs;
+  // initial to test
+  final email = 'soksan2@gmail.com'.obs;
+  final password = '123456'.obs;
 
   @override
   void onInit() {

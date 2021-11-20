@@ -18,14 +18,21 @@ class AuthApi {
 
   bool success() {
     if (response == null) return false;
-    return response!.statusCode == 200;
+    if (response?.statusCode != null) {
+      return response!.statusCode! >= 200 && response!.statusCode! < 300;
+    }
+    return false;
   }
 
-  String? errorMessage() {
-    if (response?.body == null) return null;
-    var json = jsonDecode(response!.body);
-    if (json is Map && json.containsKey('message')) {
-      return json['message'];
+  String? message() {
+    if (response?.bodyString == null) return null;
+    try {
+      dynamic json = jsonDecode(response!.bodyString!);
+      if (json is Map && json.containsKey('message')) {
+        return json['message'];
+      }
+    } catch (e) {
+      return null;
     }
   }
 
@@ -43,8 +50,35 @@ class AuthApi {
   }
 
   Future<void> saveToStorage(Map<String, dynamic> data) async {
-    print(data);
     await storage.writeMap(data);
+  }
+
+  Future<void> logOut() async {
+    return storage.remove();
+  }
+
+  Future<void> registerWithEmail({
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String password,
+  }) {
+    return _beforeExec(() async {
+      var body = {
+        "first_name": firstName,
+        "last_name": lastName,
+        "email": email,
+        "password": password,
+      };
+
+      print(body);
+
+      response = await network?.post(registerEndpoint, jsonEncode(body));
+      if (success() && response?.bodyString != null) {
+        var json = jsonDecode(response!.bodyString!);
+        saveToStorage(json);
+      }
+    });
   }
 
   Future<void> loginWithSocialAccount({required String idToken}) async {
@@ -54,10 +88,10 @@ class AuthApi {
         "grant_type": "credential",
       };
 
-      response = await network?.post(authPath, jsonEncode(body));
+      response = await network?.post(socialEndpoint, jsonEncode(body));
 
-      if (success() && response?.body != null) {
-        var json = jsonDecode(response!.body);
+      if (success() && response?.bodyString != null) {
+        var json = jsonDecode(response!.bodyString!);
         saveToStorage(json);
       }
     });
@@ -74,10 +108,10 @@ class AuthApi {
         "grant_type": "password",
       };
 
-      response = await network?.post(authPath, jsonEncode(body));
+      response = await network?.post(loginEndpoint, jsonEncode(body));
 
-      if (success() && response?.body != null) {
-        var json = jsonDecode(response!.body);
+      if (success() && response?.bodyString != null) {
+        var json = jsonDecode(response!.bodyString!);
         saveToStorage(json);
       }
     });
@@ -97,13 +131,17 @@ class AuthApi {
         "grant_type": "refresh_token",
         "refresh_token": refreshToken,
       };
-      response = await network?.post(authPath, jsonEncode(body));
-      if (success() && response?.body != null) {
-        var json = jsonDecode(response!.body);
+      response = await network?.post(refreshTokenEndpoint, jsonEncode(body));
+      if (success() && response?.bodyString != null) {
+        var json = jsonDecode(response!.bodyString!);
         saveToStorage(json);
       }
     });
   }
 
-  String get authPath => ApiConstant.authPath;
+  String get baseUrl => ApiConstant.baseUrl;
+  String get refreshTokenEndpoint => "$baseUrl/auth/refresh-token";
+  String get registerEndpoint => "$baseUrl/auth/register";
+  String get loginEndpoint => "$baseUrl/auth/login";
+  String get socialEndpoint => "$baseUrl/auth/social";
 }

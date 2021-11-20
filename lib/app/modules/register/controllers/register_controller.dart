@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
-  //TODO: Implement RegisterController
+  final email = ''.obs;
+  final password = ''.obs;
+  final firstName = ''.obs;
+  final lastName = ''.obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -15,6 +17,7 @@ class RegisterController extends GetxController {
   }
 
   @override
-  void onClose() {}
-  void increment() => count.value++;
+  void onClose() {
+    super.onClose();
+  }
 }

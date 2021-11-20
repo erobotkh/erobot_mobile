@@ -45,6 +45,7 @@ class _ErPasswordFieldState extends State<ErPasswordField> {
 
   Widget? buildSuffix() {
     return IconButton(
+      color: Theme.of(context).colorScheme.onBackground,
       icon: AnimatedCrossFade(
         crossFadeState: obscureText ? CrossFadeState.showSecond : CrossFadeState.showFirst,
         duration: ConfigConstant.fadeDuration,

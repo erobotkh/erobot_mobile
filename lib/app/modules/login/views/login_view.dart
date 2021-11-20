@@ -4,7 +4,7 @@ import 'package:erobot_mobile/app/data/widgets/er_main_action_button.dart';
 import 'package:erobot_mobile/app/data/widgets/er_password_field.dart';
 import 'package:erobot_mobile/app/data/widgets/er_tap_effect.dart';
 import 'package:erobot_mobile/app/modules/login/local_widgets/auth_header.dart';
-import 'package:erobot_mobile/app/routes/app_pages.dart';
+import 'package:erobot_mobile/app/modules/profile_wrapper/controllers/profile_wrapper_controller.dart';
 import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:erobot_mobile/services/base_apis/auth_api.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +14,9 @@ import '../controllers/login_controller.dart';
 class LoginView extends GetView<LoginController> with Toast {
   @override
   Widget build(BuildContext context) {
+    Get.put(LoginController());
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         centerTitle: false,
         backgroundColor: Theme.of(context).colorScheme.surface,
         title: Text(
@@ -24,52 +24,50 @@ class LoginView extends GetView<LoginController> with Toast {
           style: Theme.of(context).textTheme.headline6,
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            AuthHeaderWidget(),
-            buildFormField(
-              context: context,
-              onChangeEmail: (value) {
-                controller.email.value = value;
-              },
-              onChangePassword: (value) {
-                controller.password.value = value;
-              },
-            ),
-            buildTextButton(
-              context: context,
-              label: 'Forget Password',
-              alignment: Alignment.centerRight,
-            ),
-            ErMainActionButton(
-              margin: EdgeInsets.all(ConfigConstant.margin2),
-              label: 'Log In',
-              onTap: () async {
-                AuthApi authApi = AuthApi();
-                showLoading();
-                await authApi.loginWithEmail(
+      body: ListView(
+        children: [
+          AuthHeaderWidget(),
+          buildFormField(
+            context: context,
+            onChangeEmail: (value) {
+              controller.email.value = value;
+            },
+            onChangePassword: (value) {
+              controller.password.value = value;
+            },
+          ),
+          buildTextButton(
+            context: context,
+            label: 'Forget Password',
+            alignment: Alignment.centerRight,
+          ),
+          ErMainActionButton(
+            margin: EdgeInsets.all(ConfigConstant.margin2),
+            label: 'Log In',
+            onTap: () async {
+              AuthApi authApi = AuthApi();
+              await showLoading(
+                () => authApi.loginWithEmail(
                   email: controller.email.value,
                   password: controller.password.value,
-                );
-                hideLoading();
-                if (authApi.success()) {
-                  showSuccess(context: context, title: 'Log in successful');
-                  Get.to(Routes.PROFILE_WRAPPER);
-                } else {
-                  print(authApi.errorMessage());
-                }
-              },
-            ),
-            buildTextButton(
-              context: context,
-              label: "Don't have account yet? Register",
-              onTap: () {
-                Get.replace(Routes.REGISTER);
-              },
-            ),
-          ],
-        ),
+                ),
+              );
+              if (authApi.success()) {
+                showSuccess(context: context, title: 'Log in successful');
+                Get.find<ProfileWrapperController>().checkSignedInStatus();
+              } else {
+                print(authApi.message());
+              }
+            },
+          ),
+          buildTextButton(
+            context: context,
+            label: "Don't have account yet? Register",
+            onTap: () {
+              Get.find<ProfileWrapperController>().toggleLoginRegisterPage();
+            },
+          ),
+        ],
       ),
     );
   }
