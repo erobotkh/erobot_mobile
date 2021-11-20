@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/account_detail_controller.dart';
+import '../controllers/profile_detail_controller.dart';
 
-class AccountDetailView extends GetView<AccountDetailController> {
+class ProfileDetailView extends GetView<ProfileDetailController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AccountDetailView'),
+        title: Text('ProfileDetailView'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'AccountDetailView is working',
+          'ProfileDetailView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

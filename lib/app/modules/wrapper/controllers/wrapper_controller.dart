@@ -16,18 +16,16 @@ class WrapperController extends GetxController {
 
   @override
   void onInit() {
-    print("onInit");
     super.onInit();
   }
 
   @override
   void onReady() {
-    print("Ready");
     super.onReady();
   }
 
   @override
   void onClose() {
-    print("onClose");
+    super.onClose();
   }
 }

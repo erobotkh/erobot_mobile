@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class AccountDetailController extends GetxController {
-  //TODO: Implement AccountDetailController
+class ProfileDetailController extends GetxController {
+  //TODO: Implement ProfileDetailController
 
   final count = 0.obs;
   @override

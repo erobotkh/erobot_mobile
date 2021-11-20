@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 
-import 'package:erobot_mobile/app/modules/account_detail/bindings/account_detail_binding.dart';
-import 'package:erobot_mobile/app/modules/account_detail/views/account_detail_view.dart';
 import 'package:erobot_mobile/app/modules/ball_shooter/bindings/ball_shooter_binding.dart';
 import 'package:erobot_mobile/app/modules/ball_shooter/views/ball_shooter_view.dart';
 import 'package:erobot_mobile/app/modules/education/bindings/education_binding.dart';
@@ -16,6 +14,8 @@ import 'package:erobot_mobile/app/modules/member/bindings/member_binding.dart';
 import 'package:erobot_mobile/app/modules/member/views/member_view.dart';
 import 'package:erobot_mobile/app/modules/post_detail/bindings/post_detail_binding.dart';
 import 'package:erobot_mobile/app/modules/post_detail/views/post_detail_view.dart';
+import 'package:erobot_mobile/app/modules/profile_detail/bindings/profile_detail_binding.dart';
+import 'package:erobot_mobile/app/modules/profile_detail/views/profile_detail_view.dart';
 import 'package:erobot_mobile/app/modules/profile_wrapper/bindings/profile_wrapper_binding.dart';
 import 'package:erobot_mobile/app/modules/profile_wrapper/views/profile_wrapper_view.dart';
 import 'package:erobot_mobile/app/modules/register/bindings/register_binding.dart';
@@ -70,11 +70,6 @@ class AppPages {
       binding: ProfileWrapperBinding(),
     ),
     GetPage(
-      name: _Paths.ACCOUNT_DETAIL,
-      page: () => AccountDetailView(),
-      binding: AccountDetailBinding(),
-    ),
-    GetPage(
       name: _Paths.REPUTATION,
       page: () => ReputationView(),
       binding: ReputationBinding(),
@@ -113,6 +108,11 @@ class AppPages {
       name: _Paths.SEARCH_RESULT,
       page: () => SearchResultView(),
       binding: SearchResultBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE_DETAIL,
+      page: () => ProfileDetailView(),
+      binding: ProfileDetailBinding(),
     ),
   ];
 }
