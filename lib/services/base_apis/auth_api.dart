@@ -2,32 +2,32 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:erobot_mobile/app/data/models/user_token_model.dart';
 import 'package:erobot_mobile/constants/api_constant.dart';
-import 'package:erobot_mobile/services/base_apis/networks/default_network.dart';
+import 'package:erobot_mobile/services/base_apis/networks/base_network.dart';
 import 'package:erobot_mobile/services/storages/user_token_storage.dart';
-import 'package:get/get_connect/http/src/response/response.dart';
+import 'package:http/http.dart';
 
 class AuthApi {
   Response? response;
-  DefaultNetwork? network;
+  BaseNetwork? network;
   late UserTokenStorage storage;
 
   AuthApi() {
-    network = DefaultNetwork();
+    network = BaseNetwork();
     storage = UserTokenStorage();
   }
 
   bool success() {
     if (response == null) return false;
     if (response?.statusCode != null) {
-      return response!.statusCode! >= 200 && response!.statusCode! < 300;
+      return response!.statusCode >= 200 && response!.statusCode < 300;
     }
     return false;
   }
 
   String? message() {
-    if (response?.bodyString == null) return null;
+    if (response?.body == null) return null;
     try {
-      dynamic json = jsonDecode(response!.bodyString!);
+      dynamic json = jsonDecode(response!.body);
       if (json is Map && json.containsKey('message')) {
         return json['message'];
       }
@@ -71,11 +71,11 @@ class AuthApi {
         "password": password,
       };
 
-      print(body);
+      Uri endpoint = Uri.parse(registerEndpoint);
+      response = await network?.http?.post(endpoint, body: jsonEncode(body));
 
-      response = await network?.post(registerEndpoint, jsonEncode(body));
-      if (success() && response?.bodyString != null) {
-        var json = jsonDecode(response!.bodyString!);
+      if (success() && response?.body != null) {
+        var json = jsonDecode(response!.body);
         saveToStorage(json);
       }
     });
@@ -88,10 +88,11 @@ class AuthApi {
         "grant_type": "credential",
       };
 
-      response = await network?.post(socialEndpoint, jsonEncode(body));
+      Uri endpoint = Uri.parse(socialEndpoint);
+      response = await network?.http?.post(endpoint, body: jsonEncode(body));
 
-      if (success() && response?.bodyString != null) {
-        var json = jsonDecode(response!.bodyString!);
+      if (success() && response?.body != null) {
+        var json = jsonDecode(response!.body);
         saveToStorage(json);
       }
     });
@@ -108,10 +109,11 @@ class AuthApi {
         "grant_type": "password",
       };
 
-      response = await network?.post(loginEndpoint, jsonEncode(body));
+      Uri endpoint = Uri.parse(loginEndpoint);
+      response = await network?.http?.post(endpoint, body: jsonEncode(body));
 
-      if (success() && response?.bodyString != null) {
-        var json = jsonDecode(response!.bodyString!);
+      if (success() && response?.body != null) {
+        var json = jsonDecode(response!.body);
         saveToStorage(json);
       }
     });
@@ -131,9 +133,11 @@ class AuthApi {
         "grant_type": "refresh_token",
         "refresh_token": refreshToken,
       };
-      response = await network?.post(refreshTokenEndpoint, jsonEncode(body));
-      if (success() && response?.bodyString != null) {
-        var json = jsonDecode(response!.bodyString!);
+      Uri endpoint = Uri.parse(refreshTokenEndpoint);
+      response = await network?.http?.post(endpoint, body: jsonEncode(body));
+
+      if (success() && response?.body != null) {
+        var json = jsonDecode(response!.body);
         saveToStorage(json);
       }
     });

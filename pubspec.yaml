@@ -12,6 +12,7 @@ dependencies:
   get_storage: 2.0.3
   json_annotation: 4.3.0
   adaptive_dialog: 1.2.0
+  http_interceptor: 1.0.2
   flutter: 
     sdk: flutter
 

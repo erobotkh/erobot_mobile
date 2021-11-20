@@ -1,10 +1,10 @@
 import 'package:erobot_mobile/services/base_apis/base_api.dart';
+import 'package:erobot_mobile/services/base_apis/networks/app_network.dart';
 import 'package:erobot_mobile/services/base_apis/networks/base_network.dart';
-import 'package:erobot_mobile/services/base_apis/networks/user_token_network.dart';
 
-abstract class BaseResourceOwnerApi<T> extends BaseApi<T> {
+abstract class BaseAppApi<T> extends BaseApi<T> {
   @override
   BaseNetwork buildNetwork() {
-    return UserTokenNetwork();
+    return AppNetwork();
   }
 }
