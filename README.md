@@ -1,7 +1,7 @@
 # Erobot Application v2
 ## I. Getting Started
 
-In this project, we use flutter 2.5.3. If you have different version, you should consider [install FVM](https://soksereyphon8.medium.com/flutter-version-management-3c318c4ff97d).
+In this project, we use flutter 2.5.3. If you have a different version, you should consider [installing FVM](https://soksereyphon8.medium.com/flutter-version-management-3c318c4ff97d).
 
 ### Prerequisites
 
@@ -19,7 +19,7 @@ flutter run
 
 ## II. Code generation 
 ### 1. Model generations with JSON Serialization
-We uses Json Serializable [ https://flutter.dev/docs/development/data-and-backend/json#code-generation ] package build tool to generate model from Json to Class object. In case you want to add more fields model or even change the model data type, you need to run the command:
+We use JSON Serializable [ https://flutter.dev/docs/development/data-and-backend/json#code-generation ] package build tool to generate a model from JSON to the Class object. In case you want to add more fields model or even change the model data type, you need to run the command:
 ```
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
@@ -41,7 +41,7 @@ Widget build(BuildContext context) {
 ```
 
 ## III. State Management
-We uses [GetX](https://pub.dev/packages/get) for our state management... solution.
+We use [GetX](https://pub.dev/packages/get) for our state management... solution.
 ### 1. CLI
 We use [get_cli](https://pub.dev/packages/get_cli) to automated our development process.
 ```
@@ -68,9 +68,9 @@ get help
 We also use [GetX Snippets](https://marketplace.visualstudio.com/items?itemName=get-snippets.get-snippets).
 
 ## IV. API Connection
-Even we use getx, we don't use its `GetConnect` for communicate with our API.
-### 1. Creating a API call:
-For Example, if we are creating post api with end point: https://example.com/posts.<br>
+Even we use getx, we don't use its `GetConnect` for communicating with our API.
+### 1. Creating an API call:
+For Example, if we are creating a post API with the endpoint: https://example.com/posts.<br>
 We have to create that class in `lib/services/apis/` folder, eg:
 ```dart
 // - extends BaseResourceOwnerApi: if you need token in request header.
@@ -110,7 +110,7 @@ class PostApi extends BaseResourceOwnerApi<PostModel> {
 - Extends your class with [BaseResourceOwnerApi](lib/services/base_apis/base_resource_owner_api.dart), if you need token in request header.
 - Extends your class with [BaseAppApi](lib/services/base_apis/base_app_api.dart), if you don't need token in request header.
 ## V. Check sign in report
-Get info such as `Variant, Config, Store, Alias, MD5, SHA1, SHA-256, Valid until` with following command:
+Get info such as `Variant, Config, Store, Alias, MD5, SHA1, SHA-256, Valid until` with the following command:
 ```shell
 cd android
 ./gradlew signingReport
