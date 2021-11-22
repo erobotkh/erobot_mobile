@@ -8,7 +8,7 @@ class EducationCard extends StatelessWidget {
     required this.info,
   }) : super(key: key);
 
-  final Post info;
+  final PostModel info;
 
   @override
   Widget build(BuildContext context) {

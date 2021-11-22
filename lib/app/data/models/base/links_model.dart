@@ -1,15 +1,24 @@
 import 'package:erobot_mobile/helpers/app_helper.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class Links {
+part 'links_model.g.dart';
+
+@JsonSerializable()
+class LinksModel {
   String? self;
   String? next;
   dynamic prev;
   String? last;
 
-  Links({this.self, this.next, this.prev, this.last});
+  LinksModel({
+    this.self,
+    this.next,
+    this.prev,
+    this.last,
+  });
 
-  Links getPageNumber() {
-    return Links(
+  LinksModel getPageNumber() {
+    return LinksModel(
       self: AppHelper.queryParameters(url: self ?? "", param: 'page'),
       prev: AppHelper.queryParameters(url: prev ?? "", param: 'page'),
       next: AppHelper.queryParameters(url: next ?? "", param: 'page'),
@@ -17,19 +26,6 @@ class Links {
     );
   }
 
-  Links.fromJson(Map<String, dynamic> json) {
-    self = json['self'];
-    next = json['next'];
-    prev = json['prev'];
-    last = json['last'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['self'] = self;
-    data['next'] = next;
-    data['prev'] = prev;
-    data['last'] = last;
-    return data;
-  }
+  factory LinksModel.fromJson(Map<String, dynamic> json) => _$LinksModelFromJson(json);
+  Map<String, dynamic> toJson() => _$LinksModelToJson(this);
 }

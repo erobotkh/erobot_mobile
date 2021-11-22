@@ -119,11 +119,11 @@ class AuthApi {
     });
   }
 
-  Future<UserToken?> getCurrentUserToken() async {
+  Future<UserTokenModel?> getCurrentUserToken() async {
     var json = await storage.readMap();
     if (json != null) {
       var validated = {for (var e in json.entries) e.key: e.value};
-      return UserToken.fromJson(validated);
+      return UserTokenModel.fromJson(validated);
     }
   }
 

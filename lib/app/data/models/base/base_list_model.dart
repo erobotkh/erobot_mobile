@@ -3,8 +3,8 @@ import 'package:erobot_mobile/app/data/models/base/meta_model.dart';
 
 abstract class BaseListModel<T> {
   List<T>? items;
-  Meta? meta;
-  Links? links;
+  MetaModel? meta;
+  LinksModel? links;
 
   BaseListModel({
     this.items,

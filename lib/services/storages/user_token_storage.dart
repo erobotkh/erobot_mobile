@@ -5,10 +5,10 @@ class UserTokenStorage extends MapPreferenceStorage<String, dynamic> {
   @override
   String get key => "UserTokenStorage";
 
-  Future<UserToken?> getCurrentUserToken() async {
+  Future<UserTokenModel?> getCurrentUserToken() async {
     Map<String, dynamic>? json = await readMap();
     if (json != null) {
-      return UserToken.fromJson(json);
+      return UserTokenModel.fromJson(json);
     }
   }
 }
