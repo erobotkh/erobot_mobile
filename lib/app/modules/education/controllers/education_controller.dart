@@ -4,12 +4,12 @@ import 'package:get/get.dart';
 
 class EducationController extends GetxController {
   final count = 0.obs;
-  Rx<PostList>? postListModel;
+  Rx<PostListModel>? postListModel;
 
   @override
   void onInit() {
     super.onInit();
-    postListModel = PostList().obs;
+    postListModel = PostListModel().obs;
     PostApi().fetchAllPosts().then((value) {
       postListModel?.value = value;
     });

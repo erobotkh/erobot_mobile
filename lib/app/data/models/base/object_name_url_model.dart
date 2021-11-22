@@ -1,9 +1,14 @@
-class ObjectNameUrl {
+import 'package:json_annotation/json_annotation.dart';
+
+part 'object_name_url_model.g.dart';
+
+@JsonSerializable()
+class ObjectNameUrlModel {
   final String nameInUrl;
   final String? path;
   final String baseUrl;
 
-  ObjectNameUrl({
+  ObjectNameUrlModel({
     required this.nameInUrl,
     required this.path,
     required this.baseUrl,
@@ -45,4 +50,7 @@ class ObjectNameUrl {
     var url = "$path/$nameInUrl";
     return _withBaseUrl(url, queryParameters: queryParameters);
   }
+
+  factory ObjectNameUrlModel.fromJson(Map<String, dynamic> json) => _$ObjectNameUrlModelFromJson(json);
+  Map<String, dynamic> toJson() => _$ObjectNameUrlModelToJson(this);
 }

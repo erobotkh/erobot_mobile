@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('ObjectNameUrlModel', () {
     test('return true is uri is matched', () async {
-      final uri = ObjectNameUrl(
+      final uri = ObjectNameUrlModel(
         baseUrl: ApiConstant.baseUrl,
         path: "",
         nameInUrl: "posts",

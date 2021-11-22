@@ -37,12 +37,12 @@ class EducationView extends GetView<EducationController> {
     required int length,
   }) {
     return Obx(() {
-      List<Post> items = controller.postListModel?.value.items ?? [];
+      List<PostModel> items = controller.postListModel?.value.items ?? [];
       return ListView.builder(
         padding: ConfigConstant.layoutPadding,
         itemCount: items.length,
         itemBuilder: (context, index) {
-          Post item = items[index];
+          PostModel item = items[index];
           return EducationCard(
             info: item,
           );

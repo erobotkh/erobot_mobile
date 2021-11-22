@@ -153,23 +153,23 @@ abstract class BaseApi<T> {
     }
   }
 
-  Meta? buildMeta(Map<String, dynamic> json) {
+  MetaModel? buildMeta(Map<String, dynamic> json) {
     if (json.containsKey('meta') && json['meta'] != null) {
-      return Meta.fromJson(json['meta']);
+      return MetaModel.fromJson(json['meta']);
     }
   }
 
-  Links? buildLinks(Map<String, dynamic> json) {
+  LinksModel? buildLinks(Map<String, dynamic> json) {
     if (json.containsKey('links') && json['links'] != null) {
-      return Links.fromJson(json['links']);
+      return LinksModel.fromJson(json['links']);
     }
   }
 
   Map<String, dynamic> sliceParams(Map<String, dynamic> values, List<String> names) {
     Map<String, dynamic> result = {};
-    names.forEach((element) {
+    for (String element in names) {
       result[element] = values[element];
-    });
+    }
     return result;
   }
 
@@ -186,7 +186,7 @@ abstract class BaseApi<T> {
   String get nameInUrl;
   String get baseUrl => ApiConstant.baseUrl;
 
-  ObjectNameUrl get objectNameUrlModel {
-    return ObjectNameUrl(nameInUrl: nameInUrl, path: "", baseUrl: baseUrl);
+  ObjectNameUrlModel get objectNameUrlModel {
+    return ObjectNameUrlModel(nameInUrl: nameInUrl, path: "", baseUrl: baseUrl);
   }
 }
