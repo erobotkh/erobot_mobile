@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:erobot_mobile/app/data/models/base/links_model.dart';
-import 'package:erobot_mobile/app/data/models/base/meta_model.dart';
-import 'package:erobot_mobile/app/data/models/base/object_name_url_model.dart';
+import 'package:erobot_mobile/models/base/links_model.dart';
+import 'package:erobot_mobile/models/base/meta_model.dart';
+import 'package:erobot_mobile/models/base/object_name_url_model.dart';
 import 'package:erobot_mobile/constants/api_constant.dart';
 import 'package:erobot_mobile/helpers/app_helper.dart';
 import 'package:erobot_mobile/services/base_apis/networks/base_network.dart';

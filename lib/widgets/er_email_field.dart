@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/app/data/widgets/er_text_field.dart';
+import 'package:erobot_mobile/widgets/er_text_field.dart';
 import 'package:flutter/material.dart';
 
 class ErEmailField extends ErTextField {

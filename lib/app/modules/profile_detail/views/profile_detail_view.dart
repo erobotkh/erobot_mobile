@@ -1,5 +1,5 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:erobot_mobile/app/data/widgets/er_list_tile.dart';
+import 'package:erobot_mobile/widgets/er_list_tile.dart';
 import 'package:erobot_mobile/app/modules/profile_wrapper/controllers/profile_wrapper_controller.dart';
 import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:erobot_mobile/services/base_apis/auth_api.dart';

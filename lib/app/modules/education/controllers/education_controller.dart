@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/app/data/models/post_list_model.dart';
+import 'package:erobot_mobile/models/post_list_model.dart';
 import 'package:erobot_mobile/services/apis/post_api.dart';
 import 'package:get/get.dart';
 

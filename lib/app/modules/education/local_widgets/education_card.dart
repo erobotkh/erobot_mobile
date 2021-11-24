@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/app/data/models/post_model.dart';
+import 'package:erobot_mobile/models/post_model.dart';
 import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:flutter/material.dart';
 

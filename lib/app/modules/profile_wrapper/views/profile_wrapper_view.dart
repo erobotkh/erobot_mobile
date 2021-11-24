@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/app/data/widgets/er_loading.dart';
+import 'package:erobot_mobile/widgets/er_loading.dart';
 import 'package:erobot_mobile/app/modules/login/views/login_view.dart';
 import 'package:erobot_mobile/app/modules/profile_detail/views/profile_detail_view.dart';
 import 'package:erobot_mobile/app/modules/profile_wrapper/controllers/profile_wrapper_controller.dart';
