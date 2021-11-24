@@ -1,5 +1,5 @@
-import 'package:erobot_mobile/app/data/models/image_model.dart';
-import 'package:erobot_mobile/app/data/models/user_model.dart';
+import 'package:erobot_mobile/models/image_model.dart';
+import 'package:erobot_mobile/models/user_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'post_model.g.dart';

@@ -1,5 +1,5 @@
-import 'package:erobot_mobile/app/data/models/post_list_model.dart';
-import 'package:erobot_mobile/app/data/models/post_model.dart';
+import 'package:erobot_mobile/models/post_list_model.dart';
+import 'package:erobot_mobile/models/post_model.dart';
 import 'package:erobot_mobile/services/base_apis/base_resource_owner_api.dart';
 
 class PostApi extends BaseResourceOwnerApi<PostModel> {

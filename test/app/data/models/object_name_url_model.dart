@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/app/data/models/base/object_name_url_model.dart';
+import 'package:erobot_mobile/models/base/object_name_url_model.dart';
 import 'package:erobot_mobile/constants/api_constant.dart';
 import 'package:flutter_test/flutter_test.dart';
 

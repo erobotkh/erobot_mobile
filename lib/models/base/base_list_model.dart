@@ -1,5 +1,5 @@
-import 'package:erobot_mobile/app/data/models/base/links_model.dart';
-import 'package:erobot_mobile/app/data/models/base/meta_model.dart';
+import 'package:erobot_mobile/models/base/links_model.dart';
+import 'package:erobot_mobile/models/base/meta_model.dart';
 
 abstract class BaseListModel<T> {
   List<T>? items;

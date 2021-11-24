@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:erobot_mobile/app/data/models/user_token_model.dart';
+import 'package:erobot_mobile/models/user_token_model.dart';
 import 'package:erobot_mobile/constants/api_constant.dart';
 import 'package:erobot_mobile/services/base_apis/networks/base_network.dart';
 import 'package:erobot_mobile/services/storages/user_token_storage.dart';

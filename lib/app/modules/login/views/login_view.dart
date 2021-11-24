@@ -1,8 +1,8 @@
-import 'package:erobot_mobile/app/data/mixins/toast.dart';
-import 'package:erobot_mobile/app/data/widgets/er_email_field.dart';
-import 'package:erobot_mobile/app/data/widgets/er_main_action_button.dart';
-import 'package:erobot_mobile/app/data/widgets/er_password_field.dart';
-import 'package:erobot_mobile/app/data/widgets/er_tap_effect.dart';
+import 'package:erobot_mobile/mixins/toast.dart';
+import 'package:erobot_mobile/widgets/er_email_field.dart';
+import 'package:erobot_mobile/widgets/er_main_action_button.dart';
+import 'package:erobot_mobile/widgets/er_password_field.dart';
+import 'package:erobot_mobile/widgets/er_tap_effect.dart';
 import 'package:erobot_mobile/app/modules/login/local_widgets/auth_header.dart';
 import 'package:erobot_mobile/app/modules/profile_wrapper/controllers/profile_wrapper_controller.dart';
 import 'package:erobot_mobile/constants/config_constant.dart';

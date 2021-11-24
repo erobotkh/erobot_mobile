@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/app/data/widgets/er_loading.dart';
+import 'package:erobot_mobile/widgets/er_loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

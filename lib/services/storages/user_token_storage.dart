@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/app/data/models/user_token_model.dart';
+import 'package:erobot_mobile/models/user_token_model.dart';
 import 'package:erobot_mobile/services/base_storages/map_preference_storage.dart';
 
 class UserTokenStorage extends MapPreferenceStorage<String, dynamic> {
