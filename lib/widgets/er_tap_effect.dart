@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
-enum ERTapEffectType {
+enum ErTapEffectType {
   touchableOpacity,
   scaleDown,
 }
 
-class ERTapEffect extends HookWidget {
-  ERTapEffect({
+class ErTapEffect extends StatefulWidget {
+  ErTapEffect({
     Key? key,
     required this.child,
     required this.onTap,
@@ -15,60 +14,70 @@ class ERTapEffect extends HookWidget {
     this.vibrate = false,
     this.behavior,
     this.effects = const [
-      ERTapEffectType.touchableOpacity,
+      ErTapEffectType.touchableOpacity,
     ],
   }) : super(key: key);
 
   final Widget child;
-  final List<ERTapEffectType> effects;
+  final List<ErTapEffectType> effects;
   final void Function()? onTap;
   final Duration duration;
   final bool vibrate;
   final HitTestBehavior? behavior;
 
+  @override
+  State<ErTapEffect> createState() => _ErTapEffectState();
+}
+
+class _ErTapEffectState extends State<ErTapEffect> with SingleTickerProviderStateMixin {
   final double scaleActive = 0.98;
   final double opacityActive = 0.2;
 
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    controller = AnimationController(vsync: this, duration: widget.duration);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final controller = useAnimationController(duration: duration);
-
     final animation = Tween<double>(begin: 1, end: scaleActive).animate(controller);
     final animation2 = Tween<double>(begin: 1, end: opacityActive).animate(controller);
 
     void onTapCancel() => controller.reverse();
     void onTapDown() => controller.forward();
-    void onTapUp() => controller.reverse().then((value) => onTap!());
+    void onTapUp() => controller.reverse().then((value) => widget.onTap!());
 
-    if (onTap != null) {
+    if (widget.onTap != null) {
       return GestureDetector(
-        behavior: behavior,
+        behavior: widget.behavior,
         onTapDown: (detail) => onTapDown(),
         onTapUp: (detail) => onTapUp(),
         onTapCancel: () => onTapCancel(),
-        child: buildChild(controller, animation, animation2),
+        child: buildChild(animation, animation2),
       );
     } else {
-      return buildChild(controller, animation, animation2);
+      return buildChild(animation, animation2);
     }
   }
 
   AnimatedBuilder buildChild(
-    AnimationController controller,
     Animation<double> animation,
     Animation<double> animation2,
   ) {
     return AnimatedBuilder(
-      child: child,
+      child: widget.child,
       animation: controller,
       builder: (context, child) {
         Widget result = child ?? const SizedBox();
-        for (var effect in effects) {
+        for (var effect in widget.effects) {
           switch (effect) {
-            case ERTapEffectType.scaleDown:
+            case ErTapEffectType.scaleDown:
               result = ScaleTransition(scale: animation, child: result);
               break;
-            case ERTapEffectType.touchableOpacity:
+            case ErTapEffectType.touchableOpacity:
               result = Opacity(opacity: animation2.value, child: result);
               break;
           }

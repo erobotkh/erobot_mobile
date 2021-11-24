@@ -1,4 +1,4 @@
-import 'package:erobot/config/config_constant.dart';
+import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:flutter/material.dart';
 
 class ERLoading extends StatelessWidget {

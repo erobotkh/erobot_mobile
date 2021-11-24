@@ -1,57 +1,104 @@
-import 'package:erobot/widgets/er_tap_effect.dart';
+import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:flutter/material.dart';
 
-class ERTextField extends StatelessWidget {
-  const ERTextField({
+class ErTextField extends StatefulWidget {
+  const ErTextField({
     Key? key,
     this.controller,
-    this.password = false,
-    this.hidePassword = true,
-    this.keyboardType,
+    this.value,
     this.labelText,
-    this.hintLabel,
-    this.onHidePassword,
-    this.onChange,
+    this.hintText,
+    this.maxLines,
+    this.minLines,
+    this.prefix,
+    this.suffix,
+    this.fillColor,
+    this.onChanged,
     this.onSubmitted,
+    this.obscureText = false,
+    this.autocorrect = true,
+    this.keyboardType,
+    this.textInputAction,
+    this.borderSide,
+    this.onTap,
+    this.hintColor,
   }) : super(key: key);
 
+  final BorderSide? borderSide;
   final TextEditingController? controller;
-  final bool password;
-  final bool hidePassword;
-  final TextInputType? keyboardType;
+  final String? value;
   final String? labelText;
-  final String? hintLabel;
-  final void Function()? onHidePassword;
-  final void Function(String)? onChange;
-  final void Function(String)? onSubmitted;
+  final String? hintText;
+  final int? maxLines;
+  final int? minLines;
+  final Widget? suffix;
+  final Widget? prefix;
+  final Color? fillColor;
+  final Color? hintColor;
+  final bool obscureText;
+  final void Function(String value)? onChanged;
+  final void Function(String value)? onSubmitted;
+  final bool autocorrect;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final void Function()? onTap;
+
+  @override
+  _ErTextFieldState createState() => _ErTextFieldState();
+}
+
+class _ErTextFieldState extends State<ErTextField> {
+  late TextEditingController controller;
+  late bool readOnly;
+
+  @override
+  void initState() {
+    controller = widget.controller ?? TextEditingController(text: widget.value ?? "");
+    readOnly = widget.onTap != null;
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    if (widget.controller != null) controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    InputDecoration inputDecoration = InputDecoration(
-      hintStyle: Theme.of(context).textTheme.bodyText1,
-      labelText: labelText,
-      labelStyle: Theme.of(context).textTheme.caption,
-      suffixIcon: password ? buildSuffixIcon(context) : null,
-    );
-
+    final colorScheme = Theme.of(context).colorScheme;
     return TextField(
-      controller: controller,
-      obscureText: password && hidePassword,
-      keyboardType: TextInputType.text,
-      decoration: inputDecoration,
-      onChanged: onChange,
-      onSubmitted: onSubmitted,
+      keyboardAppearance: colorScheme.brightness,
+      keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
+      controller: widget.controller ?? controller,
+      onChanged: widget.onChanged,
+      onSubmitted: widget.onSubmitted,
+      autocorrect: widget.autocorrect,
+      obscureText: widget.obscureText,
+      decoration: buildInputDecoration(colorScheme),
+      maxLines: widget.maxLines,
+      minLines: widget.minLines,
+      onTap: widget.onTap,
+      readOnly: readOnly,
     );
   }
 
-  Widget buildSuffixIcon(BuildContext context) {
-    return ERTapEffect(
-      child: Icon(
-        hidePassword ? Icons.visibility_off_rounded : Icons.visibility,
-        color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.5),
-        size: 20,
+  InputDecoration buildInputDecoration(ColorScheme colorScheme) {
+    return InputDecoration(
+      labelText: widget.labelText,
+      hintText: widget.hintText,
+      fillColor: widget.fillColor ?? colorScheme.background,
+      filled: true,
+      hintStyle: TextStyle(color: widget.hintColor),
+      labelStyle: Theme.of(context).textTheme.bodyText2,
+      border: UnderlineInputBorder(
+        borderRadius: ConfigConstant.circlarRadiusTop1,
+        borderSide: widget.borderSide ?? BorderSide(color: colorScheme.primary),
       ),
-      onTap: onHidePassword ?? () {},
+      contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      suffixIcon: widget.suffix,
+      prefix: widget.prefix,
     );
   }
 }

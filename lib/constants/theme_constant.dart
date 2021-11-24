@@ -1,0 +1,178 @@
+import 'package:flutter/material.dart';
+
+class ThemeConstant {
+  static const List<String> fontFamilyFallback = [
+    'OpenSans',
+  ];
+
+  static const Gradient greenGradient = LinearGradient(
+    colors: [
+      Color(0xFF4CAF50),
+      Color(0xFF388E3C),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const Gradient orangeGradient = LinearGradient(
+    colors: [
+      Color(0xFFFF9800),
+      Color(0xFFF57C00),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const Gradient blueGradient = LinearGradient(
+    colors: [
+      Color(0xFF2196F3),
+      Color(0xFF1976D2),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const Gradient redGradient = LinearGradient(
+    colors: [
+      Color(0xFFF44336),
+      Color(0xFFD32F2F),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const Gradient purpleGradient = LinearGradient(
+    colors: [
+      Color(0xFF9C27B0),
+      Color(0xFF7B1FA2),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const Gradient greyGradient = LinearGradient(
+    colors: [
+      Color(0xFF607D8B),
+      Color(0xFF455A64),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const ColorScheme darkScheme = ColorScheme(
+    primary: Color(0xFFD30101),
+    primaryVariant: Color(0xFF990000),
+    secondary: Color(0xFF8B9299),
+    secondaryVariant: Color(0xFFBFBFBF),
+    background: Color(0xFF161F28),
+    surface: Color(0xFF172634),
+    error: Color(0xFFB00020),
+    onPrimary: Color(0xFFFFFFFF),
+    onSecondary: Color(0xFFFFFFFF),
+    onBackground: Color(0xFFFFFFFF),
+    onSurface: Color(0xFFFFFFFF),
+    onError: Color(0xFFFFFFFF),
+    brightness: Brightness.light,
+  );
+
+  static const ColorScheme lightScheme = ColorScheme(
+    primary: Color(0xFFD30101),
+    primaryVariant: Color(0xFF990000),
+    secondary: Color(0xFF8B9299),
+    secondaryVariant: Color(0xFFBFBFBF),
+    background: Color(0xFF161F28),
+    surface: Color(0xFF172634),
+    error: Color(0xFFB00020),
+    onPrimary: Color(0xFFFFFFFF),
+    onSecondary: Color(0xFFFFFFFF),
+    onBackground: Color(0xFFFFFFFF),
+    onSurface: Color(0xFFFFFFFF),
+    onError: Color(0xFFFFFFFF),
+    brightness: Brightness.light,
+  );
+
+  static TextTheme get textTheme {
+    return TextTheme(
+      headline1: TextStyle(
+        fontSize: 95,
+        fontWeight: FontWeight.w300,
+        letterSpacing: -1.5,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      headline2: TextStyle(
+        fontSize: 59,
+        fontWeight: FontWeight.w300,
+        letterSpacing: -0.5,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      headline3: TextStyle(
+        fontSize: 48,
+        fontWeight: FontWeight.w400,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      headline4: TextStyle(
+        fontSize: 34,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.25,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      headline5: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w400,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      headline6: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.15,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      subtitle1: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.15,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      subtitle2: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.1,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      bodyText1: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.5,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      bodyText2: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.25,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      button: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 1.25,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      caption: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.4,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+      overline: TextStyle(
+        fontSize: 10,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 1.5,
+        fontFamilyFallback: fontFamilyFallback,
+      ),
+    ).apply(
+      displayColor: lightScheme.onSurface,
+      bodyColor: lightScheme.onSurface,
+      decorationColor: lightScheme.onSurface,
+    );
+  }
+}
