@@ -1,5 +1,4 @@
 import 'package:erobot/constant/theme_constant.dart';
-import 'package:erobot/models/remoter_button_model.dart';
 import 'package:erobot/screens/home/bluetooth_screen/local_widgets/er_alert_dailog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +11,32 @@ class SettingIRRomoterDetailScreen extends StatefulWidget {
 }
 
 class _SettingIRRomoterDetailScreenState extends State<SettingIRRomoterDetailScreen> {
+  List<String> name = [
+    "CH-",
+    "CH",
+    "CH+",
+    "PREV",
+    "NEXT",
+    "PLAY/PUSH",
+    "VOL-",
+    "VOL+",
+    "HQ",
+    "0",
+    "1OO+",
+    "2OO+",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ];
+
   @override
   Widget build(BuildContext context) {
-    List<RemotterButtonModel> remoteButtonList = RemotterButtonModel.getButtonList(context);
-
     return Scaffold(
       backgroundColor: ThemeConstant.lightScheme.background,
       appBar: AppBar(
@@ -48,7 +69,7 @@ class _SettingIRRomoterDetailScreenState extends State<SettingIRRomoterDetailScr
                   padding: EdgeInsets.only(left: 10),
                   child: Column(
                     children: List.generate(
-                      remoteButtonList.length,
+                      name.length,
                       (index) => Column(
                         children: [
                           Container(
@@ -66,7 +87,7 @@ class _SettingIRRomoterDetailScreenState extends State<SettingIRRomoterDetailScr
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "${remoteButtonList[index].label}",
+                                      "${name[index]}",
                                       style: ThemeConstant.textTheme.bodyText1?.copyWith(
                                         color: ThemeConstant.lightScheme.onPrimary,
                                       ),
