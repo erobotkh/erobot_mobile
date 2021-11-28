@@ -1,6 +1,7 @@
 import 'package:erobot_mobile/widgets/er_loading.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart' as t;
 import 'package:get/get.dart';
 
 mixin Toast {
@@ -39,4 +40,33 @@ mixin Toast {
     String? subtitle,
     Function? onClose,
   }) {}
+
+  Future<T?>? showSnackbar<T>({
+    required String title,
+    required String message,
+    bool showProgressIndicator = false,
+  }) {
+    if (Get.isSnackbarOpen == true) Get.back();
+    return Get.showSnackbar<T>(GetBar(
+      title: title.trim().isNotEmpty ? title : 'Title',
+      message: message.trim().isNotEmpty ? message : 'Message',
+      showProgressIndicator: showProgressIndicator,
+    ));
+  }
+
+  void closeSnackbar() {
+    if (Get.isSnackbarOpen == true) Get.back();
+  }
+
+  void showToast(String message) {
+    t.Fluttertoast.showToast(
+      msg: message,
+      toastLength: message.length < 50 ? t.Toast.LENGTH_SHORT : t.Toast.LENGTH_LONG,
+      gravity: t.ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
 }

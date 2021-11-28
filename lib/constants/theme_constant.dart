@@ -59,6 +59,14 @@ class ThemeConstant {
     end: Alignment.bottomRight,
   );
 
+  static const List<Gradient> gradients = [
+    greenGradient,
+    blueGradient,
+    redGradient,
+    purpleGradient,
+    greyGradient,
+  ];
+
   static const ColorScheme darkScheme = ColorScheme(
     primary: Color(0xFFD30101),
     primaryVariant: Color(0xFF990000),

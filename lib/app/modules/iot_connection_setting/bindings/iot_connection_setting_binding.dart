@@ -1,13 +1,13 @@
 import 'package:erobot_mobile/app/modules/iot_connection_setting/controllers/iot_controller.dart';
 import 'package:get/get.dart';
 
-import '../controllers/sender_controller.dart';
+import '../controllers/iot_connection_setting_controller.dart';
 
-class SenderBinding extends Bindings {
+class IotConnectionSettingBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<SenderController>(
-      () => SenderController(),
+    Get.lazyPut<IotConnectionSettingController>(
+      () => IotConnectionSettingController(),
     );
     Get.lazyPut<IotController>(
       () => IotController(),

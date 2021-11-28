@@ -1,3 +1,4 @@
+import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:erobot_mobile/constants/theme_constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class ThemeConfig {
       scaffoldBackgroundColor: scheme.background,
       colorScheme: scheme,
       dividerColor: scheme.onBackground.withOpacity(0.25),
+      splashColor: Colors.transparent,
       appBarTheme: AppBarTheme(
         backgroundColor: scheme.surface,
         centerTitle: false,
@@ -22,6 +24,7 @@ class ThemeConfig {
         titleTextStyle: ThemeConstant.textTheme.headline6?.copyWith(color: scheme.onPrimary),
         foregroundColor: scheme.onPrimary,
       ),
+      iconTheme: IconThemeData(color: scheme.onBackground),
       // splashFactory:
       // InkRipple.splashFactory, //
       // InkSplash.splashFactory,
@@ -36,6 +39,31 @@ class ThemeConfig {
           backgroundColor: scheme.primary,
           onSurface: scheme.onSurface,
           primary: scheme.onPrimary,
+        ),
+      ),
+      progressIndicatorTheme: ProgressIndicatorThemeData(color: scheme.onPrimary),
+      dialogTheme: DialogTheme(
+        backgroundColor: scheme.background,
+        titleTextStyle: TextStyle(color: scheme.onBackground),
+        contentTextStyle: TextStyle(color: scheme.onBackground),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        labelStyle: TextStyle(color: scheme.onBackground.withOpacity(0.5)),
+        helperStyle: TextStyle(color: scheme.onBackground.withOpacity(0.5)),
+        hintStyle: TextStyle(color: scheme.onBackground.withOpacity(0.5)),
+        border: UnderlineInputBorder(
+          borderRadius: ConfigConstant.circlarRadiusTop1,
+          borderSide: BorderSide(
+            color: scheme.onBackground,
+            width: 2,
+          ),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderRadius: ConfigConstant.circlarRadiusTop1,
+          borderSide: BorderSide(
+            color: scheme.primary,
+            width: 2,
+          ),
         ),
       ),
       cupertinoOverrideTheme: CupertinoThemeData(
