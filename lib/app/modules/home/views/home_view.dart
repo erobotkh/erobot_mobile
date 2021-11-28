@@ -1,3 +1,4 @@
+import 'package:erobot_mobile/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,6 +12,14 @@ class HomeView extends GetView<HomeController> {
       appBar: AppBar(
         title: Text('HomeView'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.bluetooth),
+            onPressed: () {
+              Get.toNamed(Routes.SENDER);
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Text(

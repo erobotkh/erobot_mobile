@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:erobot_mobile/app/modules/ball_shooter/bindings/ball_shooter_binding.dart';
 import 'package:erobot_mobile/app/modules/ball_shooter/views/ball_shooter_view.dart';
+import 'package:erobot_mobile/app/modules/bluetooth_list/bindings/bluetooth_list_binding.dart';
+import 'package:erobot_mobile/app/modules/bluetooth_list/views/bluetooth_list_view.dart';
 import 'package:erobot_mobile/app/modules/education/bindings/education_binding.dart';
 import 'package:erobot_mobile/app/modules/education/views/education_view.dart';
 import 'package:erobot_mobile/app/modules/home/bindings/home_binding.dart';
@@ -113,6 +115,11 @@ class AppPages {
       name: _Paths.PROFILE_DETAIL,
       page: () => ProfileDetailView(),
       binding: ProfileDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.BLUETOOTH_LIST,
+      page: () => BluetoothListView(),
+      binding: BluetoothListBinding(),
     ),
   ];
 }

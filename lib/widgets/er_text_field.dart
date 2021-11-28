@@ -22,6 +22,7 @@ class ErTextField extends StatefulWidget {
     this.borderSide,
     this.onTap,
     this.hintColor,
+    this.margin,
   }) : super(key: key);
 
   final BorderSide? borderSide;
@@ -42,6 +43,7 @@ class ErTextField extends StatefulWidget {
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
   final void Function()? onTap;
+  final EdgeInsets? margin;
 
   @override
   _ErTextFieldState createState() => _ErTextFieldState();
@@ -67,20 +69,23 @@ class _ErTextFieldState extends State<ErTextField> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    return TextField(
-      keyboardAppearance: colorScheme.brightness,
-      keyboardType: widget.keyboardType,
-      textInputAction: widget.textInputAction,
-      controller: widget.controller ?? controller,
-      onChanged: widget.onChanged,
-      onSubmitted: widget.onSubmitted,
-      autocorrect: widget.autocorrect,
-      obscureText: widget.obscureText,
-      decoration: buildInputDecoration(colorScheme),
-      maxLines: widget.maxLines,
-      minLines: widget.minLines,
-      onTap: widget.onTap,
-      readOnly: readOnly,
+    return Container(
+      margin: widget.margin ?? const EdgeInsets.only(bottom: ConfigConstant.margin0),
+      child: TextField(
+        keyboardAppearance: colorScheme.brightness,
+        keyboardType: widget.keyboardType,
+        textInputAction: widget.textInputAction,
+        controller: widget.controller ?? controller,
+        onChanged: widget.onChanged,
+        onSubmitted: widget.onSubmitted,
+        autocorrect: widget.autocorrect,
+        obscureText: widget.obscureText,
+        decoration: buildInputDecoration(colorScheme),
+        maxLines: widget.maxLines,
+        minLines: widget.minLines,
+        onTap: widget.onTap,
+        readOnly: readOnly,
+      ),
     );
   }
 
@@ -96,7 +101,7 @@ class _ErTextFieldState extends State<ErTextField> {
         borderRadius: ConfigConstant.circlarRadiusTop1,
         borderSide: widget.borderSide ?? BorderSide(color: colorScheme.primary),
       ),
-      contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 8.0),
       suffixIcon: widget.suffix,
       prefix: widget.prefix,
     );

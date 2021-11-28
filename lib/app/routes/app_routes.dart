@@ -19,6 +19,7 @@ abstract class Routes {
   static const SEARCH = _Paths.SEARCH;
   static const SEARCH_RESULT = _Paths.SEARCH_RESULT;
   static const PROFILE_DETAIL = _Paths.PROFILE_DETAIL;
+  static const BLUETOOTH_LIST = _Paths.BLUETOOTH_LIST;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const SEARCH = '/search';
   static const SEARCH_RESULT = '/search-result';
   static const PROFILE_DETAIL = '/profile-detail';
+  static const BLUETOOTH_LIST = '/bluetooth-list';
 }
