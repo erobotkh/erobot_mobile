@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/app/modules/wrapper/controllers/iot_controller.dart';
+import 'package:erobot_mobile/app/modules/iot_connection_setting/controllers/iot_controller.dart';
 import 'package:get/get.dart';
 import '../controllers/wrapper_controller.dart';
 

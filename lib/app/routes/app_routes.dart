@@ -20,6 +20,7 @@ abstract class Routes {
   static const SEARCH_RESULT = _Paths.SEARCH_RESULT;
   static const PROFILE_DETAIL = _Paths.PROFILE_DETAIL;
   static const BLUETOOTH_LIST = _Paths.BLUETOOTH_LIST;
+  static const IOT_CONNECTION_SETTING = _Paths.IOT_CONNECTION_SETTING;
 }
 
 abstract class _Paths {
@@ -39,4 +40,5 @@ abstract class _Paths {
   static const SEARCH_RESULT = '/search-result';
   static const PROFILE_DETAIL = '/profile-detail';
   static const BLUETOOTH_LIST = '/bluetooth-list';
+  static const IOT_CONNECTION_SETTING = '/iot-connection-setting';
 }

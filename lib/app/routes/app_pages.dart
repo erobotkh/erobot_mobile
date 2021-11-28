@@ -8,6 +8,8 @@ import 'package:erobot_mobile/app/modules/education/bindings/education_binding.d
 import 'package:erobot_mobile/app/modules/education/views/education_view.dart';
 import 'package:erobot_mobile/app/modules/home/bindings/home_binding.dart';
 import 'package:erobot_mobile/app/modules/home/views/home_view.dart';
+import 'package:erobot_mobile/app/modules/iot_connection_setting/bindings/iot_connection_setting_binding.dart';
+import 'package:erobot_mobile/app/modules/iot_connection_setting/views/iot_connection_setting_view.dart';
 import 'package:erobot_mobile/app/modules/ir_remoter/bindings/ir_remoter_binding.dart';
 import 'package:erobot_mobile/app/modules/ir_remoter/views/ir_remoter_view.dart';
 import 'package:erobot_mobile/app/modules/login/bindings/login_binding.dart';
@@ -120,6 +122,11 @@ class AppPages {
       name: _Paths.BLUETOOTH_LIST,
       page: () => BluetoothListView(),
       binding: BluetoothListBinding(),
+    ),
+    GetPage(
+      name: _Paths.IOT_CONNECTION_SETTING,
+      page: () => IotConnectionSettingView(),
+      binding: IotConnectionSettingBinding(),
     ),
   ];
 }

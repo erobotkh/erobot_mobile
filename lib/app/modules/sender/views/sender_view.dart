@@ -1,5 +1,5 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:erobot_mobile/app/modules/wrapper/controllers/iot_controller.dart';
+import 'package:erobot_mobile/app/modules/iot_connection_setting/controllers/iot_controller.dart';
 import 'package:erobot_mobile/app/routes/app_pages.dart';
 import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:erobot_mobile/constants/theme_constant.dart';
@@ -45,10 +45,11 @@ class SenderView extends GetView<SenderController> with Toast {
     controller.sentMessages.clear();
     for (int i = 0; i < controller.messages.length; i++) {
       if (controller.stopSendingMessage) break;
-      sendAMessage(i);
+      await sendAMessage(i);
     }
 
     closeSnackbar();
+    controller.stopSendingMessage = true;
     controller.sentMessages.clear();
   }
 
@@ -89,7 +90,7 @@ class SenderView extends GetView<SenderController> with Toast {
         IconButton(
           icon: Icon(Icons.settings),
           onPressed: () async {
-            Get.toNamed(Routes.BLUETOOTH_LIST)?.then((value) async {
+            Get.toNamed(Routes.IOT_CONNECTION_SETTING)?.then((value) async {
               if (value is BaseIotService) {
                 iot.setService(value);
               }

@@ -26,7 +26,7 @@ class BluetoothListView extends GetView<BluetoothListController> {
                 BluetoothConnection connection = await BluetoothConnection.toAddress(result.device.address);
                 BluetoothIosService service = BluetoothIosService();
                 service.connection = connection;
-                Navigator.of(context).pop(service);
+                Get.back(result: service);
               },
               onLongPress: () async {
                 controller.toggleBonded(
