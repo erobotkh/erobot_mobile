@@ -20,6 +20,7 @@ dependencies:
   fluttertoast: 8.0.8
   url_launcher: 6.0.17
   font_awesome_flutter: 9.2.0
+  sleek_circular_slider: 2.0.1
   flutter: 
     sdk: flutter
 
