@@ -18,6 +18,8 @@ dependencies:
   flutter_swipe_action_cell: 2.1.4
   flutter_countdown_timer: 4.1.0
   fluttertoast: 8.0.8
+  url_launcher: 6.0.17
+  font_awesome_flutter: 9.2.0
   flutter: 
     sdk: flutter
 
