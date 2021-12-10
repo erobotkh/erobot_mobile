@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/configs/config_constant.dart';
+import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 

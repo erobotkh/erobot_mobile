@@ -1,18 +1,14 @@
-import 'package:erobot_mobile/configs/config_constant.dart';
+import 'package:erobot_mobile/app/modules/joystick/controllers/joystick_controller.dart';
+import 'package:erobot_mobile/app/modules/joystick/widgets/widgets.dart';
+import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:get/get.dart';
 
-import '../controllers/ball_shooter_controller.dart';
-
-import '../widgets/widgets.dart';
-
-class BallShooterView extends GetView<BallShooterController> {
+class JoystickView extends GetView<JoystickController> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       floatingActionButton: FloatingActionButton(
@@ -39,7 +35,7 @@ class BallShooterView extends GetView<BallShooterController> {
             ]);
           },
         ),
-        title: 'Ball Shooter',
+        title: 'Joystick',
         action: [
           IconButton(
             icon: Icon(
@@ -83,10 +79,8 @@ class BallShooterView extends GetView<BallShooterController> {
                       Expanded(
                         child: SliderTheme(
                           data: SliderTheme.of(context).copyWith(
-                            activeTrackColor:
-                                Theme.of(context).colorScheme.primaryVariant,
-                            inactiveTrackColor:
-                                Theme.of(context).colorScheme.secondary,
+                            activeTrackColor: Theme.of(context).colorScheme.primaryVariant,
+                            inactiveTrackColor: Theme.of(context).colorScheme.secondary,
                             thumbColor: Theme.of(context).colorScheme.primary,
                             trackShape: RectangularSliderTrackShape(),
                             trackHeight: 2,

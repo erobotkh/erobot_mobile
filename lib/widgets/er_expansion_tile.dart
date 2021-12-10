@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/configs/config_constant.dart';
+import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:erobot_mobile/widgets/er_tap_effect.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
