@@ -1,6 +1,6 @@
 import 'package:erobot_mobile/app/modules/home/controllers/home_controller.dart';
 import 'package:erobot_mobile/app/routes/app_pages.dart';
-import 'package:erobot_mobile/configs/config_constant.dart';
+import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:erobot_mobile/models/home_card_model.dart';
 import 'package:erobot_mobile/widgets/er_tap_effect.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +12,11 @@ import 'package:get/get.dart';
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    List<HomeCardModel> _homeCard = HomeCardModel.getCards();
+    List<HomeCardModel> _homeCard = HomeCardModel.card();
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        brightness: Brightness.dark,
         backgroundColor: Theme.of(context).colorScheme.surface,
         centerTitle: false,
         title: Text('Erobot'),

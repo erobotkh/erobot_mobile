@@ -1,4 +1,4 @@
-import 'package:erobot_mobile/configs/config_constant.dart';
+import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -11,8 +11,7 @@ import '../widgets/widgets.dart';
 class BallShooterView extends GetView<BallShooterController> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       floatingActionButton: FloatingActionButton(
@@ -83,10 +82,8 @@ class BallShooterView extends GetView<BallShooterController> {
                       Expanded(
                         child: SliderTheme(
                           data: SliderTheme.of(context).copyWith(
-                            activeTrackColor:
-                                Theme.of(context).colorScheme.primaryVariant,
-                            inactiveTrackColor:
-                                Theme.of(context).colorScheme.secondary,
+                            activeTrackColor: Theme.of(context).colorScheme.primaryVariant,
+                            inactiveTrackColor: Theme.of(context).colorScheme.secondary,
                             thumbColor: Theme.of(context).colorScheme.primary,
                             trackShape: RectangularSliderTrackShape(),
                             trackHeight: 2,
