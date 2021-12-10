@@ -34,7 +34,7 @@ class HomeCardModel {
         subTitle: 'Servo, Speed, Shoot',
         icon: Icons.gps_fixed,
         background: ThemeConstant.redGradient,
-        route: Routes.BALL_SHOOTER,
+        route: Routes.JOYSTICK,
       ),
       HomeCardModel(
         title: 'IR Remoter',
@@ -49,7 +49,7 @@ class HomeCardModel {
         subTitle: 'Servo & Speed',
         icon: Icons.gamepad,
         background: ThemeConstant.blueGradient,
-        route: Routes.IR_REMOTER,
+        route: Routes.THUMBSTICK,
       ),
       HomeCardModel(
         title: 'Erobot’s Member',

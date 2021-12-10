@@ -1,7 +1,4 @@
 import 'package:get/get.dart';
-
-import 'package:erobot_mobile/app/modules/ball_shooter/bindings/ball_shooter_binding.dart';
-import 'package:erobot_mobile/app/modules/ball_shooter/views/ball_shooter_view.dart';
 import 'package:erobot_mobile/app/modules/bluetooth_list/bindings/bluetooth_list_binding.dart';
 import 'package:erobot_mobile/app/modules/bluetooth_list/views/bluetooth_list_view.dart';
 import 'package:erobot_mobile/app/modules/education/bindings/education_binding.dart';
@@ -12,6 +9,8 @@ import 'package:erobot_mobile/app/modules/iot_connection_setting/bindings/iot_co
 import 'package:erobot_mobile/app/modules/iot_connection_setting/views/iot_connection_setting_view.dart';
 import 'package:erobot_mobile/app/modules/ir_remoter/bindings/ir_remoter_binding.dart';
 import 'package:erobot_mobile/app/modules/ir_remoter/views/ir_remoter_view.dart';
+import 'package:erobot_mobile/app/modules/joystick/bindings/joystick_binding.dart';
+import 'package:erobot_mobile/app/modules/joystick/views/joystick_view.dart';
 import 'package:erobot_mobile/app/modules/login/bindings/login_binding.dart';
 import 'package:erobot_mobile/app/modules/login/views/login_view.dart';
 import 'package:erobot_mobile/app/modules/member/bindings/member_binding.dart';
@@ -32,6 +31,8 @@ import 'package:erobot_mobile/app/modules/search_result/bindings/search_result_b
 import 'package:erobot_mobile/app/modules/search_result/views/search_result_view.dart';
 import 'package:erobot_mobile/app/modules/sender/bindings/sender_binding.dart';
 import 'package:erobot_mobile/app/modules/sender/views/sender_view.dart';
+import 'package:erobot_mobile/app/modules/thumbstick/bindings/thumbstick_binding.dart';
+import 'package:erobot_mobile/app/modules/thumbstick/views/thumbstick_view.dart';
 import 'package:erobot_mobile/app/modules/wrapper/bindings/wrapper_binding.dart';
 import 'package:erobot_mobile/app/modules/wrapper/views/wrapper_view.dart';
 
@@ -99,11 +100,6 @@ class AppPages {
       binding: IrRemoterBinding(),
     ),
     GetPage(
-      name: _Paths.BALL_SHOOTER,
-      page: () => BallShooterView(),
-      binding: BallShooterBinding(),
-    ),
-    GetPage(
       name: _Paths.SEARCH,
       page: () => SearchView(),
       binding: SearchBinding(),
@@ -127,6 +123,16 @@ class AppPages {
       name: _Paths.IOT_CONNECTION_SETTING,
       page: () => IotConnectionSettingView(),
       binding: IotConnectionSettingBinding(),
+    ),
+    GetPage(
+      name: _Paths.JOYSTICK,
+      page: () => JoystickView(),
+      binding: JoystickBinding(),
+    ),
+    GetPage(
+      name: _Paths.THUMBSTICK,
+      page: () => ThumbstickView(),
+      binding: ThumbstickBinding(),
     ),
   ];
 }
