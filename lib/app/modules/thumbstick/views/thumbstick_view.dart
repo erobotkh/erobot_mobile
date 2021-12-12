@@ -57,7 +57,7 @@ class ThumbstickView extends GetView<ThumbstickController> {
               Expanded(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     PadButtons(
                       onLeft: () => print('onLeft'),
@@ -65,6 +65,7 @@ class ThumbstickView extends GetView<ThumbstickController> {
                       onUp: () => print('onUp'),
                       onDown: () => print('onDown'),
                     ),
+                    const SizedBox(),
                     CircularSlider(
                       color: Colors.blue,
                       icon: Icons.flash_on,

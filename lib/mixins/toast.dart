@@ -62,11 +62,8 @@ mixin Toast {
     t.Fluttertoast.showToast(
       msg: message,
       toastLength: message.length < 50 ? t.Toast.LENGTH_SHORT : t.Toast.LENGTH_LONG,
-      gravity: t.ToastGravity.CENTER,
+      gravity: t.ToastGravity.BOTTOM,
       timeInSecForIosWeb: 1,
-      backgroundColor: Colors.red,
-      textColor: Colors.white,
-      fontSize: 16.0,
     );
   }
 }
