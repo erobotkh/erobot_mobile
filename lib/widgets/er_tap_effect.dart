@@ -46,6 +46,12 @@ class _ErTapEffectState extends State<ErTapEffect> with SingleTickerProviderStat
     super.initState();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
+  }
+
   void onTapDown() {
     controller.forward();
     if (widget.onTapDown != null) {
@@ -70,6 +76,7 @@ class _ErTapEffectState extends State<ErTapEffect> with SingleTickerProviderStat
     if (widget.onTap != null) {
       assert(widget.onTapDown == null && widget.onTapUp == null);
     }
+
     if (widget.onTapDown != null || widget.onTapUp != null) {
       assert(widget.onTap == null);
       assert(widget.onTapDown != null);
@@ -79,6 +86,7 @@ class _ErTapEffectState extends State<ErTapEffect> with SingleTickerProviderStat
     if (widget.onTap != null || widget.onTapUp != null) {
       return GestureDetector(
         behavior: widget.behavior,
+        onTapCancel: () => controller.reverse(),
         onTapDown: (detail) => onTapDown(),
         onTapUp: (detail) => onTapUp(),
         child: buildChild(animation, animation2),
