@@ -61,7 +61,13 @@ class SenderView extends GetView<SenderController> with Toast {
 
   Future<void> sendAMessage(int index) async {
     SenderMessageModel e = controller.messages[index];
-    iot.write(e.message);
+    await iot.write(e.message).then((e) {
+      showSnackbar(
+        title: e.message ?? "",
+        message: e.message ?? "",
+        showProgressIndicator: true,
+      );
+    });
 
     controller.sentMessages.add(SentMessageModel(
       index: index,

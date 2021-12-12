@@ -9,7 +9,9 @@ class ErTapEffect extends StatefulWidget {
   ErTapEffect({
     Key? key,
     required this.child,
-    required this.onTap,
+    this.onTap,
+    this.onTapDown,
+    this.onTapUp,
     this.duration = const Duration(milliseconds: 100),
     this.vibrate = false,
     this.behavior,
@@ -25,13 +27,16 @@ class ErTapEffect extends StatefulWidget {
   final bool vibrate;
   final HitTestBehavior? behavior;
 
+  final void Function()? onTapUp;
+  final void Function()? onTapDown;
+
   @override
   State<ErTapEffect> createState() => _ErTapEffectState();
 }
 
 class _ErTapEffectState extends State<ErTapEffect> with SingleTickerProviderStateMixin {
-  final double scaleActive = 0.98;
-  final double opacityActive = 0.2;
+  static double scaleActive = 0.98;
+  static double opacityActive = 0.2;
 
   late AnimationController controller;
 
@@ -41,21 +46,41 @@ class _ErTapEffectState extends State<ErTapEffect> with SingleTickerProviderStat
     super.initState();
   }
 
+  void onTapDown() {
+    controller.forward();
+    if (widget.onTapDown != null) {
+      widget.onTapDown!();
+    }
+  }
+
+  void onTapUp() {
+    controller.reverse();
+    if (widget.onTap != null) {
+      widget.onTap!();
+    } else if (widget.onTapUp != null) {
+      widget.onTapUp!();
+    }
+  }
+
+  Animation<double> get animation => Tween<double>(begin: 1, end: scaleActive).animate(controller);
+  Animation<double> get animation2 => Tween<double>(begin: 1, end: opacityActive).animate(controller);
+
   @override
   Widget build(BuildContext context) {
-    final animation = Tween<double>(begin: 1, end: scaleActive).animate(controller);
-    final animation2 = Tween<double>(begin: 1, end: opacityActive).animate(controller);
-
-    void onTapCancel() => controller.reverse();
-    void onTapDown() => controller.forward();
-    void onTapUp() => controller.reverse().then((value) => widget.onTap!());
-
     if (widget.onTap != null) {
+      assert(widget.onTapDown == null && widget.onTapUp == null);
+    }
+    if (widget.onTapDown != null || widget.onTapUp != null) {
+      assert(widget.onTap == null);
+      assert(widget.onTapDown != null);
+      assert(widget.onTapUp != null);
+    }
+
+    if (widget.onTap != null || widget.onTapUp != null) {
       return GestureDetector(
         behavior: widget.behavior,
         onTapDown: (detail) => onTapDown(),
         onTapUp: (detail) => onTapUp(),
-        onTapCancel: () => onTapCancel(),
         child: buildChild(animation, animation2),
       );
     } else {
@@ -63,7 +88,7 @@ class _ErTapEffectState extends State<ErTapEffect> with SingleTickerProviderStat
     }
   }
 
-  AnimatedBuilder buildChild(
+  Widget buildChild(
     Animation<double> animation,
     Animation<double> animation2,
   ) {
