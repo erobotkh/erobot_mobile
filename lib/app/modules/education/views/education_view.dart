@@ -1,3 +1,4 @@
+import 'package:erobot_mobile/app/routes/app_pages.dart';
 import 'package:erobot_mobile/models/post_model.dart';
 import 'package:erobot_mobile/app/modules/education/local_widgets/education_card.dart';
 import 'package:erobot_mobile/constants/config_constant.dart';
@@ -45,6 +46,9 @@ class EducationView extends GetView<EducationController> {
           PostModel item = items[index];
           return EducationCard(
             info: item,
+            onPressedLearn: () {
+              Get.toNamed(Routes.POST_DETAIL);
+            },
           );
         },
       );

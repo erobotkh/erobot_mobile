@@ -25,6 +25,9 @@ dependencies:
   decorated_icon: 1.2.1
   flutter: 
     sdk: flutter
+  page_indicator: ^0.4.1
+  photo_view: ^0.13.0
+  flutter_markdown: ^0.6.9
 
 dev_dependencies: 
   flutter_lints: ^1.0.0

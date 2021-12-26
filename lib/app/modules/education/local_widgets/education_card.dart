@@ -6,9 +6,11 @@ class EducationCard extends StatelessWidget {
   const EducationCard({
     Key? key,
     required this.info,
+    this.onPressedLearn,
   }) : super(key: key);
 
   final PostModel info;
+  final void Function()? onPressedLearn;
 
   @override
   Widget build(BuildContext context) {
@@ -93,9 +95,7 @@ class EducationCard extends StatelessWidget {
                     'LEARN',
                     style: Theme.of(context).textTheme.button,
                   ),
-                  onPressed: () {
-                    print('learn');
-                  },
+                  onPressed: onPressedLearn,
                 ),
               ],
             ),
