@@ -23,6 +23,7 @@ abstract class Routes {
   static const IOT_CONNECTION_SETTING = _Paths.IOT_CONNECTION_SETTING;
   static const JOYSTICK = _Paths.JOYSTICK;
   static const THUMBSTICK = _Paths.THUMBSTICK;
+  static const COMMENT = _Paths.COMMENT;
 }
 
 abstract class _Paths {
@@ -45,4 +46,5 @@ abstract class _Paths {
   static const IOT_CONNECTION_SETTING = '/iot-connection-setting';
   static const JOYSTICK = '/joystick';
   static const THUMBSTICK = '/thumbstick';
+  static const COMMENT = '/comment';
 }

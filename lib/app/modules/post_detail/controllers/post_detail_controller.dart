@@ -1,3 +1,4 @@
+import 'package:erobot_mobile/app/modules/comment/views/comment_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,6 +8,7 @@ class PostDetailController extends GetxController {
   final count = 0.obs;
   late final PageController pageController;
   final isShow = true.obs;
+
   @override
   void onInit() {
     pageController = PageController();
@@ -305,5 +307,31 @@ print(details);
 | isEmpty | Returns the size of the list. |
 | isNotEmpty  | Returns the last element in the list. |
     ''';
+  }
+
+  void onTapBottomNav(int index) {
+    switch (index) {
+      case 0:
+        print('Like');
+        break;
+      case 1:
+        _showComment();
+        break;
+      case 2:
+        print('Share');
+        break;
+      case 3:
+        print('Save');
+        break;
+      default:
+        print('More');
+        break;
+    }
+  }
+
+  void _showComment() {
+    Get.bottomSheet(
+      CommentView(),
+    );
   }
 }
