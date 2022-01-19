@@ -22,6 +22,7 @@ class PostDetailView extends GetView<PostDetailController> {
         unselectedItemColor: Theme.of(context).colorScheme.onSurface,
         selectedItemColor: Theme.of(context).colorScheme.onSurface,
         backgroundColor: Theme.of(context).colorScheme.surface,
+        onTap: (index) => controller.onTapBottomNav(index),
         items: List.generate(controller.getListIcons().length, (index) {
           var icon = controller.getListIcons()[index];
           return BottomNavigationBarItem(

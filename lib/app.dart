@@ -13,7 +13,7 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       title: "Application",
       debugShowCheckedModeBanner: false,
-      initialRoute: AppPages.INITIAL,
+      initialRoute: Routes.POST_DETAIL,
       getPages: AppPages.routes,
       theme: ThemeConfig(false).themeData,
       builder: (context, child) {
