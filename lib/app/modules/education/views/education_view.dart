@@ -65,7 +65,9 @@ class EducationView extends GetView<EducationController> {
       actions: [
         IconButton(
           icon: Icon(Icons.search),
-          onPressed: () => print('search'),
+          onPressed: () {
+            Get.toNamed(Routes.SEARCH);
+          },
         ),
       ],
       bottom: PreferredSize(

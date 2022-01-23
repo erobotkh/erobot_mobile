@@ -4,46 +4,57 @@ import 'package:flutter/material.dart';
 class ErTextField extends StatefulWidget {
   const ErTextField({
     Key? key,
-    this.controller,
+    this.obscureText = false,
+    this.autocorrect = true,
+    this.maxLines,
+    this.minLines,
     this.value,
     this.labelText,
     this.hintText,
-    this.maxLines,
-    this.minLines,
-    this.prefix,
-    this.suffix,
     this.fillColor,
-    this.onChanged,
-    this.onSubmitted,
-    this.obscureText = false,
-    this.autocorrect = true,
-    this.keyboardType,
-    this.textInputAction,
-    this.borderSide,
-    this.onTap,
     this.hintColor,
     this.margin,
+    this.borderSide,
+    this.border,
+    this.focusedBorder,
+    this.keyboardType,
+    this.controller,
+    this.textInputAction,
+    this.suffix,
+    this.suffixIcon,
+    this.prefix,
+    this.prefixIcon,
+    this.onChanged,
+    this.onSubmitted,
+    this.onTap,
   }) : super(key: key);
 
-  final BorderSide? borderSide;
-  final TextEditingController? controller;
+  final bool obscureText;
+  final bool autocorrect;
+  final int? maxLines;
+  final int? minLines;
   final String? value;
   final String? labelText;
   final String? hintText;
-  final int? maxLines;
-  final int? minLines;
-  final Widget? suffix;
-  final Widget? prefix;
   final Color? fillColor;
   final Color? hintColor;
-  final bool obscureText;
+
+  final EdgeInsets? margin;
+  final BorderSide? borderSide;
+  final InputBorder? border;
+  final InputBorder? focusedBorder;
+  final TextInputType? keyboardType;
+  final TextEditingController? controller;
+  final TextInputAction? textInputAction;
+
+  final Widget? suffix;
+  final Widget? suffixIcon;
+  final Widget? prefix;
+  final Widget? prefixIcon;
+
   final void Function(String value)? onChanged;
   final void Function(String value)? onSubmitted;
-  final bool autocorrect;
-  final TextInputType? keyboardType;
-  final TextInputAction? textInputAction;
   final void Function()? onTap;
-  final EdgeInsets? margin;
 
   @override
   _ErTextFieldState createState() => _ErTextFieldState();
@@ -72,7 +83,6 @@ class _ErTextFieldState extends State<ErTextField> {
     return Container(
       margin: widget.margin ?? const EdgeInsets.only(bottom: ConfigConstant.margin0),
       child: TextField(
-        keyboardAppearance: colorScheme.brightness,
         keyboardType: widget.keyboardType,
         textInputAction: widget.textInputAction,
         controller: widget.controller ?? controller,
@@ -97,13 +107,17 @@ class _ErTextFieldState extends State<ErTextField> {
       filled: true,
       hintStyle: TextStyle(color: widget.hintColor),
       labelStyle: Theme.of(context).textTheme.bodyText2,
-      border: UnderlineInputBorder(
-        borderRadius: ConfigConstant.circlarRadiusTop1,
-        borderSide: widget.borderSide ?? BorderSide(color: colorScheme.primary),
-      ),
+      focusedBorder: widget.focusedBorder,
+      border: widget.border ??
+          UnderlineInputBorder(
+            borderRadius: ConfigConstant.circlarRadiusTop1,
+            borderSide: widget.borderSide ?? BorderSide(color: colorScheme.primary),
+          ),
       contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 8.0),
-      suffixIcon: widget.suffix,
+      suffix: widget.suffix,
+      suffixIcon: widget.suffixIcon,
       prefix: widget.prefix,
+      prefixIcon: widget.prefixIcon,
     );
   }
 }
