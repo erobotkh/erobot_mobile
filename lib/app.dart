@@ -13,12 +13,12 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       title: "Application",
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.POST_DETAIL,
+      initialRoute: Routes.WRAPPER,
       getPages: AppPages.routes,
       theme: ThemeConfig(false).themeData,
       builder: (context, child) {
         return GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
           child: child,
         );
       },
