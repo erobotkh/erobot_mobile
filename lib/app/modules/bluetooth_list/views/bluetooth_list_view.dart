@@ -1,6 +1,9 @@
 import 'package:erobot_mobile/app/modules/bluetooth_list/controllers/bluetooth_list_controller.dart';
 import 'package:erobot_mobile/app/modules/bluetooth_list/local_widgets/bluetooth_device_list_entry.dart';
+import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:erobot_mobile/services/iot/bluetooth_iot_service.dart';
+import 'package:erobot_mobile/widgets/er_back_button.dart';
+import 'package:erobot_mobile/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:get/get.dart';
@@ -10,32 +13,48 @@ class BluetoothListView extends GetView<BluetoothListController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: ErBackButton(),
         title: Text("Bluetooth List"),
         actions: [buildActionButton()],
       ),
       body: Obx(() {
-        return ListView.builder(
-          itemCount: controller.results.length,
-          itemBuilder: (BuildContext context, index) {
-            BluetoothDiscoveryResult result = controller.results[index];
-            BluetoothDevice device = result.device;
-            return BluetoothDeviceListEntry(
-              device: device,
-              rssi: result.rssi,
-              onTap: () async {
-                BluetoothConnection connection = await BluetoothConnection.toAddress(result.device.address);
-                BluetoothIosService service = BluetoothIosService();
-                service.connection = connection;
-                Get.back(result: service);
-              },
-              onLongPress: () async {
-                controller.toggleBonded(
-                  result,
-                  onError: (ex) => onError(context, ex),
-                );
-              },
-            );
-          },
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width / 3,
+              height: MediaQuery.of(context).size.width / 3,
+              margin: EdgeInsets.symmetric(vertical: ConfigConstant.margin2),
+              child: Image.asset('assets/images/bluetooth.png'),
+            ),
+            Text('Searching for devices ...'),
+            SizedBox(height: ConfigConstant.objectHeight1),
+            Expanded(
+              child: ListView.builder(
+                itemCount: controller.results.length,
+                itemBuilder: (BuildContext context, index) {
+                  BluetoothDiscoveryResult result = controller.results[index];
+                  BluetoothDevice device = result.device;
+                  return BluetoothDeviceListEntry(
+                    device: device,
+                    rssi: result.rssi,
+                    onTap: () async {
+                      BluetoothConnection connection = await BluetoothConnection.toAddress(result.device.address);
+                      BluetoothIosService service = BluetoothIosService();
+                      service.connection = connection;
+                      Get.back(result: service);
+                    },
+                    onLongPress: () async {
+                      controller.toggleBonded(
+                        result,
+                        onError: (ex) => onError(context, ex),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
         );
       }),
     );
@@ -73,9 +92,12 @@ class BluetoothListView extends GetView<BluetoothListController> {
           ),
         );
       } else {
-        return IconButton(
-          icon: Icon(Icons.replay),
-          onPressed: controller.restartDiscovery,
+        return ErTapEffect(
+          child: Padding(
+            padding: const EdgeInsets.only(right: ConfigConstant.margin2),
+            child: Icon(Icons.replay),
+          ),
+          onTap: controller.restartDiscovery,
         );
       }
     });
