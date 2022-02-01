@@ -24,6 +24,7 @@ abstract class Routes {
   static const JOYSTICK = _Paths.JOYSTICK;
   static const THUMBSTICK = _Paths.THUMBSTICK;
   static const COMMENT = _Paths.COMMENT;
+  static const SETTING_IR_REMOTER = _Paths.SETTING_IR_REMOTER;
 }
 
 abstract class _Paths {
@@ -47,4 +48,5 @@ abstract class _Paths {
   static const JOYSTICK = '/joystick';
   static const THUMBSTICK = '/thumbstick';
   static const COMMENT = '/comment';
+  static const SETTING_IR_REMOTER = '/setting-ir-remoter';
 }
