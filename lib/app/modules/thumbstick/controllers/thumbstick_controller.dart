@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 
 class ThumbstickController extends GetxController {
-  //TODO: Implement ThumbstickController
+  final RxString moveFront = "T".obs;
+  final RxString moveLeft = "L".obs;
+  final RxString moveBack = "B".obs;
+  final RxString moveRight = "R".obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -16,5 +18,4 @@ class ThumbstickController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

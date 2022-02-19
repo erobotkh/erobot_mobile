@@ -28,6 +28,8 @@ import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/reputation/bindings/reputation_binding.dart';
 import '../modules/reputation/views/reputation_view.dart';
+import '../modules/robot_remote_setting/bindings/robot_remote_setting_binding.dart';
+import '../modules/robot_remote_setting/views/robot_remote_setting_view.dart';
 import '../modules/search/bindings/search_binding.dart';
 import '../modules/search/views/search_view.dart';
 import '../modules/search_result/bindings/search_result_binding.dart';
@@ -148,6 +150,11 @@ class AppPages {
       name: _Paths.SETTING_IR_REMOTER,
       page: () => SettingIrRemoterView(),
       binding: SettingIrRemoterBinding(),
+    ),
+    GetPage(
+      name: _Paths.ROBOT_REMOTE_SETTING,
+      page: () => RobotRemoteSettingView(),
+      binding: RobotRemoteSettingBinding(),
     ),
   ];
 }

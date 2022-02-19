@@ -20,12 +20,14 @@ class ErTextField extends StatefulWidget {
     this.keyboardType,
     this.controller,
     this.textInputAction,
+    this.textAlign,
     this.suffix,
     this.suffixIcon,
     this.prefix,
     this.prefixIcon,
     this.onChanged,
     this.onSubmitted,
+    this.validator,
     this.onTap,
   }) : super(key: key);
 
@@ -46,6 +48,7 @@ class ErTextField extends StatefulWidget {
   final TextInputType? keyboardType;
   final TextEditingController? controller;
   final TextInputAction? textInputAction;
+  final TextAlign? textAlign;
 
   final Widget? suffix;
   final Widget? suffixIcon;
@@ -54,6 +57,7 @@ class ErTextField extends StatefulWidget {
 
   final void Function(String value)? onChanged;
   final void Function(String value)? onSubmitted;
+  final String? Function(String?)? validator;
   final void Function()? onTap;
 
   @override
@@ -82,12 +86,13 @@ class _ErTextFieldState extends State<ErTextField> {
     final colorScheme = Theme.of(context).colorScheme;
     return Container(
       margin: widget.margin ?? const EdgeInsets.only(bottom: ConfigConstant.margin0),
-      child: TextField(
+      child: TextFormField(
+        textAlign: widget.textAlign ?? TextAlign.start,
         keyboardType: widget.keyboardType,
         textInputAction: widget.textInputAction,
         controller: widget.controller ?? controller,
         onChanged: widget.onChanged,
-        onSubmitted: widget.onSubmitted,
+        onFieldSubmitted: widget.onSubmitted,
         autocorrect: widget.autocorrect,
         obscureText: widget.obscureText,
         decoration: buildInputDecoration(colorScheme),
@@ -95,6 +100,7 @@ class _ErTextFieldState extends State<ErTextField> {
         minLines: widget.minLines,
         onTap: widget.onTap,
         readOnly: readOnly,
+        validator: widget.validator,
       ),
     );
   }
