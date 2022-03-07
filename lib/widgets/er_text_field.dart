@@ -27,6 +27,7 @@ class ErTextField extends StatefulWidget {
     this.prefixIcon,
     this.onChanged,
     this.onSubmitted,
+    this.onSaved,
     this.validator,
     this.onTap,
   }) : super(key: key);
@@ -57,6 +58,7 @@ class ErTextField extends StatefulWidget {
 
   final void Function(String value)? onChanged;
   final void Function(String value)? onSubmitted;
+  final void Function(String? value)? onSaved;
   final String? Function(String?)? validator;
   final void Function()? onTap;
 
@@ -101,6 +103,7 @@ class _ErTextFieldState extends State<ErTextField> {
         onTap: widget.onTap,
         readOnly: readOnly,
         validator: widget.validator,
+        onSaved: widget.onSaved,
       ),
     );
   }
