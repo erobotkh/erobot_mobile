@@ -1,23 +1,47 @@
 import 'package:erobot_mobile/app/modules/iot_connection_setting/controllers/iot_controller.dart';
 import 'package:erobot_mobile/app/modules/joystick/widgets/widgets.dart';
+import 'package:erobot_mobile/app/modules/thumbstick/controllers/thumbstick_controller.dart';
 import 'package:erobot_mobile/app/routes/app_pages.dart';
-import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:erobot_mobile/mixins/toast.dart';
 import 'package:erobot_mobile/services/iot/base_iot_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import '../controllers/thumbstick_controller.dart';
 
-class ThumbstickView extends GetView<ThumbstickController> with Toast {
+class ThumbstickView extends StatefulWidget {
+  const ThumbstickView({Key? key}) : super(key: key);
+
+  @override
+  State<ThumbstickView> createState() => _ThumbstickViewState();
+}
+
+class _ThumbstickViewState extends State<ThumbstickView> with Toast {
+  late ThumbstickController thumbstickController;
+  late IotController iot;
+
+  @override
+  void initState() {
+    thumbstickController = Get.put(ThumbstickController());
+    iot = Get.put(IotController());
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.landscapeRight,
-        DeviceOrientation.landscapeLeft,
-      ]);
-    });
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       floatingActionButton: FloatingActionButton(
@@ -72,10 +96,10 @@ class ThumbstickView extends GetView<ThumbstickController> with Toast {
                 children: [
                   PadButtons(
                     onTapUp: () => sendAMessage("S"),
-                    onLeft: () => sendAMessage(controller.moveLeft.value),
-                    onRight: () => sendAMessage(controller.moveRight.value),
-                    onUp: () => sendAMessage(controller.moveFront.value),
-                    onDown: () => sendAMessage(controller.moveBack.value),
+                    onLeft: () => sendAMessage(thumbstickController.remoteRobot?.moveLeft),
+                    onRight: () => sendAMessage(thumbstickController.remoteRobot?.moveRight),
+                    onUp: () => sendAMessage(thumbstickController.remoteRobot?.moveFront),
+                    onDown: () => sendAMessage(thumbstickController.remoteRobot?.moveBack),
                   ),
                   const SizedBox(),
                   CircularSlider(
@@ -91,14 +115,10 @@ class ThumbstickView extends GetView<ThumbstickController> with Toast {
     );
   }
 
-  IotController get iot => Get.find<IotController>();
-
   Future<void> sendAMessage(String? message) async {
-    print(message);
     if (message == null) return;
     if (iot.lastMessage == message) return;
 
-    print("${DateTime.now().millisecond}: $message");
     await iot.write(message);
     showToast(message);
   }

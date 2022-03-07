@@ -75,8 +75,14 @@ abstract class BaseApi<T> {
     return _beforeExec(() async {
       String endpoint = objectNameUrlModel.fetchAllUrl(queryParameters: queryParameters);
       response = await network?.http?.get(Uri.parse(endpoint));
-      dynamic json = jsonDecode(response?.body.toString() ?? "");
-      json = useJapx ? Japx.decode(json) : json;
+      dynamic json;
+      try {
+        json = jsonDecode(response?.body.toString() ?? "");
+        json = useJapx ? Japx.decode(json) : json;
+      } catch (e) {
+        print('ERROR convert json : $e');
+      }
+      // return json;
       return itemsTransformer(json);
     });
   }

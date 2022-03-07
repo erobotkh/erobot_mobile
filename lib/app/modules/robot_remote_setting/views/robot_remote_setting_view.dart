@@ -1,32 +1,52 @@
 import 'package:erobot_mobile/app/modules/thumbstick/controllers/thumbstick_controller.dart';
 import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:erobot_mobile/mixins/toast.dart';
+import 'package:erobot_mobile/widgets/er_back_button.dart';
 import 'package:erobot_mobile/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 
-import '../controllers/robot_remote_setting_controller.dart';
+class RobotRemoteSettingView extends StatefulWidget {
+  const RobotRemoteSettingView({Key? key}) : super(key: key);
 
-class RobotRemoteSettingView extends GetView<RobotRemoteSettingController> with Toast {
+  @override
+  State<RobotRemoteSettingView> createState() => _RobotRemoteSettingViewState();
+}
+
+class _RobotRemoteSettingViewState extends State<RobotRemoteSettingView> with Toast {
+  @override
+  void initState() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+    super.dispose();
+  }
+
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.landscapeRight,
-        DeviceOrientation.landscapeLeft,
-      ]);
-    });
-
+    ThumbstickController thumbstickController = Get.put(ThumbstickController());
     return Scaffold(
       appBar: AppBar(
-        title: Text('Robot Remote SettingView'),
-        centerTitle: true,
+        title: Text('Setting'),
+        leading: ErBackButton(),
         elevation: 1,
       ),
-      body: SafeArea(
+      body: Form(
+        key: _formKey,
         child: GridView(
           padding: EdgeInsets.symmetric(vertical: ConfigConstant.margin2),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -40,32 +60,65 @@ class RobotRemoteSettingView extends GetView<RobotRemoteSettingController> with 
               context,
               label: "Move front",
               icon: Icons.keyboard_arrow_up,
-              value: thumbstickController.moveFront.value,
+              value: thumbstickController.remoteRobot?.moveFront ?? '',
+              onSaved: (value) {
+                print('SET front value: $value');
+                if (value != null) {
+                  thumbstickController.remoteRobot?.moveFront = value;
+                } else {
+                  return;
+                }
+              },
             ),
             buildSettingButton(
               context,
               label: "Move left",
               icon: Icons.keyboard_arrow_left,
-              value: thumbstickController.moveLeft.value,
+              value: thumbstickController.remoteRobot?.moveLeft ?? '',
+              onSaved: (value) {
+                if (value != null) {
+                  thumbstickController.remoteRobot?.moveLeft = value;
+                } else {
+                  return;
+                }
+              },
             ),
             buildSettingButton(
               context,
               label: "Move back",
               icon: Icons.keyboard_arrow_down,
-              value: thumbstickController.moveBack.value,
+              value: thumbstickController.remoteRobot?.moveBack ?? '',
+              onSaved: (value) {
+                if (value != null) {
+                  thumbstickController.remoteRobot?.moveBack = value;
+                } else {
+                  return;
+                }
+              },
             ),
             buildSettingButton(
               context,
               label: "Move right",
               icon: Icons.keyboard_arrow_right,
-              value: thumbstickController.moveRight.value,
+              value: thumbstickController.remoteRobot?.moveRight ?? '',
+              onSaved: (value) {
+                if (value != null) {
+                  thumbstickController.remoteRobot?.moveRight = value;
+                } else {
+                  return;
+                }
+              },
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showToast('Saved');
+          if (_formKey.currentState?.validate() == true) {
+            _formKey.currentState?.save();
+            thumbstickController.updateConfig(thumbstickController.remoteRobot);
+            showToast('Saved');
+          }
         },
         child: Icon(Icons.save),
       ),
@@ -77,6 +130,7 @@ class RobotRemoteSettingView extends GetView<RobotRemoteSettingController> with 
     required String label,
     required String value,
     required IconData icon,
+    required Function(String?) onSaved,
   }) {
     return ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: ConfigConstant.margin2),
@@ -108,10 +162,9 @@ class RobotRemoteSettingView extends GetView<RobotRemoteSettingController> with 
               return null;
             }
           },
+          onSaved: onSaved,
         ),
       ),
     );
   }
-
-  ThumbstickController get thumbstickController => Get.find<ThumbstickController>();
 }
