@@ -1,7 +1,6 @@
 import 'package:erobot_mobile/models/user_token_model.dart';
 import 'package:erobot_mobile/services/base_apis/auth_api.dart';
 import 'package:flutter/rendering.dart';
-import 'package:http_interceptor/http/interceptor_contract.dart';
 import 'package:http_interceptor/http_interceptor.dart';
 
 class UserTokenInterceptor implements InterceptorContract {
