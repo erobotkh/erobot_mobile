@@ -7,6 +7,7 @@ part 'post_model.g.dart';
 @JsonSerializable()
 class PostModel {
   String? type;
+  String? title;
   String? body;
   String? updatedAt;
   String? createdAt;
@@ -18,6 +19,7 @@ class PostModel {
 
   PostModel({
     this.type,
+    this.title,
     this.body,
     this.updatedAt,
     this.createdAt,
