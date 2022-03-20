@@ -47,7 +47,10 @@ class EducationView extends GetView<EducationController> {
           return EducationCard(
             info: item,
             onPressedLearn: () {
-              Get.toNamed(Routes.POST_DETAIL);
+              Get.toNamed(
+                Routes.POST_DETAIL,
+                arguments: item,
+              );
             },
           );
         },
@@ -70,27 +73,27 @@ class EducationView extends GetView<EducationController> {
           },
         ),
       ],
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(48),
-        child: Container(
-          color: Theme.of(context).colorScheme.primary,
-          child: TabBar(
-            isScrollable: true,
-            controller: DefaultTabController.of(context),
-            indicatorColor: Colors.transparent,
-            tabs: List.generate(
-              length,
-              (index) {
-                return Tab(
-                  child: Text(
-                    title[index].toUpperCase(),
-                  ),
-                );
-              },
-            ),
-          ),
-        ),
-      ),
+      // bottom: PreferredSize(
+      //   preferredSize: const Size.fromHeight(48),
+      //   child: Container(
+      //     color: Theme.of(context).colorScheme.primary,
+      //     child: TabBar(
+      //       isScrollable: true,
+      //       controller: DefaultTabController.of(context),
+      //       indicatorColor: Colors.transparent,
+      //       tabs: List.generate(
+      //         length,
+      //         (index) {
+      //           return Tab(
+      //             child: Text(
+      //               title[index].toUpperCase(),
+      //             ),
+      //           );
+      //         },
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

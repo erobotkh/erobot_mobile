@@ -1,4 +1,6 @@
 import 'package:erobot_mobile/constants/config_constant.dart';
+import 'package:erobot_mobile/helpers/date_helper.dart';
+import 'package:erobot_mobile/models/post_model.dart';
 import 'package:erobot_mobile/widgets/er_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -11,6 +13,8 @@ class PostDetailView extends GetView<PostDetailController> {
   @override
   Widget build(BuildContext context) {
     final double expandedHeight = MediaQuery.of(context).size.width;
+    controller.postModel = ModalRoute.of(context)?.settings.arguments as PostModel;
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [buildAppBarWidget(expandedHeight, context), buildBody(context)],
@@ -45,18 +49,19 @@ class PostDetailView extends GetView<PostDetailController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Test title wowowo",
+                  controller.postModel?.title ?? 'Title',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 const SizedBox(height: ConfigConstant.margin0),
                 Wrap(
                   children: [
                     Text(
-                      "Suy Kosal",
+                      controller.postModel?.author?.fullNameI ?? 'Author Name',
                       style: Theme.of(context).textTheme.bodyText2?.copyWith(fontWeight: FontWeight.w600),
                     ),
+                    Text(' - '),
                     Text(
-                      " - 19 Jun 2020",
+                      DateHelper.yMMd(context, DateTime.tryParse(controller.postModel?.createdAt ?? '')),
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
                   ],
@@ -69,14 +74,8 @@ class PostDetailView extends GetView<PostDetailController> {
             color: Theme.of(context).colorScheme.surface,
             padding: const EdgeInsets.all(ConfigConstant.margin2),
             child: MarkdownBody(
-              data: controller.getDesc(),
+              data: controller.getDesc() ?? '',
             ),
-            // child: Center(
-            //   child: Text(
-            //     controller.getDesc(),
-            //     style: Theme.of(context).textTheme.bodyText2,
-            //   ),
-            // ),
           ),
         ],
       ),
@@ -92,7 +91,7 @@ class PostDetailView extends GetView<PostDetailController> {
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: false,
         title: Text(
-          controller.isShow.value ? "title" : '',
+          controller.isShow.value ? controller.postModel?.title ?? '' : '',
         ),
         background: GestureDetector(
           onTap: () {
@@ -104,7 +103,7 @@ class PostDetailView extends GetView<PostDetailController> {
               barrierColor: Colors.transparent,
               builder: (context) {
                 return ImageViewer(
-                  images: controller.getImages(),
+                  images: controller.getImages() ?? [],
                   statusBarHeight: MediaQuery.of(context).padding.top,
                   currentImageIndex: controller.pageController.page?.toInt() ?? 0,
                   onPageChanged: (index) {
@@ -132,9 +131,9 @@ class PostDetailView extends GetView<PostDetailController> {
           width: double.infinity,
           child: PageView(
             controller: controller.pageController,
-            children: List.generate(controller.getImages().length, (index) {
+            children: List.generate(controller.getImages()?.length ?? 0, (index) {
               return Image.network(
-                controller.getImages()[0],
+                controller.getImages()?.first ?? '',
                 fit: BoxFit.cover,
               );
             }),

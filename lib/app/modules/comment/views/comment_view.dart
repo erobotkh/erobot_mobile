@@ -1,6 +1,4 @@
-import 'package:erobot_mobile/app/routes/app_pages.dart';
 import 'package:erobot_mobile/models/comment_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -79,7 +77,7 @@ class CommentView extends GetView<CommentController> {
   }
 
   Widget get buildCommentField => Container(
-    color: Get.theme.scaffoldBackgroundColor,
+        color: Get.theme.scaffoldBackgroundColor,
         height: 66,
         padding: EdgeInsets.symmetric(
           horizontal: 16,
@@ -92,8 +90,7 @@ class CommentView extends GetView<CommentController> {
               width: 40,
               height: 40,
               child: CircleAvatar(
-                backgroundImage:
-                    NetworkImage(controller.comments.first.user.profileImage!),
+                backgroundImage: NetworkImage(controller.comments.first.user.profileImage!),
               ),
             ),
             const SizedBox(width: 18),
@@ -122,8 +119,12 @@ class CommentView extends GetView<CommentController> {
         child: Column(
           children: [
             space,
-            buildMenu('EDIT', () {print('EDIT');}),
-            buildMenu('DELETE', () {print('DELETE');}),
+            buildMenu('EDIT', () {
+              print('EDIT');
+            }),
+            buildMenu('DELETE', () {
+              print('DELETE');
+            }),
             buildMenu('CANCEL', () => Get.back()),
             space,
           ],

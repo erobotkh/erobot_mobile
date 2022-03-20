@@ -1,6 +1,9 @@
+import 'package:erobot_mobile/helpers/date_helper.dart';
 import 'package:erobot_mobile/models/post_model.dart';
 import 'package:erobot_mobile/constants/config_constant.dart';
+import 'package:erobot_mobile/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 class EducationCard extends StatelessWidget {
   const EducationCard({
@@ -33,7 +36,8 @@ class EducationCard extends StatelessWidget {
                 color: Colors.blue,
                 image: DecorationImage(
                   image: NetworkImage(
-                    'https://i.pinimg.com/originals/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg',
+                    info.author?.profileImage ??
+                        'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
                   ),
                 ),
               ),
@@ -43,15 +47,18 @@ class EducationCard extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyText2,
             ),
             subtitle: Text(
-              info.createdAt ?? "",
+              DateHelper.yMMd(context, DateTime.tryParse(info.createdAt ?? "")),
               style: Theme.of(context).textTheme.caption!.copyWith(color: Theme.of(context).colorScheme.secondary),
             ),
-            trailing: IconButton(
-              icon: Icon(
+            trailing: ErTapEffect(
+              child: Icon(
                 Icons.share,
                 color: Theme.of(context).colorScheme.onSurface,
               ),
-              onPressed: () {},
+              onTap: () {
+                print("SHARE");
+                Share.share('check out my website https://example.com');
+              },
             ),
           ),
           AspectRatio(
