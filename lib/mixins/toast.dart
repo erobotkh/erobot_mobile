@@ -41,17 +41,20 @@ mixin Toast {
     Function? onClose,
   }) {}
 
-  Future<T?>? showSnackbar<T>({
+  Future<void> showSnackbar({
     required String title,
     required String message,
     bool showProgressIndicator = false,
-  }) {
+  }) async {
     if (Get.isSnackbarOpen == true) Get.back();
-    return Get.showSnackbar<T>(GetBar(
-      title: title.trim().isNotEmpty ? title : 'Title',
-      message: message.trim().isNotEmpty ? message : 'Message',
-      showProgressIndicator: showProgressIndicator,
-    ));
+    SnackbarController controller = Get.showSnackbar(
+      GetSnackBar(
+        title: title.trim().isNotEmpty ? title : 'Title',
+        message: message.trim().isNotEmpty ? message : 'Message',
+        showProgressIndicator: showProgressIndicator,
+      ),
+    );
+    return controller.future;
   }
 
   void closeSnackbar() {
