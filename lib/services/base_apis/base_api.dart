@@ -8,6 +8,7 @@ import 'package:erobot_mobile/helpers/app_helper.dart';
 import 'package:erobot_mobile/services/base_apis/networks/base_network.dart';
 import 'package:japx/japx.dart';
 import 'package:http/http.dart';
+import 'package:logger/logger.dart';
 
 abstract class BaseApi<T> {
   Response? response;
