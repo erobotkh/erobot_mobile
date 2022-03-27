@@ -32,14 +32,16 @@ class HomeView extends GetView<HomeController> {
           horizontal: ConfigConstant.margin2,
           vertical: ConfigConstant.margin1,
         ),
-        child: StaggeredGridView.countBuilder(
-          crossAxisCount: 4,
+        child: MasonryGridView.count(
           itemCount: _homeCard.length,
-          staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
           mainAxisSpacing: ConfigConstant.margin1,
           crossAxisSpacing: ConfigConstant.margin1,
-          itemBuilder: (BuildContext context, int index) {
-            return _buildHomeCard(_homeCard[index], context);
+          crossAxisCount: 2,
+          itemBuilder: (context, index) {
+            return _buildHomeCard(
+              _homeCard[index],
+              context,
+            );
           },
         ),
       ),

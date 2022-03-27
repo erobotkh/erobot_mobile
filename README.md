@@ -1,7 +1,7 @@
 # Erobot Application v2
 ## I. Getting Started
 
-In this project, we use flutter 2.5.3. If you have a different version, you should consider [installing FVM](https://soksereyphon8.medium.com/flutter-version-management-3c318c4ff97d).
+In this project, we use `flutter 2.10.0`. If you have a different version, you should consider [installing FVM](https://soksereyphon8.medium.com/flutter-version-management-3c318c4ff97d).
 
 ### Prerequisites
 
@@ -13,7 +13,7 @@ flutter run
 
 * [Flutter 2.5.3](https://flutter.dev) - The framework used
 * [Dart](https://dart.dev/) - The language used
-* [Erobot App API](https://github.com/erobot-dev/erobot_api) - By our backend team.
+* [Erobot App API](https://github.com/erobotkh/erobot_api) - By our backend team.
 
 ## II. Code generation 
 ### 1. Model generations with JSON Serialization
@@ -122,8 +122,14 @@ cd android
 ./gradlew signingReport
 ```
 
+## Packages
+We prefer using major versions of most package if supported. To upgrade packages, run commands below:
+```shell
+flutter pub outdated
+flutter pub upgrade --major-versions
+```
 ## Authors
-See also the list of [contributors](https://github.com/erobot-dev/erobot_mobile/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/erobotkh/erobot_mobile/contributors) who participated in this project.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

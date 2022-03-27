@@ -42,13 +42,12 @@ class IrRemoterView extends GetView<IrRemoterController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/images/channel.png'),
-            StaggeredGridView.countBuilder(
+            MasonryGridView.count(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               crossAxisCount: 3,
               itemCount: remoteButtonList.length,
               mainAxisSpacing: 12,
-              staggeredTileBuilder: (int index) => StaggeredTile.fit(1),
               itemBuilder: (BuildContext context, int index) {
                 RemotterButtonModel remoteButton = remoteButtonList[index];
                 return Column(
