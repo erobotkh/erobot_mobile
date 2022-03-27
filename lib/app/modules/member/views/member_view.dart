@@ -1,4 +1,5 @@
 import 'package:erobot_mobile/constants/config_constant.dart';
+import 'package:erobot_mobile/models/list_member/member_model.dart';
 import 'package:erobot_mobile/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class MemberView extends GetView<MemberController> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
+    Get.put(MemberController());
     return Scaffold(
       backgroundColor: _theme.colorScheme.background,
       appBar: AppBar(
@@ -26,69 +28,31 @@ class MemberView extends GetView<MemberController> {
           ),
         ],
       ),
-      body: ListView(
-        padding: EdgeInsets.only(
-          top: ConfigConstant.margin1,
-        ),
-        children: [
-          ERExpansionTile(
-            title: 'Morn Mey',
-            subtitle: 'Team leader since 2021',
-            img: 'assets/images/1.jpg',
-            onTap: () {},
-            textNamefb: 'Morn Mey',
-            textNameTg: 'Morn Mey',
-            textNameIg: 'Morn Mey',
-            textBody:
-            'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
-            linkIg: "",
-            linkTele: "https://t.me/mornmey",
-            linkFb: "https://www.facebook.com/profile.php?id=100033543979146",
+      body: Obx(() {
+        List<MemberModel> listMember = controller.memberListModel?.value.items ?? [];
+
+        return ListView(
+          padding: EdgeInsets.only(
+            top: ConfigConstant.margin1,
           ),
-          ERExpansionTile(
-            title: 'Non Sinat',
-            subtitle: 'Organizer since 2021',
-            img: 'assets/images/1.jpg',
-            onTap: () {},
-            textNamefb: 'Non Sinat',
-            textNameTg: 'Non Sinat',
-            textNameIg: 'Non Sinat',
-            textBody:
-            'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
-            linkIg: "https://t.me/SinatNon",
-            linkTele: "https://t.me/SinatNon",
-            linkFb: "https://www.facebook.com/profile.php?id=100069673140786",
-          ),
-          ERExpansionTile(
-            title: 'Choem Thea',
-            subtitle: 'Organizer since 2021',
-            img: 'assets/images/1.jpg',
-            onTap: () {},
-            textNameTg: 'Choem Thea',
-            textBody:
-            'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
-            textNameIg: 'Choem Thea',
-            textNamefb: 'Choem Thea',
-            linkIg: "",
-            linkTele: "",
-            linkFb: "",
-          ),
-          ERExpansionTile(
-            title: 'Chen Darot',
-            subtitle: 'Organizer since 2021',
-            img: 'assets/images/1.jpg',
-            onTap: () {},
-            textNameIg: 'Chen Darot',
-            textNamefb: 'Chen Darot',
-            textNameTg: 'Chen Darot',
-            textBody:
-            'I Love robot 📋✏️️ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet diam gravida sed sagittis eu. Rhoncus ultricies gravida amet, fringilla scelerisque vitae. ❤️',
-            linkIg: "",
-            linkTele: "",
-            linkFb: "",
-          ),
-        ],
-      ),
+          children: List.generate(listMember.length, (index) {
+            MemberModel member = listMember[index];
+            return ERExpansionTile(
+              title: (member.firstName ?? ' ') + ' ' + (member.lastName ?? ''),
+              subtitle: (member.role ?? '') + ' of ' + (member.team?.id ?? 'Team'),
+              img: member.profileUrl ?? '',
+              onTap: () {},
+              textNamefb: 'Morn Mey',
+              textNameTg: 'Morn Mey',
+              textNameIg: 'Morn Mey',
+              textBody: '',
+              // linkIg: member.socials?.firstWhere((element) => element.provider == 'instagram').href,
+              // linkTele: member.socials?.firstWhere((element) => element.provider == 'telegram').href,
+              // linkFb: member.socials?.firstWhere((element) => element.provider == 'facebook').href,
+            );
+          }),
+        );
+      }),
     );
   }
 }

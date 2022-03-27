@@ -7,7 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 class ERExpansionTile extends StatefulWidget {
   final String title;
   final String subtitle;
-  final String img;
+  final String? img;
   final String? textBody;
   final String? textNamefb;
   final String? textNameIg;
@@ -84,7 +84,7 @@ class _ERExpansionTileState extends State<ERExpansionTile> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                          image: AssetImage(widget.img),
+                          image: NetworkImage(widget.img ?? ''),
                           fit: BoxFit.cover,
                         ),
                       ),
