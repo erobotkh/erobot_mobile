@@ -15,15 +15,16 @@ class SettingIrRemoterView extends GetView<SettingIrRemoterController> {
     List<RemotterButtonModel> remoteButtonList = RemotterButtonModel.getButtonList(context);
     return Scaffold(
       appBar: AppBar(
+        elevation: 1,
         leading: ErBackButton(),
-        title: Text('SettingIrRemoterView'),
+        title: Text('Setting IR Remoter'),
       ),
       body: Container(
         color: Theme.of(context).colorScheme.surface,
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: ConfigConstant.margin2, vertical: ConfigConstant.margin2),
           children: [
-            SizedBox(height: ConfigConstant.objectHeight1),
+            // SizedBox(height: ConfigConstant.objectHeight1),
             Text('All Devices'),
             SizedBox(height: ConfigConstant.margin1),
             Divider(height: 0),

@@ -1,12 +1,31 @@
+import 'package:erobot_mobile/models/robot/remote_robot_model.dart';
+import 'package:erobot_mobile/services/storages/robot_remote_setting_storage.dart';
 import 'package:get/get.dart';
 
 class ThumbstickController extends GetxController {
-  //TODO: Implement ThumbstickController
+  RemoteRobotModel? remoteRobot;
+  RobotRemoteSettingStorage storage = RobotRemoteSettingStorage.instance;
 
-  final count = 0.obs;
   @override
   void onInit() {
+    storage.readMap().then((value) {
+      if (value?.isEmpty == true) {
+        remoteRobot = RemoteRobotModel(
+          moveFront: 'T',
+          moveLeft: 'L',
+          moveBack: 'B',
+          moveRight: 'R',
+        );
+        updateConfig(remoteRobot);
+      } else {
+        remoteRobot = remoteRobot = RemoteRobotModel.fromJson(value);
+      }
+    });
     super.onInit();
+  }
+
+  updateConfig(RemoteRobotModel? config) {
+    storage.writeMap(config?.toJson() ?? {});
   }
 
   @override
@@ -16,5 +35,4 @@ class ThumbstickController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

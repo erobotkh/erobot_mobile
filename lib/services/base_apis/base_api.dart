@@ -8,6 +8,7 @@ import 'package:erobot_mobile/helpers/app_helper.dart';
 import 'package:erobot_mobile/services/base_apis/networks/base_network.dart';
 import 'package:japx/japx.dart';
 import 'package:http/http.dart';
+import 'package:logger/logger.dart';
 
 abstract class BaseApi<T> {
   Response? response;
@@ -75,8 +76,14 @@ abstract class BaseApi<T> {
     return _beforeExec(() async {
       String endpoint = objectNameUrlModel.fetchAllUrl(queryParameters: queryParameters);
       response = await network?.http?.get(Uri.parse(endpoint));
-      dynamic json = jsonDecode(response?.body.toString() ?? "");
-      json = useJapx ? Japx.decode(json) : json;
+      dynamic json;
+      try {
+        json = jsonDecode(response?.body.toString() ?? "");
+        json = useJapx ? Japx.decode(json) : json;
+      } catch (e) {
+        print('ERROR convert json : $e');
+      }
+      // return json;
       return itemsTransformer(json);
     });
   }

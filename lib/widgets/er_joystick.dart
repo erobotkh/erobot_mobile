@@ -1,7 +1,5 @@
 import 'dart:math' as _math;
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'circle_view.dart';
 

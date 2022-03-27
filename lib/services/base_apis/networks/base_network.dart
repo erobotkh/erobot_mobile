@@ -1,5 +1,4 @@
 import 'package:erobot_mobile/services/base_apis/interceptors/default_interceptor.dart';
-import 'package:http_interceptor/http/interceptor_contract.dart';
 import 'package:http/http.dart';
 import 'package:http_interceptor/http_interceptor.dart';
 
