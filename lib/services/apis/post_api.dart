@@ -3,10 +3,11 @@ import 'package:erobot_mobile/models/post_model.dart';
 import 'package:erobot_mobile/services/base_apis/base_resource_owner_api.dart';
 
 class PostApi extends BaseResourceOwnerApi<PostModel> {
-  Future<dynamic> fetchAllPosts() async {
+  Future<dynamic> fetchAllPosts({String? page}) async {
     var result = await super.fetchAll(
       queryParameters: {
         'included': 'images,author',
+        'page': page,
       },
     );
     return result;

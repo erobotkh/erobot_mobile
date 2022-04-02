@@ -3,8 +3,15 @@ import 'package:erobot_mobile/services/apis/post_api.dart';
 import 'package:get/get.dart';
 
 class EducationController extends GetxController {
-  final count = 0.obs;
   Rx<PostListModel>? postListModel;
+
+  loadMore() async {
+    print('fetching...');
+    PostListModel newList = PostListModel();
+    newList = await PostApi().fetchAllPosts(page: postListModel?.value.links?.getPageNumber().next);
+    postListModel?.value.add(newList);
+    postListModel?.refresh();
+  }
 
   @override
   void onInit() {
@@ -22,5 +29,4 @@ class EducationController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

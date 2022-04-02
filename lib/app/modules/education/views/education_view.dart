@@ -4,6 +4,7 @@ import 'package:erobot_mobile/app/modules/education/local_widgets/education_card
 import 'package:erobot_mobile/constants/config_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import '../controllers/education_controller.dart';
 
 class EducationView extends GetView<EducationController> {
@@ -39,21 +40,26 @@ class EducationView extends GetView<EducationController> {
   }) {
     return Obx(() {
       List<PostModel> items = controller.postListModel?.value.items ?? [];
-      return ListView.builder(
-        padding: ConfigConstant.layoutPadding,
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          PostModel item = items[index];
-          return EducationCard(
-            info: item,
-            onPressedLearn: () {
-              Get.toNamed(
-                Routes.POST_DETAIL,
-                arguments: item,
-              );
-            },
-          );
-        },
+      print(items.length);
+      return LazyLoadScrollView(
+        onEndOfPage: () => controller.loadMore(),
+        scrollOffset: 50,
+        child: ListView.builder(
+          padding: ConfigConstant.layoutPadding,
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            PostModel item = items[index];
+            return EducationCard(
+              info: item,
+              onPressedLearn: () {
+                Get.toNamed(
+                  Routes.POST_DETAIL,
+                  arguments: item,
+                );
+              },
+            );
+          },
+        ),
       );
     });
   }
