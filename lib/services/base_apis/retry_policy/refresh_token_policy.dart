@@ -16,7 +16,7 @@ class RefreshTokenPolicy extends RetryPolicy {
     if (response.statusCode == 401) {
       if (response.body != null) {
         final json = jsonDecode(response.body!);
-        if (json['message'] == "JWT expired") {
+        if (json['message'] == "Invalid Token") {
           UserTokenModel? model = await auth.getCurrentUserToken();
           if (model?.refreshToken == null) return false;
           await auth.reAuthenticate(refreshToken: model!.refreshToken!);
