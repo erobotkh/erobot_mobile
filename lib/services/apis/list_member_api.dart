@@ -7,7 +7,7 @@ class ListMemberApi extends BaseResourceOwnerApi<MemberModel> {
   @override
   String get nameInUrl => "members";
 
-  Future<dynamic> fetchAllMembers() async {
+  Future<dynamic> fetchAllMembers({String? page}) async {
     var result = await super.fetchAll(
       queryParameters: {
         'included': 'socials,team',
