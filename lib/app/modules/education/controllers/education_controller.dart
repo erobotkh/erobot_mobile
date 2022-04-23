@@ -1,25 +1,45 @@
+import 'package:bot_toast/bot_toast.dart';
+import 'package:erobot_mobile/mixins/loading.dart';
 import 'package:erobot_mobile/models/post_list_model.dart';
 import 'package:erobot_mobile/services/apis/post_api.dart';
+import 'package:erobot_mobile/widgets/er_loading.dart';
 import 'package:get/get.dart';
 
-class EducationController extends GetxController {
+class EducationController extends GetxController with Loading {
   Rx<PostListModel>? postListModel;
+  Rx<bool>? isLoading;
 
   loadMore() async {
-    print('fetching...');
     PostListModel newList = PostListModel();
-    newList = await PostApi().fetchAllPosts(page: postListModel?.value.links?.getPageNumber().next);
-    postListModel?.value.add(newList);
-    postListModel?.refresh();
+    if (postListModel!.value.hasLoadMore()) {
+      print('Fetching ...');
+      setLoading(true);
+      newList = await PostApi().fetchAllPosts(page: postListModel?.value.links?.getPageNumber().next);
+      postListModel?.value.add(newList);
+      setLoading(false);
+    }
+    update();
+  }
+
+  loadList() async {
+    postListModel = PostListModel().obs;
+    showLoading();
+    await PostApi().fetchAllPosts().then((value) {
+      postListModel?.value = value;
+    });
+    hideLoading();
+    update();
+  }
+
+  setLoading(bool loading) {
+    isLoading = loading.obs;
+    update();
   }
 
   @override
   void onInit() {
     super.onInit();
-    postListModel = PostListModel().obs;
-    PostApi().fetchAllPosts().then((value) {
-      postListModel?.value = value;
-    });
+    loadList();
   }
 
   @override
