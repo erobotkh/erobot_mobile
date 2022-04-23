@@ -1,13 +1,15 @@
 import 'package:erobot_mobile/app/routes/app_pages.dart';
+import 'package:erobot_mobile/mixins/loading.dart';
 import 'package:erobot_mobile/models/post_model.dart';
 import 'package:erobot_mobile/app/modules/education/local_widgets/education_card.dart';
 import 'package:erobot_mobile/constants/config_constant.dart';
+import 'package:erobot_mobile/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import '../controllers/education_controller.dart';
 
-class EducationView extends GetView<EducationController> {
+class EducationView extends GetView with Loading {
   @override
   Widget build(BuildContext context) {
     Get.put(EducationController());
@@ -38,16 +40,30 @@ class EducationView extends GetView<EducationController> {
     required BuildContext context,
     required int length,
   }) {
-    return Obx(() {
+    return GetBuilder<EducationController>(builder: (controller) {
       List<PostModel> items = controller.postListModel?.value.items ?? [];
-      print(items.length);
+
       return LazyLoadScrollView(
-        onEndOfPage: () => controller.loadMore(),
-        scrollOffset: 50,
+        onEndOfPage: () {
+          controller.loadMore();
+        },
+        scrollOffset: 100,
         child: ListView.builder(
           padding: ConfigConstant.layoutPadding,
-          itemCount: items.length,
+          itemCount: items.length + 1,
           itemBuilder: (context, index) {
+            print(controller.isLoading?.value);
+            if (index == items.length) {
+              return Transform.translate(
+                offset: Offset(0.0, -ConfigConstant.margin1),
+                child: ERCircularLoading(loading: controller.isLoading?.value == true),
+              );
+            }
+            // return Container(
+            //   width: 200,
+            //   height: 48,
+            //   color: Colors.amber,
+            // );
             PostModel item = items[index];
             return EducationCard(
               info: item,

@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:erobot_mobile/configs/theme_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final botToastBuilder = BotToastInit();
     return GetMaterialApp(
       title: "Application",
       debugShowCheckedModeBanner: false,
@@ -17,11 +19,13 @@ class App extends StatelessWidget {
       getPages: AppPages.routes,
       theme: ThemeConfig(false).themeData,
       builder: (context, child) {
+        child = botToastBuilder(context, child);
         return GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
           child: child,
         );
       },
+      navigatorObservers: [BotToastNavigatorObserver()],
     );
   }
 }
