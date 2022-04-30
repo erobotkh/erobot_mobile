@@ -55,7 +55,7 @@ class CommentView extends GetView<CommentController> {
             width: 40,
             height: 40,
             child: CircleAvatar(
-              backgroundImage: NetworkImage(comment.user.profileImage!),
+              backgroundImage: NetworkImage(comment.user.profileUrl!),
             ),
           ),
           title: Text(comment.user.fullNameI),
@@ -90,7 +90,7 @@ class CommentView extends GetView<CommentController> {
               width: 40,
               height: 40,
               child: CircleAvatar(
-                backgroundImage: NetworkImage(controller.comments.first.user.profileImage!),
+                backgroundImage: NetworkImage(controller.comments.first.user.profileUrl!),
               ),
             ),
             const SizedBox(width: 18),

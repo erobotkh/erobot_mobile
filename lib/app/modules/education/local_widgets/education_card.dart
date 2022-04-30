@@ -37,7 +37,7 @@ class EducationCard extends StatelessWidget {
                 color: Colors.blue,
                 image: DecorationImage(
                   image: NetworkImage(
-                    post.author?.profileImage ??
+                    post.author?.profileUrl ??
                         'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
                   ),
                 ),

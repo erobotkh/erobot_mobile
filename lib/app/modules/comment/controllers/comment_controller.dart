@@ -11,7 +11,8 @@ class CommentController extends GetxController {
         id: 'gfhlvaspmsnvsxffgvfgds',
         firstName: 'Lee',
         lastName: 'Jonhson',
-        profileImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        profileUrl:
+            'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
       ),
       time: '1 day ago',
       content: 'Hello my name is Lee Jonhson.'
@@ -23,7 +24,8 @@ class CommentController extends GetxController {
         id: 'gfhlvaspmsnvsxffgvfgds',
         firstName: 'Lee',
         lastName: 'Jonhson',
-        profileImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        profileUrl:
+            'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
       ),
       time: '1 day ago',
       content: 'Hello my name is Lee Jonhson.'
@@ -35,7 +37,8 @@ class CommentController extends GetxController {
         id: 'gfhlvaspmsnvsxffgvfgds',
         firstName: 'Lee',
         lastName: 'Jonhson',
-        profileImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        profileUrl:
+            'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
       ),
       time: '1 day ago',
       content: 'Hello my name is Lee Jonhson.'
@@ -47,7 +50,8 @@ class CommentController extends GetxController {
         id: 'gfhlvaspmsnvsxffgvfgds',
         firstName: 'Lee',
         lastName: 'Jonhson',
-        profileImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        profileUrl:
+            'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
       ),
       time: '1 day ago',
       content: 'Hello my name is Lee Jonhson.'
@@ -59,7 +63,8 @@ class CommentController extends GetxController {
         id: 'gfhlvaspmsnvsxffgvfgds',
         firstName: 'Lee',
         lastName: 'Jonhson',
-        profileImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        profileUrl:
+            'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
       ),
       time: '1 day ago',
       content: 'Hello my name is Lee Jonhson.'
@@ -71,7 +76,8 @@ class CommentController extends GetxController {
         id: 'gfhlvaspmsnvsxffgvfgds',
         firstName: 'Lee',
         lastName: 'Jonhson',
-        profileImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        profileUrl:
+            'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
       ),
       time: '1 day ago',
       content: 'Hello my name is Lee Jonhson.'
