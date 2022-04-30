@@ -8,17 +8,17 @@ import 'package:share_plus/share_plus.dart';
 class EducationCard extends StatelessWidget {
   const EducationCard({
     Key? key,
-    required this.info,
+    required this.post,
     this.onPressedLearn,
   }) : super(key: key);
 
-  final PostModel info;
+  final PostModel post;
   final void Function()? onPressedLearn;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: ConfigConstant.margin2),
+      padding: EdgeInsets.symmetric(vertical: ConfigConstant.margin1),
       margin: EdgeInsets.only(bottom: ConfigConstant.margin1),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
@@ -26,6 +26,7 @@ class EducationCard extends StatelessWidget {
         boxShadow: ConfigConstant.boxShadows0,
       ),
       child: Wrap(
+        spacing: ConfigConstant.margin2,
         children: [
           ListTile(
             leading: Container(
@@ -36,18 +37,18 @@ class EducationCard extends StatelessWidget {
                 color: Colors.blue,
                 image: DecorationImage(
                   image: NetworkImage(
-                    info.author?.profileImage ??
+                    post.author?.profileImage ??
                         'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
                   ),
                 ),
               ),
             ),
             title: Text(
-              (info.author?.firstName ?? "") + " " + (info.author?.lastName ?? ""),
+              (post.author?.firstName ?? "") + " " + (post.author?.lastName ?? ""),
               style: Theme.of(context).textTheme.bodyText2,
             ),
             subtitle: Text(
-              DateHelper.yMMd(context, DateTime.tryParse(info.createdAt ?? "")),
+              DateHelper.yMMd(context, DateTime.tryParse(post.createdAt ?? "")),
               style: Theme.of(context).textTheme.caption!.copyWith(color: Theme.of(context).colorScheme.secondary),
             ),
             trailing: ErTapEffect(
@@ -61,11 +62,13 @@ class EducationCard extends StatelessWidget {
               },
             ),
           ),
+          SizedBox(height: ConfigConstant.margin2),
           AspectRatio(
             aspectRatio: 344 / 194,
-            child: info.images?.isNotEmpty == true
+            child: post.images?.isNotEmpty == true
                 ? Image.network(
-                    info.images?.first.url ?? "",
+                    post.images?.first.url ?? '',
+                    // "https://www.komysafety.com/images/banner/no-image.png",
                     fit: BoxFit.cover,
                   )
                 : SizedBox(),
@@ -76,7 +79,7 @@ class EducationCard extends StatelessWidget {
               horizontal: ConfigConstant.margin2,
             ),
             child: Text(
-              info.body ?? "",
+              post.body ?? "",
               style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Theme.of(context).colorScheme.secondary),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
@@ -88,13 +91,18 @@ class EducationCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Text(info.commentCount.toString()),
-                IconButton(
-                  icon: Icon(
-                    Icons.comment,
-                    color: Theme.of(context).colorScheme.onSurface,
-                  ),
-                  onPressed: () => print('comment'),
+                Text("${post.reactionCount ?? 0}"),
+                SizedBox(width: ConfigConstant.margin0),
+                Icon(
+                  Icons.favorite,
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
+                SizedBox(width: ConfigConstant.margin2),
+                Text("${post.commentCount ?? 0}"),
+                SizedBox(width: ConfigConstant.margin0),
+                Icon(
+                  Icons.comment,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
                 Expanded(child: SizedBox()),
                 TextButton(

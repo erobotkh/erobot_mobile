@@ -1,15 +1,32 @@
 import 'package:erobot_mobile/app/modules/comment/views/comment_view.dart';
+import 'package:erobot_mobile/app/modules/education/controllers/education_controller.dart';
+import 'package:erobot_mobile/mixins/loading.dart';
 import 'package:erobot_mobile/models/post_model.dart';
+import 'package:erobot_mobile/services/apis/post_reaction_api.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PostDetailController extends GetxController {
-  //TODO: Implement PostDetailController
-
+class PostDetailController extends GetxController with Loading {
   final count = 0.obs;
   late final PageController pageController;
   PostModel? postModel;
   final isShow = true.obs;
+
+  toggleReaction(String postId) async {
+    var api = PostReactionApi();
+    var eduController = Get.put(EducationController());
+    showLoading();
+    await api.toggleReaction(postId: postId);
+    hideLoading();
+
+    if (api.success()) {
+      print("Reaction success");
+      await eduController.loadList();
+    } else {
+      print("error");
+    }
+    update();
+  }
 
   @override
   void onInit() {
@@ -37,7 +54,7 @@ class PostDetailController extends GetxController {
 
   List<IconData> getListIcons() {
     List<IconData> icons = [
-      Icons.favorite,
+      Icons.favorite_outline,
       Icons.message,
       Icons.share,
       Icons.bookmark,
@@ -49,7 +66,7 @@ class PostDetailController extends GetxController {
   void onTapBottomNav(int index) {
     switch (index) {
       case 0:
-        print('Like');
+        toggleReaction(postModel?.id ?? '');
         break;
       case 1:
         _showComment();
