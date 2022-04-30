@@ -1,8 +1,6 @@
-import 'package:bot_toast/bot_toast.dart';
 import 'package:erobot_mobile/mixins/loading.dart';
 import 'package:erobot_mobile/models/post_list_model.dart';
 import 'package:erobot_mobile/services/apis/post_api.dart';
-import 'package:erobot_mobile/widgets/er_loading.dart';
 import 'package:get/get.dart';
 
 class EducationController extends GetxController with Loading {

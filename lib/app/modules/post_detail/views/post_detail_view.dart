@@ -31,7 +31,7 @@ class PostDetailView extends GetView<PostDetailController> {
           var icon = controller.getListIcons()[index];
           return BottomNavigationBarItem(
             icon: Icon(icon),
-            label: "WOWO",
+            label: "",
           );
         }),
       ),

@@ -48,33 +48,32 @@ class EducationView extends GetView with Loading {
           controller.loadMore();
         },
         scrollOffset: 100,
-        child: ListView.builder(
-          padding: ConfigConstant.layoutPadding,
-          itemCount: items.length + 1,
-          itemBuilder: (context, index) {
-            print(controller.isLoading?.value);
-            if (index == items.length) {
-              return Transform.translate(
-                offset: Offset(0.0, -ConfigConstant.margin1),
-                child: ERCircularLoading(loading: controller.isLoading?.value == true),
-              );
-            }
-            // return Container(
-            //   width: 200,
-            //   height: 48,
-            //   color: Colors.amber,
-            // );
-            PostModel item = items[index];
-            return EducationCard(
-              info: item,
-              onPressedLearn: () {
-                Get.toNamed(
-                  Routes.POST_DETAIL,
-                  arguments: item,
-                );
-              },
-            );
+        child: RefreshIndicator(
+          onRefresh: () async {
+            await controller.loadList();
           },
+          child: ListView.builder(
+            padding: ConfigConstant.layoutPadding,
+            itemCount: items.length + 1,
+            itemBuilder: (context, index) {
+              if (index == items.length) {
+                return Transform.translate(
+                  offset: Offset(0.0, -ConfigConstant.margin1),
+                  child: ERCircularLoading(loading: controller.isLoading?.value == true),
+                );
+              }
+              PostModel post = items[index];
+              return EducationCard(
+                post: post,
+                onPressedLearn: () {
+                  Get.toNamed(
+                    Routes.POST_DETAIL,
+                    arguments: post,
+                  );
+                },
+              );
+            },
+          ),
         ),
       );
     });
