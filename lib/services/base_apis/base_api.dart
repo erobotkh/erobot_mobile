@@ -64,7 +64,7 @@ abstract class BaseApi<T> {
       dynamic json = jsonDecode(response?.body.toString() ?? "");
       if (json is Map<String, dynamic>) {
         if (json.containsKey('data')) json = useJapx ? Japx.decode(json) : json;
-        return objectTransformer(json);
+        return objectTransformer(json['data']);
       }
     });
   }

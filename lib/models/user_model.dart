@@ -9,7 +9,8 @@ class UserModel {
   String? firstName;
   String? lastName;
   String? email;
-  String? profileImage;
+  @JsonKey(name: 'profile_url')
+  String? profileUrl;
 
   UserModel({
     this.id,
@@ -17,7 +18,7 @@ class UserModel {
     this.firstName,
     this.lastName,
     this.email,
-    this.profileImage,
+    this.profileUrl,
   });
 
   /// For get full name in International format

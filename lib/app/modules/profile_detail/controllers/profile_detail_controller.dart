@@ -1,12 +1,28 @@
+import 'package:erobot_mobile/mixins/loading.dart';
+import 'package:erobot_mobile/models/user_model.dart';
+import 'package:erobot_mobile/services/apis/user_api.dart';
 import 'package:get/get.dart';
 
-class ProfileDetailController extends GetxController {
-  //TODO: Implement ProfileDetailController
+class ProfileDetailController extends GetxController with Loading {
+  Rx<UserModel>? user;
 
-  final count = 0.obs;
+  getProfile() async {
+    UserApi api = UserApi();
+    user = UserModel().obs;
+
+    showLoading();
+    await api.fetchOne().then((value) {
+      user?.value = value;
+    });
+    hideLoading();
+
+    update();
+  }
+
   @override
   void onInit() {
     super.onInit();
+    getProfile();
   }
 
   @override
@@ -16,5 +32,4 @@ class ProfileDetailController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }
