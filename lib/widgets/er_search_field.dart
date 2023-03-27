@@ -27,13 +27,13 @@ class ErSearchField extends StatelessWidget {
     return ErTextField(
       controller: controller,
       hintText: 'Search',
-      hintColor: colorScheme.secondaryVariant,
-      fillColor: colorScheme.secondaryVariant.withOpacity(0.3),
+      hintColor: colorScheme.secondaryContainer,
+      fillColor: colorScheme.secondaryContainer.withOpacity(0.3),
       focusedBorder: borderStyle,
       border: borderStyle,
       margin: EdgeInsets.only(right: 16),
       keyboardType: TextInputType.text,
-      prefixIcon: Icon(Icons.search, color: colorScheme.secondaryVariant),
+      prefixIcon: Icon(Icons.search, color: colorScheme.secondaryContainer),
       suffixIcon: buildSuffixIcons(context),
       onChanged: onChange,
       onSubmitted: onSubmitted,
@@ -56,14 +56,14 @@ class ErSearchField extends StatelessWidget {
           buildSuffixIcon(
             context: context,
             icon: Icons.tune,
-            onTap: () {
+            onTap: () async {
               showModalActionSheet(
                 context: context,
                 actions: [
                   SheetAction(label: 'Members'),
                   SheetAction(label: 'Reputation'),
                 ],
-              );
+              ).then((value) {});
             },
           ),
         ],
@@ -80,7 +80,7 @@ class ErSearchField extends StatelessWidget {
       onTap: onTap,
       child: Icon(
         icon,
-        color: Theme.of(context).colorScheme.secondaryVariant,
+        color: Theme.of(context).colorScheme.secondaryContainer,
       ),
     );
   }

@@ -126,7 +126,7 @@ class SenderView extends GetView<SenderController> with Toast {
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 label: Text(
                   value,
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
                 padding: EdgeInsets.zero,
@@ -151,7 +151,7 @@ class SenderView extends GetView<SenderController> with Toast {
     return Obx(() {
       return Text(
         controller.recentDatas.toList().isNotEmpty ? "Recent data" : "No recent data",
-        style: Theme.of(context).textTheme.bodyText1,
+        style: Theme.of(context).textTheme.bodyLarge,
       );
     });
   }

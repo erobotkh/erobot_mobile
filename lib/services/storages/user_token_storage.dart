@@ -10,5 +10,6 @@ class UserTokenStorage extends MapPreferenceStorage<String, dynamic> {
     if (json != null) {
       return UserTokenModel.fromJson(json);
     }
+    return null;
   }
 }

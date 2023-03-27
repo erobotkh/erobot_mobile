@@ -24,7 +24,7 @@ class JoystickView extends GetView<JoystickController> with Toast {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       SystemChrome.setPreferredOrientations([
         DeviceOrientation.landscapeRight,
         DeviceOrientation.landscapeLeft,
@@ -155,7 +155,7 @@ class JoystickView extends GetView<JoystickController> with Toast {
             Expanded(
               child: SliderTheme(
                 data: SliderTheme.of(context).copyWith(
-                  activeTrackColor: Theme.of(context).colorScheme.primaryVariant,
+                  activeTrackColor: Theme.of(context).colorScheme.primaryContainer,
                   inactiveTrackColor: Theme.of(context).colorScheme.secondary,
                   thumbColor: Theme.of(context).colorScheme.primary,
                   trackShape: RectangularSliderTrackShape(),

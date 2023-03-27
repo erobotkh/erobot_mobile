@@ -34,6 +34,7 @@ class AuthApi {
     } catch (e) {
       return null;
     }
+    return null;
   }
 
   Future<dynamic> _beforeExec(Future<dynamic> Function() body) async {
@@ -125,6 +126,7 @@ class AuthApi {
       var validated = {for (var e in json.entries) e.key: e.value};
       return UserTokenModel.fromJson(validated);
     }
+    return null;
   }
 
   Future<void> reAuthenticate({required String refreshToken}) async {

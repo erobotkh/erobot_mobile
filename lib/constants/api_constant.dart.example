@@ -1,0 +1,7 @@
+import 'package:erobot_mobile/configs/config_environments.dart';
+
+class ApiConstant {
+  static const String baseUrl = "https://example.com";
+  static const String authPath = "$baseUrl/auth/login";
+  static const String env = Environment.LOCAL;
+}

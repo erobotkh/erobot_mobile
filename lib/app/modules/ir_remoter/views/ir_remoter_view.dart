@@ -54,7 +54,7 @@ class IrRemoterView extends GetView<IrRemoterController> {
                   children: [
                     Text(
                       remoteButton.showLabel ? remoteButton.label : '',
-                      style: Theme.of(context).textTheme.overline,
+                      style: Theme.of(context).textTheme.labelSmall,
                     ),
                     ErTapEffect(
                       onTap: remoteButton.onTap,

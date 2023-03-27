@@ -11,9 +11,7 @@ class ThemeConfig {
     final scheme = isDarkMode ? ThemeConstant.darkScheme : ThemeConstant.lightScheme;
     return ThemeData(
       primaryColor: scheme.primary,
-      backgroundColor: scheme.background,
       scaffoldBackgroundColor: scheme.background,
-      colorScheme: scheme,
       dividerColor: scheme.onBackground.withOpacity(0.25),
       splashColor: Colors.transparent,
       appBarTheme: AppBarTheme(
@@ -21,7 +19,7 @@ class ThemeConfig {
         centerTitle: false,
         elevation: 0.0,
         iconTheme: IconThemeData(color: scheme.onPrimary),
-        titleTextStyle: ThemeConstant.textTheme.headline6?.copyWith(color: scheme.onPrimary),
+        titleTextStyle: ThemeConstant.textTheme.titleLarge?.copyWith(color: scheme.onPrimary),
         foregroundColor: scheme.onPrimary,
       ),
       iconTheme: IconThemeData(color: scheme.onBackground),
@@ -36,9 +34,9 @@ class ThemeConfig {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
+          foregroundColor: scheme.onPrimary,
           backgroundColor: scheme.primary,
-          onSurface: scheme.onSurface,
-          primary: scheme.onPrimary,
+          disabledForegroundColor: scheme.onSurface.withOpacity(0.38),
         ),
       ),
       progressIndicatorTheme: ProgressIndicatorThemeData(color: scheme.onPrimary),
@@ -69,6 +67,7 @@ class ThemeConfig {
       cupertinoOverrideTheme: CupertinoThemeData(
         textTheme: CupertinoTextThemeData(),
       ),
+      colorScheme: scheme.copyWith(background: scheme.background),
     );
   }
 }

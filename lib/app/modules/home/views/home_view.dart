@@ -75,7 +75,7 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     Text(
                       card.title,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     Text(
                       card.subTitle,

@@ -115,7 +115,7 @@ class _ErTextFieldState extends State<ErTextField> {
       fillColor: widget.fillColor ?? colorScheme.background,
       filled: true,
       hintStyle: TextStyle(color: widget.hintColor),
-      labelStyle: Theme.of(context).textTheme.bodyText2,
+      labelStyle: Theme.of(context).textTheme.bodyMedium,
       focusedBorder: widget.focusedBorder,
       border: widget.border ??
           UnderlineInputBorder(

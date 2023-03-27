@@ -24,7 +24,7 @@ class RegisterView extends GetView<RegisterController> with Toast {
         backgroundColor: Theme.of(context).colorScheme.surface,
         title: Text(
           'Register',
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
       body: SingleChildScrollView(

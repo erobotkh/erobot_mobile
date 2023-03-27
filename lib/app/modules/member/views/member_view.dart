@@ -20,7 +20,7 @@ class MemberView extends GetView {
           backgroundColor: _theme.colorScheme.surface,
           title: Text(
             'Members',
-            style: _theme.textTheme.headline6,
+            style: _theme.textTheme.titleLarge,
           ),
           actions: [
             IconButton(

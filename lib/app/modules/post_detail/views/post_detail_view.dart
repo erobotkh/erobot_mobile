@@ -50,19 +50,19 @@ class PostDetailView extends GetView<PostDetailController> {
               children: [
                 Text(
                   controller.postModel?.title ?? 'Title',
-                  style: Theme.of(context).textTheme.headline6,
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: ConfigConstant.margin0),
                 Wrap(
                   children: [
                     Text(
                       controller.postModel?.author?.fullNameI ?? 'Author Name',
-                      style: Theme.of(context).textTheme.bodyText2?.copyWith(fontWeight: FontWeight.w600),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
                     ),
                     Text(' - '),
                     Text(
                       DateHelper.yMMd(context, DateTime.tryParse(controller.postModel?.createdAt ?? '')),
-                      style: Theme.of(context).textTheme.bodyText2,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
                 )

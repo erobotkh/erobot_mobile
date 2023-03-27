@@ -16,7 +16,7 @@ void main() {
           "post_id": "123",
         },
       );
-      expect(url, 'https://erobot-api.herokuapp.com/posts?type=post&post_id=123');
+      expect(url, ApiConstant.baseUrl + '/posts?type=post&post_id=123');
     });
   });
 }

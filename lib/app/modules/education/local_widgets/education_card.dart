@@ -45,11 +45,11 @@ class EducationCard extends StatelessWidget {
             ),
             title: Text(
               (post.author?.firstName ?? "") + " " + (post.author?.lastName ?? ""),
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             subtitle: Text(
               DateHelper.yMMd(context, DateTime.tryParse(post.createdAt ?? "")),
-              style: Theme.of(context).textTheme.caption!.copyWith(color: Theme.of(context).colorScheme.secondary),
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Theme.of(context).colorScheme.secondary),
             ),
             trailing: ErTapEffect(
               child: Icon(
@@ -80,7 +80,7 @@ class EducationCard extends StatelessWidget {
             ),
             child: Text(
               post.body ?? "",
-              style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Theme.of(context).colorScheme.secondary),
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.secondary),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
@@ -108,7 +108,7 @@ class EducationCard extends StatelessWidget {
                 TextButton(
                   child: Text(
                     'LEARN',
-                    style: Theme.of(context).textTheme.button,
+                    style: Theme.of(context).textTheme.labelLarge,
                   ),
                   onPressed: onPressedLearn,
                 ),

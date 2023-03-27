@@ -62,7 +62,7 @@ class ProfileDetailView extends GetView {
                       const SizedBox(height: ConfigConstant.margin2),
                       Text(
                         displayName,
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       Text(
                         displayEmail,
