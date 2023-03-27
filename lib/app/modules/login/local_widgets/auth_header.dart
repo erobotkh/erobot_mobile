@@ -17,11 +17,11 @@ class AuthHeaderWidget extends StatelessWidget {
         child: ListTile(
           title: Text(
             'Erobot Member',
-            style: _theme.textTheme.bodyText1,
+            style: _theme.textTheme.bodyLarge,
           ),
           subtitle: Text(
             'Member will have access privilege to see post, oportunity, and team reputation.',
-            style: _theme.textTheme.caption?.copyWith(
+            style: _theme.textTheme.bodySmall?.copyWith(
               color: _theme.colorScheme.onPrimary.withOpacity(0.5),
             ),
           ),

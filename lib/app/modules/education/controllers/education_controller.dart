@@ -23,7 +23,7 @@ class EducationController extends GetxController with Loading {
     postListModel = PostListModel().obs;
     showLoading();
     await PostApi().fetchAllPosts().then((value) {
-      postListModel?.value = value;
+      if (value is PostListModel) postListModel?.value = value;
     });
     hideLoading();
     update();

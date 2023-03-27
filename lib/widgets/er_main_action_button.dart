@@ -43,7 +43,7 @@ class ErMainActionButton extends StatelessWidget {
           disable ? Theme.of(context).colorScheme.background : backgroundColor ?? Theme.of(context).colorScheme.primary,
       borderRadius: BorderRadius.circular(ConfigConstant.radius1),
       border: borderColor != null
-          ? Border.all(color: disable ? Theme.of(context).colorScheme.secondaryVariant : borderColor!)
+          ? Border.all(color: disable ? Theme.of(context).colorScheme.secondaryContainer : borderColor!)
           : null,
     );
 
@@ -54,7 +54,7 @@ class ErMainActionButton extends StatelessWidget {
         ? Theme.of(context).colorScheme.onBackground
         : this.labelColor ?? Theme.of(context).colorScheme.onPrimary;
     final iconColor = this.iconColor ?? theme.primaryColor;
-    final labelStyle = textTheme.bodyText2!.copyWith(color: labelColor);
+    final labelStyle = textTheme.bodyMedium!.copyWith(color: labelColor);
 
     final padding = const EdgeInsets.symmetric(horizontal: ConfigConstant.margin2);
 

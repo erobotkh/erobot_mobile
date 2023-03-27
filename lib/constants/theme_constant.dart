@@ -69,9 +69,7 @@ class ThemeConstant {
 
   static const ColorScheme darkScheme = ColorScheme(
     primary: Color(0xFFD30101),
-    primaryVariant: Color(0xFF990000),
     secondary: Color(0xFF8B9299),
-    secondaryVariant: Color(0xFFBFBFBF),
     background: Color(0xFF161F28),
     surface: Color(0xFF172634),
     error: Color(0xFFB00020),
@@ -85,9 +83,7 @@ class ThemeConstant {
 
   static const ColorScheme lightScheme = ColorScheme(
     primary: Color(0xFFD30101),
-    primaryVariant: Color(0xFF990000),
     secondary: Color(0xFF8B9299),
-    secondaryVariant: Color(0xFFBFBFBF),
     background: Color(0xFF161F28),
     surface: Color(0xFF172634),
     error: Color(0xFFB00020),
@@ -101,77 +97,77 @@ class ThemeConstant {
 
   static TextTheme get textTheme {
     return TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
         fontSize: 95,
         fontWeight: FontWeight.w300,
         letterSpacing: -1.5,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      headline2: TextStyle(
+      displayMedium: TextStyle(
         fontSize: 59,
         fontWeight: FontWeight.w300,
         letterSpacing: -0.5,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      headline3: TextStyle(
+      displaySmall: TextStyle(
         fontSize: 48,
         fontWeight: FontWeight.w400,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      headline4: TextStyle(
+      headlineMedium: TextStyle(
         fontSize: 34,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      headline5: TextStyle(
+      headlineSmall: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.w400,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.15,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      subtitle1: TextStyle(
+      titleMedium: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.15,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      subtitle2: TextStyle(
+      titleSmall: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w500,
         letterSpacing: 0.1,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.5,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      bodyText2: TextStyle(
+      bodyMedium: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.25,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      button: TextStyle(
+      labelLarge: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w500,
         letterSpacing: 1.25,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      caption: TextStyle(
+      bodySmall: TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w400,
         letterSpacing: 0.4,
         fontFamilyFallback: fontFamilyFallback,
       ),
-      overline: TextStyle(
+      labelSmall: TextStyle(
         fontSize: 10,
         fontWeight: FontWeight.w400,
         letterSpacing: 1.5,

@@ -37,7 +37,9 @@ class ERCircularLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: ThemeData(accentColor: Theme.of(context).colorScheme.primary),
+      data: ThemeData(
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Theme.of(context).colorScheme.primary),
+      ),
       child: AnimatedOpacity(
         duration: ConfigConstant.fadeDuration,
         opacity: loading ? 1 : 0,

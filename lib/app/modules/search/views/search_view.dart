@@ -34,13 +34,13 @@ class SearchView extends GetView<SearchController> {
             leading: Obx(
               () => Icon(
                 controller.isHistory.value ? Icons.history : Icons.search,
-                color: colorScheme.secondaryVariant,
+                color: colorScheme.secondaryContainer,
               ),
             ),
             title: Text('PNC event ${controller.count}'),
             trailing: Icon(
               Icons.keyboard_arrow_right,
-              color: colorScheme.secondaryVariant,
+              color: colorScheme.secondaryContainer,
             ),
           );
         },

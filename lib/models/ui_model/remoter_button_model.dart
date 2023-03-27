@@ -16,8 +16,9 @@ class RemotterButtonModel {
   });
 
   static List<RemotterButtonModel> getButtonList(BuildContext context) {
-    var buttonWhite = Theme.of(context).textTheme.button!.copyWith(fontWeight: FontWeight.w600);
-    var buttonBlack = Theme.of(context).textTheme.button!.copyWith(fontWeight: FontWeight.w600, color: Colors.black);
+    var buttonWhite = Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w600);
+    var buttonBlack =
+        Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w600, color: Colors.black);
     return [
       RemotterButtonModel(
         label: 'CH-',

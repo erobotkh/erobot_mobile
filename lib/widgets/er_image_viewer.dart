@@ -86,7 +86,7 @@ class _ImageViewerState extends State<ImageViewer> {
                 centerTitle: true,
                 title: Text(
                   "${pageIndex + 1}/${widget.images.length}",
-                  style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white),
                 ),
               ),
             ),

@@ -21,7 +21,7 @@ class LoginView extends GetView<LoginController> with Toast {
         backgroundColor: Theme.of(context).colorScheme.surface,
         title: Text(
           'Login',
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
       body: ListView(

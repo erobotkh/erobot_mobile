@@ -1,7 +1,6 @@
 import 'package:erobot_mobile/models/list_member/list_member_model.dart';
 import 'package:erobot_mobile/models/list_member/member_model.dart';
 import 'package:erobot_mobile/services/base_apis/base_resource_owner_api.dart';
-import 'package:logger/logger.dart';
 
 class ListMemberApi extends BaseResourceOwnerApi<MemberModel> {
   @override

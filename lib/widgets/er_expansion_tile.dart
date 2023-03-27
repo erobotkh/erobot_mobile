@@ -43,13 +43,9 @@ class _ERExpansionTileState extends State<ERExpansionTile> {
   bool isExpanded = false;
 
   Future<void> _launchInBrowser(String url) async {
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: false,
-        forceWebView: false,
-        headers: <String, String>{'my_header_key': 'my_header_value'},
-      );
+    final uri = Uri.tryParse(url);
+    if (uri != null && await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     } else {
       throw 'Could not launch $url';
     }
@@ -92,11 +88,11 @@ class _ERExpansionTileState extends State<ERExpansionTile> {
                   ),
                   title: Text(
                     widget.title,
-                    style: _theme.textTheme.bodyText2,
+                    style: _theme.textTheme.bodyMedium,
                   ),
                   subtitle: Text(
                     widget.subtitle,
-                    style: _theme.textTheme.caption?.copyWith(color: _theme.colorScheme.secondary),
+                    style: _theme.textTheme.bodySmall?.copyWith(color: _theme.colorScheme.secondary),
                   ),
                   trailing: Icon(
                     _hide ? Icons.chevron_right : Icons.keyboard_arrow_down,
@@ -114,7 +110,7 @@ class _ERExpansionTileState extends State<ERExpansionTile> {
                             Container(
                               child: Text(
                                 widget.textBody ?? "",
-                                style: _theme.textTheme.bodyText2,
+                                style: _theme.textTheme.bodyMedium,
                               ),
                             ),
                             SizedBox(
@@ -140,7 +136,7 @@ class _ERExpansionTileState extends State<ERExpansionTile> {
                                           ),
                                           Text(
                                             widget.textNameIg ?? "",
-                                            style: _theme.textTheme.caption,
+                                            style: _theme.textTheme.bodySmall,
                                           ),
                                         ],
                                       ),
@@ -166,7 +162,7 @@ class _ERExpansionTileState extends State<ERExpansionTile> {
                                           ),
                                           Text(
                                             widget.textNamefb ?? "",
-                                            style: _theme.textTheme.caption,
+                                            style: _theme.textTheme.bodySmall,
                                           ),
                                         ],
                                       ),
@@ -192,7 +188,7 @@ class _ERExpansionTileState extends State<ERExpansionTile> {
                                           ),
                                           Text(
                                             widget.textNameTg ?? "",
-                                            style: _theme.textTheme.caption,
+                                            style: _theme.textTheme.bodySmall,
                                           ),
                                         ],
                                       ),

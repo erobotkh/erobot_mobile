@@ -51,7 +51,7 @@ class SettingIrRemoterView extends GetView<SettingIrRemoterController> {
                             textFields: [
                               DialogTextField(),
                             ],
-                          );
+                          ).then((value) {});
                         },
                       ),
                       Divider(height: 0),

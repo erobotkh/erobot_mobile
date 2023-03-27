@@ -8,7 +8,6 @@ import 'package:erobot_mobile/helpers/app_helper.dart';
 import 'package:erobot_mobile/services/base_apis/networks/base_network.dart';
 import 'package:japx/japx.dart';
 import 'package:http/http.dart';
-import 'package:logger/logger.dart';
 
 abstract class BaseApi<T> {
   Response? response;
@@ -39,6 +38,7 @@ abstract class BaseApi<T> {
     } catch (e) {
       return null;
     }
+    return null;
   }
 
   Future<dynamic> _beforeExec(Future<dynamic> Function() body) async {
@@ -80,11 +80,10 @@ abstract class BaseApi<T> {
       try {
         json = jsonDecode(response?.body.toString() ?? "");
         json = useJapx ? Japx.decode(json) : json;
+        return itemsTransformer(json);
       } catch (e) {
         print('ERROR convert json : $e');
       }
-      // return json;
-      return itemsTransformer(json);
     });
   }
 
@@ -158,18 +157,21 @@ abstract class BaseApi<T> {
       }
       return items;
     }
+    return null;
   }
 
   MetaModel? buildMeta(Map<String, dynamic> json) {
     if (json.containsKey('meta') && json['meta'] != null) {
       return MetaModel.fromJson(json['meta']);
     }
+    return null;
   }
 
   LinksModel? buildLinks(Map<String, dynamic> json) {
     if (json.containsKey('links') && json['links'] != null) {
       return LinksModel.fromJson(json['links']);
     }
+    return null;
   }
 
   Map<String, dynamic> sliceParams(Map<String, dynamic> values, List<String> names) {
