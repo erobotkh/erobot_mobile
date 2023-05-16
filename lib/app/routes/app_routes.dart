@@ -7,6 +7,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const WRAPPER = _Paths.WRAPPER;
   static const EDUCATION = _Paths.EDUCATION;
+  static const EMERGENCY = _Paths.EMERGENCY;
   static const LOGIN = _Paths.LOGIN;
   static const REGISTER = _Paths.REGISTER;
   static const PROFILE_WRAPPER = _Paths.PROFILE_WRAPPER;
@@ -32,6 +33,7 @@ abstract class _Paths {
   static const HOME = '/home';
   static const WRAPPER = '/wrapper';
   static const EDUCATION = '/education';
+  static const EMERGENCY = '/education';
   static const LOGIN = '/login';
   static const REGISTER = '/register';
   static const PROFILE_WRAPPER = '/profile-wrapper';

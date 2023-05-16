@@ -23,6 +23,14 @@ class TabBarConfig {
       activeIcon: Icons.school,
     ),
     TabBarConfigItem(
+      title: 'Emergency',
+      icon: Icons.emergency,
+      path: Routes.EDUCATION,
+      screen: EducationView(),
+      key: GlobalKey<NavigatorState>(),
+      activeIcon: Icons.emergency,
+    ),
+    TabBarConfigItem(
       title: 'Account',
       icon: Icons.account_circle,
       path: Routes.PROFILE_WRAPPER,
