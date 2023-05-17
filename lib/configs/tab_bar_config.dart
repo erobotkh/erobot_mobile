@@ -1,4 +1,5 @@
 import 'package:erobot_mobile/app/modules/education/views/education_view.dart';
+import 'package:erobot_mobile/app/modules/emergency/views/emc_view.dart';
 import 'package:erobot_mobile/app/modules/home/views/home_view.dart';
 import 'package:erobot_mobile/app/modules/profile_wrapper/views/profile_wrapper_view.dart';
 import 'package:erobot_mobile/app/routes/app_pages.dart';
@@ -25,8 +26,8 @@ class TabBarConfig {
     TabBarConfigItem(
       title: 'Emergency',
       icon: Icons.emergency,
-      path: Routes.EDUCATION,
-      screen: EducationView(),
+      path: Routes.EMERGENCY,
+      screen: EmcView(),
       key: GlobalKey<NavigatorState>(),
       activeIcon: Icons.emergency,
     ),

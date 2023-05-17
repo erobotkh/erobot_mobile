@@ -217,6 +217,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.1"
+  dialogs:
+    dependency: "direct main"
+    description:
+      name: dialogs
+      sha256: "93f5fd23cfbe09e57a15bf43a0208b50232a9db3c718f0d8f8e94118e38c14e5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.7"
   dynamic_color:
     dependency: transitive
     description:
@@ -728,6 +736,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.2"
+  radio_group_v2:
+    dependency: "direct main"
+    description:
+      name: radio_group_v2
+      sha256: "5a53b6548d471e5fe7e11028b3daf87448d9522dc60d2ef22d9a78268898e195"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   share_plus:
     dependency: "direct main"
     description:

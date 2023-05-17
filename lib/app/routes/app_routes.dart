@@ -33,7 +33,7 @@ abstract class _Paths {
   static const HOME = '/home';
   static const WRAPPER = '/wrapper';
   static const EDUCATION = '/education';
-  static const EMERGENCY = '/education';
+  static const EMERGENCY = '/emergency';
   static const LOGIN = '/login';
   static const REGISTER = '/register';
   static const PROFILE_WRAPPER = '/profile-wrapper';
