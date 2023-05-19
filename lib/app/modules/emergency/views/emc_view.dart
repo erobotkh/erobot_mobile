@@ -1,10 +1,5 @@
-import 'package:dialogs/dialogs/progress_dialog.dart';
 import 'package:erobot_mobile/app/modules/emergency/controllers/emc_controller.dart';
-import 'package:erobot_mobile/widgets/create_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:radio_group_v2/radio_group_v2.dart';
 
