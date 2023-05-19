@@ -1,15 +1,22 @@
 import 'dart:async';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class BluetoothListController extends GetxController {
   StreamSubscription<BluetoothDiscoveryResult>? _streamSubscription;
   List<BluetoothDiscoveryResult> results = List<BluetoothDiscoveryResult>.empty(growable: true).obs;
   RxBool isDiscovering = true.obs;
 
+  var isBluetoothOn = false.obs;
+
   @override
   void onInit() {
     super.onInit();
+    checkPermissions();
+    FlutterBluetoothSerial.instance.onStateChanged().listen((state) {
+      isBluetoothOn.value = state.isEnabled;
+    });
     _startDiscovery();
   }
 
@@ -19,7 +26,20 @@ class BluetoothListController extends GetxController {
     _startDiscovery();
   }
 
-  void _startDiscovery() {
+  Future<void> checkPermissions() async {
+    var permissionStatus = await Permission.bluetoothConnect.status;
+    print(permissionStatus);
+    if (permissionStatus.isDenied) {
+      await Permission.bluetoothConnect.request();
+    }
+
+    permissionStatus = await Permission.location.status;
+    if (permissionStatus.isDenied) {
+      await Permission.location.request();
+    }
+  }
+
+  Future<void> _startDiscovery() async {
     _streamSubscription = FlutterBluetoothSerial.instance.startDiscovery().listen((r) {
       final existingIndex = results.indexWhere((element) => element.device.address == r.device.address);
       if (existingIndex >= 0) {
@@ -30,6 +50,7 @@ class BluetoothListController extends GetxController {
     });
 
     FlutterBluetoothSerial.instance.getBondedDevices().then((value) {
+      print("Value" + value.toString());
       for (BluetoothDevice device in value) {
         final existingIndex = results.indexWhere((element) => element.device.address == device.address);
         final r = BluetoothDiscoveryResult(device: device, rssi: 0);

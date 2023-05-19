@@ -24,44 +24,54 @@ class BluetoothListView extends GetView<BluetoothListController> {
         title: Text("Bluetooth List"),
         actions: [buildActionButton()],
       ),
-      body: ListView(
-        padding: EdgeInsets.all(ConfigConstant.margin2),
-        children: [
-          Container(
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.symmetric(vertical: ConfigConstant.margin2),
-            alignment: Alignment.center,
-            child: Image.asset('assets/images/bluetooth.png'),
-          ),
-          Text('Searching for devices ...'),
-          SizedBox(height: ConfigConstant.objectHeight1),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: controller.results.length,
-            itemBuilder: (BuildContext context, index) {
-              BluetoothDiscoveryResult result = controller.results[index];
-              BluetoothDevice device = result.device;
-              return BluetoothDeviceListEntry(
-                device: device,
-                rssi: result.rssi,
-                onTap: () async {
-                  BluetoothConnection connection = await BluetoothConnection.toAddress(result.device.address);
-                  BluetoothIosService service = BluetoothIosService();
-                  service.connection = connection;
-                  Get.back(result: service);
-                },
-                onLongPress: () async {
-                  controller.toggleBonded(
-                    result,
-                    onError: (ex) => onError(context, ex),
+      body: Obx(() {
+        if (controller.isDiscovering.value) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return ListView(
+          padding: EdgeInsets.all(ConfigConstant.margin2),
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              margin: EdgeInsets.symmetric(vertical: ConfigConstant.margin2),
+              alignment: Alignment.center,
+              child: Image.asset('assets/images/bluetooth.png'),
+            ),
+            Text('Searching for devices ...'),
+            SizedBox(height: ConfigConstant.objectHeight1),
+            SizedBox(
+              height: 500,
+              child: ListView.builder(
+                shrinkWrap: false,
+                itemCount: controller.results.length,
+                itemBuilder: (BuildContext context, index) {
+                  BluetoothDiscoveryResult result = controller.results[index];
+                  BluetoothDevice device = result.device;
+                  return BluetoothDeviceListEntry(
+                    device: device,
+                    rssi: result.rssi,
+                    onTap: () async {
+                      BluetoothConnection connection = await BluetoothConnection.toAddress(result.device.address);
+                      BluetoothIosService service = BluetoothIosService();
+                      service.connection = connection;
+                      Get.back(result: service);
+                    },
+                    onLongPress: () async {
+                      controller.toggleBonded(
+                        result,
+                        onError: (ex) => onError(context, ex),
+                      );
+                    },
                   );
                 },
-              );
-            },
-          ),
-        ],
-      ),
+              ),
+            ),
+          ],
+        );
+      }),
     );
   }
 

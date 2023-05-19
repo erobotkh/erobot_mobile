@@ -1,3 +1,9 @@
+// import 'package:erobot_mobile/app/modules/emergency/bindings/emc_binding.dart';
+// import 'package:erobot_mobile/app/modules/emergency/views/emc_view.dart';
+
+import 'package:erobot_mobile/app/modules/emergency/bindings/emc_home_binding.dart';
+import 'package:erobot_mobile/app/modules/emergency/views/emc_home_view.dart';
+
 import 'package:get/get.dart';
 
 import '../modules/bluetooth_list/bindings/bluetooth_list_binding.dart';
@@ -66,6 +72,9 @@ class AppPages {
       page: () => EducationView(),
       binding: EducationBinding(),
     ),
+    // GetPage(name: _Paths.EMERGENCY, page: () => EmcView(), binding: EmcBinding()),
+    GetPage(name: _Paths.EMERGENCY, page: () => EmcHomeView(), binding: EmcHomeBinding()),
+
     GetPage(
       name: _Paths.LOGIN,
       page: () => LoginView(),
